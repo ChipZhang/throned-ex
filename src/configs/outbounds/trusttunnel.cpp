@@ -36,7 +36,7 @@ bool trusttunnel::ParseFromJson(const QJsonObject& object) {
     if (object.contains("password")) password = object["password"].toString();
     if (object.contains("health_check")) health_check = object["health_check"].toBool();
     if (object.contains("quic")) quic = object["quic"].toBool();
-    if (object.contains("congestion_control")) congestion_control = object["congestion_control"].toString();
+    if (object.contains("quic_congestion_control")) congestion_control = object["quic_congestion_control"].toString();
     if (object.contains("tls")) tls->ParseFromJson(object["tls"].toObject());
     return true;
 }
@@ -87,7 +87,15 @@ BuildResult trusttunnel::Build() {
         object["quic"] = quic;
         if (!congestion_control.isEmpty()) object["quic_congestion_control"] = congestion_control;
     }
-    if (tls->enabled) object["tls"] = tls->Build().object;
+    if (tls->enabled) {
+        auto tlsObject = tls->Build().object;
+        // QUIC dials through qtls, which needs a std TLS config: uTLS and Reality fail there on every connection.
+        if (quic) {
+            tlsObject.remove("utls");
+            tlsObject.remove("reality");
+        }
+        object["tls"] = tlsObject;
+    }
     return {object, ""};
 }
 

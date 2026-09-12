@@ -3825,6 +3825,50 @@ Use a number followed by ns, us, ms, s, m, h or d.</source>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Write cached DNS answers and FakeIP mappings to the core's cache file so they survive a restart. Off by default: each entry costs a disk write.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сохранять DNS-ответы и сопоставления FakeIP в файл кэша ядра, чтобы они не терялись при перезапуске. По умолчанию выключено: каждое сохранение требует записи на диск.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
+    <message>
+        <source>Base64 DER of the server's public key. When set, it pins the server certificate.</source>
+        <translation>Открытый ключ сервера в формате DER, закодированный в Base64. Если указан, используется для проверки сертификата сервера.</translation>
+    </message>
+    <message>
+        <source>Failed to generate warp config</source>
+        <translation>Не удалось создать конфигурацию WARP</translation>
+    </message>
+    <message>
+        <source>Generating config...</source>
+        <translation>Создание конфигурации...</translation>
+    </message>
+    <message>
+        <source>HTTP Version</source>
+        <translation>Версия HTTP</translation>
+    </message>
+    <message>
+        <source>HTTP/3 (fallback to HTTP/2)</source>
+        <translation>HTTP/3 с переходом на HTTP/2</translation>
+    </message>
+    <message>
+        <source>HTTP/3 only</source>
+        <translation>Только HTTP/3</translation>
+    </message>
+    <message>
+        <source>HTTP/3 runs over UDP; HTTP/2 runs over TLS on TCP and works where UDP is blocked.</source>
+        <translation>HTTP/3 работает поверх UDP; HTTP/2 использует TLS поверх TCP и работает при блокировке UDP.</translation>
+    </message>
+    <message>
+        <source>Mode</source>
+        <translation>Режим</translation>
+    </message>
+    <message>
+        <source>Peer Public Key</source>
+        <translation>Открытый ключ узла</translation>
+    </message>
+    <message>
+        <source>Success!</source>
+        <translation>Готово!</translation>
+    </message>
+    <message>
+        <source>WireGuard runs over UDP. MASQUE tunnels over HTTP/3 or HTTP/2 and passes networks that block WireGuard.</source>
+        <translation>WireGuard работает поверх UDP. MASQUE использует HTTP/3 или HTTP/2 и позволяет подключаться в сетях, блокирующих WireGuard.</translation>
+    </message>
 </context>
 <context>
     <name>DialogDpiBypass</name>
@@ -5017,6 +5061,22 @@ rendezvous service. Replaces the server address and port.</source>
     <message>
         <source>QUIC</source>
         <translation>QUIC</translation>
+    </message>
+    <message>
+        <source>Extra Headers</source>
+        <translation>Дополнительные заголовки</translation>
+    </message>
+    <message>
+        <source>Headers sent to the proxy server, e.g. X-Username="user" X-Password="pass"</source>
+        <translation>Заголовки, отправляемые прокси-серверу, например X-Username="user" X-Password="pass"</translation>
+    </message>
+    <message>
+        <source>Insecure Concurrency</source>
+        <translation>Параллельные соединения</translation>
+    </message>
+    <message>
+        <source>Parallel tunnel connections to the server, 0 to disable. More connections are easier to detect.</source>
+        <translation>Число параллельных соединений туннеля с сервером; 0 — отключить. Чем больше соединений, тем проще их обнаружить.</translation>
     </message>
 </context>
 <context>
@@ -8461,6 +8521,26 @@ Deleted %5 Profiles:
         <source>The document must be a JSON object.</source>
         <translation>Документ должен представлять собой объект JSON.</translation>
     </message>
+    <message>
+        <source>%1: no address is set</source>
+        <translation>%1: адрес не указан</translation>
+    </message>
+    <message>
+        <source>%1: the private key is empty</source>
+        <translation>%1: закрытый ключ не указан</translation>
+    </message>
+    <message>
+        <source>Cloudflare WARP</source>
+        <translation>Cloudflare WARP</translation>
+    </message>
+    <message>
+        <source>Failed to reach the core.</source>
+        <translation>Не удалось связаться с ядром.</translation>
+    </message>
+    <message>
+        <source>Generating a WARP identity registers a new device with Cloudflare.&lt;br&gt;&lt;br&gt;Do you accept the &lt;a href="%1"&gt;Cloudflare WARP terms of service&lt;/a&gt;?</source>
+        <translation>При создании учётных данных WARP в Cloudflare регистрируется новое устройство.&lt;br&gt;&lt;br&gt;Вы принимаете &lt;a href="%1"&gt;условия использования Cloudflare WARP&lt;/a&gt;?</translation>
+    </message>
 </context>
 <context>
     <name>QPlatformTheme</name>
@@ -11754,6 +11834,73 @@ Improves hole-punching reliability. Requires IPv4.</source>
     <message>
         <source>Ignore</source>
         <translation>Игнорировать</translation>
+    </message>
+</context>
+<context>
+    <name>EditMasque</name>
+    <message>
+        <source>Base64 DER of the enrolled ECDSA P-256 key; it signs the TLS client certificate.</source>
+        <translation>Зарегистрированный ключ ECDSA P-256 в формате DER, закодированный в Base64. Используется для подписи клиентского сертификата TLS.</translation>
+    </message>
+    <message>
+        <source>Base64 DER of the server's public key. When set, it pins the server certificate, even with Allow insecure.</source>
+        <translation>Открытый ключ сервера в формате DER, закодированный в Base64. Если указан, сертификат сервера проверяется по этому ключу даже при отключённой проверке TLS.</translation>
+    </message>
+    <message>
+        <source>Comma separated list of the tunnel's own addresses, e.g. 172.16.0.2/32,2606:4700::1/128</source>
+        <translation>Собственные адреса туннеля через запятую, например 172.16.0.2/32,2606:4700::1/128</translation>
+    </message>
+    <message>
+        <source>Failed to generate WARP identity</source>
+        <translation>Не удалось создать учётные данные WARP</translation>
+    </message>
+    <message>
+        <source>Generate WARP identity</source>
+        <translation>Создать учётные данные WARP</translation>
+    </message>
+    <message>
+        <source>Generating identity...</source>
+        <translation>Создание учётных данных...</translation>
+    </message>
+    <message>
+        <source>HTTP Version</source>
+        <translation>Версия HTTP</translation>
+    </message>
+    <message>
+        <source>HTTP/3 (fallback to HTTP/2)</source>
+        <translation>HTTP/3 с переходом на HTTP/2</translation>
+    </message>
+    <message>
+        <source>HTTP/3 only</source>
+        <translation>Только HTTP/3</translation>
+    </message>
+    <message>
+        <source>HTTP/3 runs over UDP; HTTP/2 runs over TLS on TCP and works where UDP is blocked.</source>
+        <translation>HTTP/3 работает поверх UDP; HTTP/2 использует TLS поверх TCP и работает при блокировке UDP.</translation>
+    </message>
+    <message>
+        <source>Local Address</source>
+        <translation>Локальный адрес</translation>
+    </message>
+    <message>
+        <source>MTU</source>
+        <translation>MTU</translation>
+    </message>
+    <message>
+        <source>Peer Public Key</source>
+        <translation>Открытый ключ узла</translation>
+    </message>
+    <message>
+        <source>Private Key</source>
+        <translation>Закрытый ключ</translation>
+    </message>
+    <message>
+        <source>Register a new Cloudflare WARP device for MASQUE and fill the key, address and server fields.</source>
+        <translation>Зарегистрировать новое устройство Cloudflare WARP для MASQUE и заполнить поля ключей, адресов и сервера.</translation>
+    </message>
+    <message>
+        <source>Success!</source>
+        <translation>Готово!</translation>
     </message>
 </context>
 </TS>

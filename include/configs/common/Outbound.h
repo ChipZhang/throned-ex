@@ -114,6 +114,8 @@ public:
 
     virtual bool MustTLS() { return false; }
 
+    virtual bool LimitedTLS() { return false; }
+
     virtual bool HasQUIC() { return false; }
 
     virtual std::shared_ptr<TLS> GetTLS() { return std::make_shared<TLS>(); }

@@ -1606,6 +1606,34 @@ Release note:
         <source>The document must be a JSON object.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1: no address is set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1: the private key is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cloudflare WARP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to reach the core.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generating a WARP identity registers a new device with Cloudflare.&lt;br&gt;&lt;br&gt;Do you accept the &lt;a href="%1"&gt;Cloudflare WARP terms of service&lt;/a&gt;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insecure TLS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TLS</source>
+        <translation>TLS</translation>
+    </message>
 </context>
 <context>
     <name>DialogBasicSettings</name>
@@ -2788,6 +2816,50 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Write cached DNS answers and FakeIP mappings to the core's cache file so they survive a restart. Off by default: each entry costs a disk write.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Base64 DER of the server's public key. When set, it pins the server certificate.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to generate warp config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generating config...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP/3 (fallback to HTTP/2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP/3 only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP/3 runs over UDP; HTTP/2 runs over TLS on TCP and works where UDP is blocked.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Peer Public Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Success!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WireGuard runs over UDP. MASQUE tunnels over HTTP/3 or HTTP/2 and passes networks that block WireGuard.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6516,6 +6588,92 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
     <message>
         <source>Ignore</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditMasque</name>
+    <message>
+        <source>Base64 DER of the enrolled ECDSA P-256 key; it signs the TLS client certificate.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Base64 DER of the server's public key. When set, it pins the server certificate, even with Allow insecure.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comma separated list of the tunnel's own addresses, e.g. 172.16.0.2/32,2606:4700::1/128</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to generate WARP identity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generate WARP identity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generating identity...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP/3 (fallback to HTTP/2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP/3 only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP/3 runs over UDP; HTTP/2 runs over TLS on TCP and works where UDP is blocked.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local Address</source>
+        <translation>نشانی محلی</translation>
+    </message>
+    <message>
+        <source>MTU</source>
+        <translation>MTU</translation>
+    </message>
+    <message>
+        <source>Peer Public Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Private Key</source>
+        <translation>کلید خصوصی</translation>
+    </message>
+    <message>
+        <source>Register a new Cloudflare WARP device for MASQUE and fill the key, address and server fields.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Success!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditNaive</name>
+    <message>
+        <source>Extra Headers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Headers sent to the proxy server, e.g. X-Username="user" X-Password="pass"</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insecure Concurrency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parallel tunnel connections to the server, 0 to disable. More connections are easier to detect.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

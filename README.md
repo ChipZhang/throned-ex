@@ -242,7 +242,7 @@ problem.
 
 Exact build stamps are printed in the log at startup. Protocols come from
 sing-box and Xray: VLESS, VMess, Trojan, Shadowsocks, SOCKS, HTTP(S), TUIC,
-Hysteria, Hysteria2, AnyTLS, ShadowTLS, Snell, WireGuard/AmneziaWG, SSH, Mieru,
+Hysteria, Hysteria2, AnyTLS, ShadowTLS, Snell, WireGuard/AmneziaWG, MASQUE, SSH, Mieru,
 NaiveProxy, Juicity, TrustTunnel, custom outbounds and configs, chains, and
 extra cores.
 

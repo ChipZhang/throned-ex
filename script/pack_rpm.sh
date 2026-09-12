@@ -23,8 +23,9 @@ fi
 SOURCE="linux-$ARCH$SUFFIX"
 [[ -d "$SOURCE" ]] || { echo "missing deployment directory: $SOURCE" >&2; exit 1; }
 
-STAGE="$PWD/rpm-stage-$ARCH$SUFFIX"
-rm -rf "$STAGE"
+WORK=$(mktemp -d)
+trap 'rm -rf "$WORK"' EXIT
+STAGE="$WORK/stage"
 mkdir -p "$STAGE/opt" "$STAGE/usr/share/applications" "$STAGE/usr/share/pixmaps"
 cp -r "$SOURCE" "$STAGE/opt/Throned"
 rm -f "$STAGE/opt/Throned/Throned.debug"
@@ -41,7 +42,7 @@ Type=Application
 Categories=Network;Application;
 EOF
 
-POST_INSTALL="$PWD/rpm-postinst.sh"
+POST_INSTALL="$WORK/postinst.sh"
 cat >"$POST_INSTALL" <<-EOF
 #!/bin/sh
 update-desktop-database &>/dev/null || :
@@ -75,5 +76,3 @@ fpm -s dir -t rpm \
     -p ./Throned.rpm \
     -C "$STAGE" \
     opt usr
-
-rm -rf "$STAGE" "$POST_INSTALL"

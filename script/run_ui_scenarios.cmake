@@ -107,6 +107,12 @@ add_ui_scenario(selection GROUPS smoke all
 add_ui_scenario(settings GROUPS smoke all
     ARGS -ui-preview @PREFIX@ -ui-preview-docs -theme "Throned Graphite" -ui-preview-settings
     EXPECTED settings-settings.png)
+add_ui_scenario(protocol-editors GROUPS all
+    ARGS -ui-preview @PREFIX@ -ui-preview-docs -theme "Throned Graphite" -ui-preview-protocols -lang en
+    EXPECTED protocol-editors-masque.png protocol-editors-naive.png protocol-editors-warp.png)
+add_ui_scenario(protocol-editors-ru GROUPS all
+    ARGS -ui-preview @PREFIX@ -ui-preview-docs -theme "Throned Graphite" -ui-preview-protocols -lang ru
+    EXPECTED protocol-editors-ru-masque.png protocol-editors-ru-naive.png protocol-editors-ru-warp.png)
 add_ui_scenario(diagnostics GROUPS all
     ARGS -ui-preview @PREFIX@ -ui-preview-docs -theme "Throned Graphite" -ui-preview-diagnostics
     EXPECTED diagnostics-diagnostics-entry.png diagnostics-diagnostics-overview.png

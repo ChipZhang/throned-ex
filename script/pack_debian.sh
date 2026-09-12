@@ -3,15 +3,18 @@ set -e
 
 VERSION="$1"
 ARCH="$2"
+SUFFIX=""
+[[ $3 == "systemqt" ]] && SUFFIX="-system-qt"
 
-mkdir -p Throned/DEBIAN
-mkdir -p Throned/opt
-cp -r linux-$ARCH$([[ $3 == "systemqt" ]] && echo "-system-qt") Throned/opt
-mv Throned/opt/linux-$ARCH$([[ $3 == "systemqt" ]] && echo "-system-qt") Throned/opt/Throned
-rm Throned/opt/Throned/Throned.debug
+PKG=$(mktemp -d)
+trap 'rm -rf "$PKG"' EXIT
+chmod 0755 "$PKG"
+mkdir -p "$PKG/DEBIAN" "$PKG/opt"
+cp -r "linux-$ARCH$SUFFIX" "$PKG/opt/Throned"
+rm -f "$PKG/opt/Throned/Throned.debug"
 
 # basic
-cat >Throned/DEBIAN/control <<-EOF
+cat >"$PKG/DEBIAN/control" <<-EOF
 Package: throned
 Version: $VERSION
 Architecture: $ARCH
@@ -20,7 +23,7 @@ Depends: desktop-file-utils$([[ $3 == "systemqt" ]] && echo ", libqt6core6, libq
 Description: Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 EOF
 
-cat >Throned/DEBIAN/postinst <<-EOF
+cat >"$PKG/DEBIAN/postinst" <<-EOF
 cat >/usr/share/applications/Throned.desktop<<-END
 [Desktop Entry]
 Name=Throned
@@ -35,8 +38,8 @@ END
 update-desktop-database
 EOF
 
-sudo chmod 0755 Throned/DEBIAN/postinst
+chmod 0755 "$PKG/DEBIAN/postinst"
 
 # desktop && PATH
 
-sudo dpkg-deb --build Throned
+dpkg-deb --root-owner-group --build "$PKG" Throned.deb

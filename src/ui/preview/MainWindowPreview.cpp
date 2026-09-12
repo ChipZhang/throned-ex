@@ -379,6 +379,10 @@ void RunMainWindow(const QString &prefix) {
     // refresh_proxy_list() completes its model reset on the UI queue. Wait
     // for that reset before treating rowCount as the search baseline.
     QTimer::singleShot(350, window, [window, prefix, arguments, emptyPreview] {
+        if (arguments.contains(QStringLiteral("-ui-preview-protocols"))) {
+            CaptureProtocolEditors(window, prefix);
+            return;
+        }
         if (arguments.contains(QStringLiteral("-ui-preview-graph"))) {
             auto *page = window->findChild<QWidget *>(QStringLiteral("graph_tab"));
             for (auto *tabs: window->findChildren<QTabWidget *>()) {

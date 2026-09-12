@@ -747,6 +747,23 @@ libcore::GenWgKeyPairResponse Client::GenWgKeyPair(bool *rpcOK) {
     }
 }
 
+libcore::WarpRegisterResponse Client::WarpRegister(bool *rpcOK, const QString &tunnelType, const QString &proxy) {
+    libcore::WarpRegisterRequest request;
+    request.tunnel_type = tunnelType.toStdString();
+    request.proxy = proxy.toStdString();
+    libcore::WarpRegisterResponse reply;
+    std::vector<uint8_t> resp;
+    auto status = channel->Call("WarpRegister", spb::pb::serialize<std::string>(request), resp, 60000);
+
+    if (status == LocalSocketChannel::CallOK && tryDeserialize(resp, reply)) {
+        *rpcOK = true;
+        return reply;
+    } else {
+        NOT_OK
+        return {};
+    }
+}
+
 QString Client::InstallDashboard(bool *rpcOK, const QString &archivePath, const QString &targetDir) const {
     libcore::InstallDashboardRequest request;
     request.archive_path = archivePath.toStdString();

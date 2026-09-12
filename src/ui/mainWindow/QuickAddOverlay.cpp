@@ -235,6 +235,7 @@ QuickAddOverlay::QuickAddOverlay(QWidget *parent, Callbacks callbacks)
     profileType->addItem(QStringLiteral("Hysteria 2"), QStringLiteral("hysteria"));
     profileType->addItem(QStringLiteral("Shadowsocks"), QStringLiteral("shadowsocks"));
     profileType->addItem(QStringLiteral("WireGuard"), QStringLiteral("wireguard"));
+    profileType->addItem(QStringLiteral("MASQUE"), QStringLiteral("masque"));
     profileType->addItem(QStringLiteral("SOCKS"), QStringLiteral("socks"));
     profileType->addItem(QStringLiteral("HTTP"), QStringLiteral("http"));
     profileType->addItem(qaTr("Custom"), QStringLiteral("outbound"));

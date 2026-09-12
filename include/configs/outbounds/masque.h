@@ -3,20 +3,23 @@
 #include "include/configs/common/TLS.h"
 
 namespace Configs {
-class naive : public outbound {
+class masque : public outbound {
 public:
-    QString username;
-    QString password;
-    QString congestion_control;
-    QStringList extra_headers;
-    int insecure_concurrency = 0;
-    bool quic = false;
-    bool uot = false;
-    std::shared_ptr<TLS> tls = std::make_shared<TLS>();
+    QString private_key;
+    QString peer_public_key;
+    QStringList address;
+    int mtu = 1280;
+    // 0 = HTTP/3 falling back to HTTP/2, 2 = HTTP/2, 3 = HTTP/3.
+    int http_version = 0;
+    bool disable_version_fallback = false;
 
-    naive() {
+    std::shared_ptr<TLS> tls = std::make_shared<TLS>();
+    std::shared_ptr<QUICFields> quic = std::make_shared<QUICFields>();
+
+    masque() {
+        server_port = 443;
         tls->enabled = true;
-        tls->utls->supported = false;
+        tls->server_name = "consumer-masque.cloudflareclient.com";
     }
 
     bool HasTLS() override {
@@ -27,7 +30,7 @@ public:
         return true;
     }
 
-    bool LimitedTLS() override {
+    bool HasQUIC() override {
         return true;
     }
 
@@ -35,13 +38,19 @@ public:
         return tls;
     }
 
-    bool ParseFromLink(const QString& link) override;
+    std::shared_ptr<QUICFields> GetQUIC() override {
+        return quic;
+    }
+
     bool ParseFromJson(const QJsonObject& object) override;
+    bool ParseFromClash(const clash::Proxies& object) override;
     QString ExportToLink() override;
     QJsonObject ExportToJson() override;
+    QJsonObject ExportIdentity() override;
     BuildResult Build() override;
 
     QString DisplayType() override;
     SecurityInfo GetSecurity() override;
+    bool IsEndpoint() override;
 };
 } // namespace Configs

@@ -1262,6 +1262,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
 #endif
     connect(themeManager(), &ThemeManager::themeChanged, this, [=, this](const QString &theme) {
         setLogHighlighter(themeUsesDarkLog(theme));
+        applyLogBrowserFont();
         scheduleProxyListRefresh();
     });
     MW_show_log = [=, this](const QString &log) {
