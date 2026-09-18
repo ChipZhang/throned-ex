@@ -1275,8 +1275,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
     if (!uiPreviewMode) {
         runOnNewThread([=, this] { GetDeviceDetails(); });
 
-        auto core_path = QApplication::applicationDirPath() + "/";
-        core_path += "ThronedCore";
+        const auto core_path = Configs::FindCoreRealPath();
         const bool coreDebugMode = Configs::dataManager->settingsRepo->log_level == "debug";
 
         Configs::dataManager->settingsRepo->core_socket_name =

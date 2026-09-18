@@ -43,6 +43,11 @@ void initDB(const std::string& dbPath) {
 }
 
 QString FindCoreRealPath() {
+#ifdef NKR_CORE_IN_PATH
+    // Packaged installs may launch the core through a privilege wrapper on PATH (NixOS security wrappers).
+    const auto wrapped = QStandardPaths::findExecutable("ThronedCore");
+    if (!wrapped.isEmpty()) return wrapped;
+#endif
     auto fn = QApplication::applicationDirPath() + "/ThronedCore";
 #ifdef Q_OS_WIN
     fn += ".exe";

@@ -7577,6 +7577,10 @@ Name: %1</source>
         <source>Profile</source>
         <translation>Профиль</translation>
     </message>
+    <message>
+        <source>This installation cannot grant the core privileges by itself.</source>
+        <translation>Эта установка не может сама выдать ядру права.</translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>

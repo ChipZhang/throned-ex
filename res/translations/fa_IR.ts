@@ -1402,6 +1402,10 @@ Total speed: %5/s↑ %6/s↓</source>
         <source>Update Rule-Sets</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This installation cannot grant the core privileges by itself.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>

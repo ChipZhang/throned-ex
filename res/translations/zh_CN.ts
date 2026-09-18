@@ -6504,6 +6504,10 @@ Release note:
         <source>Profile</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This installation cannot grant the core privileges by itself.</source>
+        <translation>此安装方式无法自行为核心授予权限。</translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
