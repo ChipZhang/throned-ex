@@ -17,7 +17,7 @@ ten-second grep would answer.
 | `src/`, `include/`              | First-party C++. The two trees mirror each other; a file added to either is picked up by CMake automatically. |
 | `src/sys/{windows,linux,macos}` | Operating-system code. Listed explicitly in the matching `cmake/<platform>` file, not globbed.                |
 | `src/ui/preview/`               | Screenshot and preview modes of the production widgets. Not a mock.                                           |
-| `core/server/`, `updater/`      | Go modules: the proxy core process and the updater. `gen/*.pb.go` is generated, not committed.                |
+| `core/`, `updater/`             | Go modules: the proxy core process and the updater. `gen/*.pb.go` is generated, not committed.                |
 | `3rdparty/`                     | Vendored C and C++. Each dependency is its own CMake target in `cmake/ThronedDependencies.cmake`.             |
 | `res/`, `skins/`                | Compiled Qt resources and loose skin packages.                                                                |
 | `tests/`                        | Qt Test targets plus the UI snapshot baselines.                                                               |
@@ -145,7 +145,7 @@ proxy core, no system proxy change, no TUN.
 ## Editing rules
 
 - Follow `.clang-format` and `.clang-tidy`. Vendored and generated code is
-  excluded on purpose; do not reformat `3rdparty/` or `core/server/gen/`.
+  excluded on purpose; do not reformat `3rdparty/` or `core/gen/`.
 - A comment says what the code cannot: why this way, what broke last time, which
   trap is being avoided. **One line.** It has to be readable at a glance or it
   will not be read at all, and a paragraph above a function is documentation —

@@ -2,6 +2,203 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
+    <name>ConnectionsTreeModel</name>
+    <message>
+        <source>Click To Sort By Outbound</source>
+        <translation>点击“按出站排序”</translation>
+    </message>
+    <message>
+        <source>Click To Sort By Process</source>
+        <translation>点击以“按进程排序”</translation>
+    </message>
+    <message>
+        <source>Click To Sort By Protocol</source>
+        <translation>点击“按协议排序”</translation>
+    </message>
+    <message>
+        <source>Click To Sort By Source</source>
+        <translation>点击“按来源排序”</translation>
+    </message>
+    <message>
+        <source>Click to sort by speed; right-click to choose total/down/up</source>
+        <translation>点击按速度排序; 右击选择“合计/下载/上传”</translation>
+    </message>
+    <message>
+        <source>Click to sort by traffic; right-click to choose total/down/up</source>
+        <translation>点击按流量排序; 右击选择“合计/下载/上传”</translation>
+    </message>
+    <message>
+        <source>Destination: %1
+Connections: %2
+Process: %3
+Protocol: %4
+Outbound: %5
+Total traffic: %6↑ %7↓
+Total speed: %8/s↑ %9/s↓</source>
+        <translation>目标：%1
+连接数：%2
+进程：%3
+协议：%4
+出站：%5
+总流量：%6↑ %7↓
+总速度：%8/s↑ %9/s↓</translation>
+    </message>
+    <message>
+        <source>Destination: %1
+Process: %2
+Protocol: %3
+Outbound: %4</source>
+        <translation>目标：%1
+进程：%2
+协议：%3
+出站：%4</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>出站</translation>
+    </message>
+    <message>
+        <source>Process / Destination</source>
+        <translation>进程 / 目标</translation>
+    </message>
+    <message>
+        <source>Process: %1
+Active connections: %2
+Total traffic: %3↑ %4↓
+Total speed: %5/s↑ %6/s↓</source>
+        <translation>进程：%1
+活动连接：%2
+总流量：%3↑ %4↓
+总速度：%5/s↑ %6/s↓</translation>
+    </message>
+    <message>
+        <source>Protocol</source>
+        <translation>协议</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation>来源</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation>速度</translation>
+    </message>
+    <message>
+        <source>System</source>
+        <translation>系统</translation>
+    </message>
+    <message>
+        <source>Traffic</source>
+        <translation>流量</translation>
+    </message>
+</context>
+<context>
+    <name>CoreDiagnostics</name>
+    <message>
+        <source>Could not reach the core. See the log for details.</source>
+        <translation>无法连接到核心。详情见日志。</translation>
+    </message>
+    <message>
+        <source>Could not save %1: %2</source>
+        <translation>无法保存 %1：%2</translation>
+    </message>
+    <message>
+        <source>Performance profile</source>
+        <translation>性能分析</translation>
+    </message>
+    <message>
+        <source>Performance profile failed: %1</source>
+        <translation>性能分析失败：%1</translation>
+    </message>
+    <message>
+        <source>Performance profile saved to %1</source>
+        <translation>性能分析数据已保存到 %1</translation>
+    </message>
+    <message>
+        <source>Show in folder</source>
+        <translation>在文件夹中显示</translation>
+    </message>
+    <message>
+        <source>The core could not capture the profile: %1</source>
+        <translation>核心无法采集性能分析数据：%1</translation>
+    </message>
+    <message>
+        <source>The core is not running.</source>
+        <translation>核心未运行。</translation>
+    </message>
+    <message>
+        <source>The core returned an empty profile.</source>
+        <translation>核心返回了空的性能分析数据。</translation>
+    </message>
+    <message>
+        <source>The performance profile was saved (%1).</source>
+        <translation>性能分析数据已保存（%1）。</translation>
+    </message>
+</context>
+<context>
+    <name>DiagnosticsTab</name>
+    <message>
+        <source>Execution trace (larger file)</source>
+        <translation>执行跟踪（文件较大）</translation>
+    </message>
+    <message>
+        <source>Finishing…</source>
+        <translation>正在完成…</translation>
+    </message>
+    <message>
+        <source>Include Throned logs</source>
+        <translation>包含 Throned 日志</translation>
+    </message>
+    <message>
+        <source>Lock contention</source>
+        <translation>锁竞争</translation>
+    </message>
+    <message>
+        <source>Logs contain visited domains and server addresses.</source>
+        <translation>日志包含访问过的域名和服务器地址。</translation>
+    </message>
+    <message>
+        <source>Open folder</source>
+        <translation>打开文件夹</translation>
+    </message>
+    <message>
+        <source>Performance profile</source>
+        <translation>性能分析</translation>
+    </message>
+    <message>
+        <source>Profiles the Core using pprof. The profile itself does not contain any information about your configs, but if you include the logs too, there will be information about your configs in them.</source>
+        <translation>使用 pprof 对核心进行性能分析。分析数据本身不包含任何配置信息，但如果同时包含日志，日志中会含有配置信息。</translation>
+    </message>
+    <message>
+        <source>Recording… %1 left</source>
+        <translation>正在记录… 剩余 %1</translation>
+    </message>
+    <message>
+        <source>Records where goroutines wait on locks and channels.</source>
+        <translation>记录 goroutine 在锁和通道上的等待位置。</translation>
+    </message>
+    <message>
+        <source>Saved %1 (%2)</source>
+        <translation>已保存 %1（%2）</translation>
+    </message>
+    <message>
+        <source>Show in folder</source>
+        <translation>在文件夹中显示</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>启动</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>The core is not running.</source>
+        <translation>核心未运行。</translation>
+    </message>
+</context>
+<context>
     <name>DiagnosticsWindow</name>
     <message>
         <source>Unknown</source>
@@ -1945,6 +2142,53 @@ Throne will restart to complete the restore.</source>
     </message>
 </context>
 <context>
+    <name>DialogBasicSettings</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Adds Throned to the &quot;Open with&quot; list for JSON and YAML config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;将 Throned 添加到 JSON 和 YAML 配置文件的“打开方式”列表，并在安装位置移动后重新注册。&lt;/p&gt;&lt;p&gt;关闭此项不会撤销已有的注册：请使用“卸载”。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throned as the handler for throne:// links, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;将 Throned 注册为 throne:// 链接的处理程序，并在安装位置移动后重新注册。&lt;/p&gt;&lt;p&gt;关闭此项不会撤销已有的注册：请使用“卸载”。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers the associations now, without waiting for the next start.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;立即注册关联，无需等待下次启动。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every config file association Throned wrote, including those added by older versions. Associations owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;移除 Throned 写入的所有配置文件关联，包括旧版本添加的。其他应用拥有的关联不受影响。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes the throne:// handler Throned wrote. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;移除 Throned 写入的 throne:// 处理程序。其他应用拥有的条目不受影响。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>A portable copy leaves config file associations alone. Use Install when you want them.</source>
+        <translation>便携版不会改动配置文件关联。需要时请点击“安装”。</translation>
+    </message>
+    <message>
+        <source>Could not register the config file associations.</source>
+        <translation>无法注册配置文件关联。</translation>
+    </message>
+    <message>
+        <source>Diagnostics</source>
+        <translation>诊断</translation>
+    </message>
+    <message>
+        <source>Links and Files</source>
+        <translation>链接与文件</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>出站</translation>
+    </message>
+    <message>
+        <source>Register config files at startup</source>
+        <translation>启动时注册配置文件关联</translation>
+    </message>
+</context>
+<context>
     <name>DialogEditGroup</name>
     <message>
         <source>Edit Group</source>
@@ -3282,6 +3526,21 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
     </message>
 </context>
 <context>
+    <name>DialogManageRoutes</name>
+    <message>
+        <source>Cloudflare API domains to try, in order, when generating a WARP config</source>
+        <translation>生成 WARP 配置时按顺序尝试的 Cloudflare API 域名</translation>
+    </message>
+    <message>
+        <source>Registration Domains…</source>
+        <translation>注册域名…</translation>
+    </message>
+    <message>
+        <source>WARP Registration Domains</source>
+        <translation>WARP 注册域名</translation>
+    </message>
+</context>
+<context>
     <name>DialogRuntimeStats</name>
     <message>
         <source>Disabled</source>
@@ -4301,6 +4560,52 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
 </context>
 <context>
+    <name>EditOpenConnect</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;How DNS uses the resolvers the VPN server pushes when this profile is started.&lt;/p&gt;&lt;p&gt;None: ignore them. Use this if the server claims every domain and breaks public DNS.&lt;br/&gt;Prefer: resolve the names the server claims - its split-DNS suffixes and search domains - through them, and everything else as usual.&lt;br/&gt;Strict: also send every remote DNS query to them instead of the remote DNS server, and fail the lookups they cannot answer. Direct lookups are unchanged.&lt;/p&gt;&lt;p&gt;As an endpoint in a routing profile, Prefer and Strict both resolve only the names the server claims.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;启动此配置时，DNS 如何使用 VPN 服务器下发的解析器。&lt;/p&gt;&lt;p&gt;无：忽略它们。如果服务器声明所有域名并破坏公共 DNS，请使用此项。&lt;br/&gt;优先：通过它们解析服务器声明的名称（其 split-DNS 后缀和搜索域），其余照常解析。&lt;br/&gt;严格：此外，把所有远程 DNS 查询都发给它们而不是远程 DNS 服务器，并让它们无法回答的查询失败。直连查询不变。&lt;/p&gt;&lt;p&gt;作为路由配置中的 endpoint 时，“优先”和“严格”都只解析服务器声明的名称。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>Prefer</source>
+        <translation>优先</translation>
+    </message>
+    <message>
+        <source>Strict</source>
+        <translation>严格</translation>
+    </message>
+    <message>
+        <source>Tunnel DNS</source>
+        <translation>隧道 DNS</translation>
+    </message>
+</context>
+<context>
+    <name>EditOpenVPN</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;How DNS uses the resolvers the VPN server pushes when this profile is started.&lt;/p&gt;&lt;p&gt;None: ignore them. Use this if the server claims every domain and breaks public DNS.&lt;br/&gt;Prefer: resolve the names the server claims - its split-DNS suffixes and search domains - through them, and everything else as usual.&lt;br/&gt;Strict: also send every remote DNS query to them instead of the remote DNS server, and fail the lookups they cannot answer. Direct lookups are unchanged.&lt;/p&gt;&lt;p&gt;As an endpoint in a routing profile, Prefer and Strict both resolve only the names the server claims.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;启动此配置时，DNS 如何使用 VPN 服务器下发的解析器。&lt;/p&gt;&lt;p&gt;无：忽略它们。如果服务器声明所有域名并破坏公共 DNS，请使用此项。&lt;br/&gt;优先：通过它们解析服务器声明的名称（其 split-DNS 后缀和搜索域），其余照常解析。&lt;br/&gt;严格：此外，把所有远程 DNS 查询都发给它们而不是远程 DNS 服务器，并让它们无法回答的查询失败。直连查询不变。&lt;/p&gt;&lt;p&gt;作为路由配置中的 endpoint 时，“优先”和“严格”都只解析服务器声明的名称。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>Prefer</source>
+        <translation>优先</translation>
+    </message>
+    <message>
+        <source>Strict</source>
+        <translation>严格</translation>
+    </message>
+    <message>
+        <source>Tunnel DNS</source>
+        <translation>隧道 DNS</translation>
+    </message>
+</context>
+<context>
     <name>EditSSH</name>
     <message>
         <source>EditSSH</source>
@@ -4471,6 +4776,33 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     <message>
         <source>Congestion Control</source>
         <translation>拥塞控制</translation>
+    </message>
+</context>
+<context>
+    <name>EditTrustTunnel</name>
+    <message>
+        <source>Client Random</source>
+        <translation>Client Random</translation>
+    </message>
+    <message>
+        <source>Custom SNI</source>
+        <translation>自定义 SNI</translation>
+    </message>
+    <message>
+        <source>Server name sent in the TLS ClientHello instead of the TLS server name, which is still used to verify the certificate; not compatible with ECH or REALITY</source>
+        <translation>在 TLS ClientHello 中发送的服务器名称，替代 TLS 服务器名称；后者仍用于验证证书；与 ECH 或 REALITY 不兼容</translation>
+    </message>
+    <message>
+        <source>TLS ClientHello random prefix required by the server&apos;s client_random_prefix rule; not compatible with ECH or REALITY</source>
+        <translation>服务器 client_random_prefix 规则所需的 TLS ClientHello 随机前缀；与 ECH 或 REALITY 不兼容</translation>
+    </message>
+    <message>
+        <source>optional, e.g. cdn.example.net</source>
+        <translation>可选，例如 cdn.example.net</translation>
+    </message>
+    <message>
+        <source>prefix[/mask] (hex), e.g. a0b0/f0f0</source>
+        <translation>前缀[/掩码]（十六进制），例如 a0b0/f0f0</translation>
     </message>
 </context>
 <context>
@@ -6171,6 +6503,101 @@ Release note:
     <message>
         <source>Profile</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message numerus="yes">
+        <source>%n remote rule-set(s) refreshed</source>
+        <translation>
+            <numerusform>已刷新 %n 个远程规则集</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Append &quot;%1&quot; to</source>
+        <translation>将“%1”添加到</translation>
+    </message>
+    <message>
+        <source>Append process &quot;%1&quot; to</source>
+        <translation>将进程“%1”添加到</translation>
+    </message>
+    <message>
+        <source>Appended %1 to the %2 rules of &quot;%3&quot;</source>
+        <translation>已将 %1 添加到“%3”的 %2 规则</translation>
+    </message>
+    <message>
+        <source>Appended to the %1 rules:
+%2</source>
+        <translation>已添加到 %1 规则：
+%2</translation>
+    </message>
+    <message>
+        <source>Block</source>
+        <translation>阻止</translation>
+    </message>
+    <message>
+        <source>Close all connections (%1)</source>
+        <translation>关闭所有连接（%1）</translation>
+    </message>
+    <message>
+        <source>Close all connections for &quot;%1&quot; (%2)</source>
+        <translation>关闭“%1”的所有连接（%2）</translation>
+    </message>
+    <message>
+        <source>Close connection</source>
+        <translation>关闭连接</translation>
+    </message>
+    <message>
+        <source>Collapse All</source>
+        <translation>全部折叠</translation>
+    </message>
+    <message>
+        <source>Copied: %1</source>
+        <translation>已复制：%1</translation>
+    </message>
+    <message>
+        <source>Copy Destination (%1)</source>
+        <translation>复制目标（%1）</translation>
+    </message>
+    <message>
+        <source>Copy Process Name</source>
+        <translation>复制进程名</translation>
+    </message>
+    <message>
+        <source>Copy Process Name (%1)</source>
+        <translation>复制进程名（%1）</translation>
+    </message>
+    <message>
+        <source>Diagnose this application</source>
+        <translation>诊断此应用程序</translation>
+    </message>
+    <message>
+        <source>Direct</source>
+        <translation>直连</translation>
+    </message>
+    <message>
+        <source>Expand All</source>
+        <translation>全部展开</translation>
+    </message>
+    <message>
+        <source>No routing profile</source>
+        <translation>没有路由配置</translation>
+    </message>
+    <message>
+        <source>Proxy</source>
+        <translation>代理</translation>
+    </message>
+    <message>
+        <source>Rule not added</source>
+        <translation>未添加规则</translation>
+    </message>
+    <message>
+        <source>There is no active routing profile to add the rule to.</source>
+        <translation>没有可添加规则的活动路由配置。</translation>
+    </message>
+    <message>
+        <source>Update Rule-Sets</source>
+        <translation>更新规则集</translation>
     </message>
 </context>
 <context>

@@ -2,6 +2,191 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fa_IR" sourcelanguage="en">
 <context>
+    <name>ConnectionsTreeModel</name>
+    <message>
+        <source>Click To Sort By Outbound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click To Sort By Process</source>
+        <translation>برای مرتب‌سازی بر اساس فرآیند کلیک کنید</translation>
+    </message>
+    <message>
+        <source>Click To Sort By Protocol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click To Sort By Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click to sort by speed; right-click to choose total/down/up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click to sort by traffic; right-click to choose total/down/up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Destination: %1
+Connections: %2
+Process: %3
+Protocol: %4
+Outbound: %5
+Total traffic: %6↑ %7↓
+Total speed: %8/s↑ %9/s↓</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Destination: %1
+Process: %2
+Protocol: %3
+Outbound: %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>خروجی</translation>
+    </message>
+    <message>
+        <source>Process / Destination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Process: %1
+Active connections: %2
+Total traffic: %3↑ %4↓
+Total speed: %5/s↑ %6/s↓</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protocol</source>
+        <translation>پروتکل</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traffic</source>
+        <translation>ترافیک</translation>
+    </message>
+</context>
+<context>
+    <name>CoreDiagnostics</name>
+    <message>
+        <source>Could not reach the core. See the log for details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not save %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance profile failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance profile saved to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show in folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The core could not capture the profile: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The core is not running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The core returned an empty profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The performance profile was saved (%1).</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DiagnosticsTab</name>
+    <message>
+        <source>Execution trace (larger file)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finishing…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Include Throned logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lock contention</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logs contain visited domains and server addresses.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profiles the Core using pprof. The profile itself does not contain any information about your configs, but if you include the logs too, there will be information about your configs in them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recording… %1 left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Records where goroutines wait on locks and channels.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saved %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show in folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>آغازکردن</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>متوقف کردن</translation>
+    </message>
+    <message>
+        <source>The core is not running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DiagnosticsWindow</name>
     <message>
         <source>Unknown</source>
@@ -986,6 +1171,236 @@
     <message>
         <source>Text files (*.txt)</source>
         <translation>فایل‌های متنی (*.txt)</translation>
+    </message>
+</context>
+<context>
+    <name>DialogBasicSettings</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Adds Throned to the &quot;Open with&quot; list for JSON and YAML config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throned as the handler for throne:// links, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers the associations now, without waiting for the next start.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every config file association Throned wrote, including those added by older versions. Associations owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes the throne:// handler Throned wrote. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A portable copy leaves config file associations alone. Use Install when you want them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not register the config file associations.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Diagnostics</source>
+        <translation>عیب‌یابی</translation>
+    </message>
+    <message>
+        <source>Links and Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>خروجی</translation>
+    </message>
+    <message>
+        <source>Register config files at startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogManageRoutes</name>
+    <message>
+        <source>Cloudflare API domains to try, in order, when generating a WARP config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Registration Domains…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WARP Registration Domains</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditOpenConnect</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;How DNS uses the resolvers the VPN server pushes when this profile is started.&lt;/p&gt;&lt;p&gt;None: ignore them. Use this if the server claims every domain and breaks public DNS.&lt;br/&gt;Prefer: resolve the names the server claims - its split-DNS suffixes and search domains - through them, and everything else as usual.&lt;br/&gt;Strict: also send every remote DNS query to them instead of the remote DNS server, and fail the lookups they cannot answer. Direct lookups are unchanged.&lt;/p&gt;&lt;p&gt;As an endpoint in a routing profile, Prefer and Strict both resolve only the names the server claims.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Prefer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strict</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tunnel DNS</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditOpenVPN</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;How DNS uses the resolvers the VPN server pushes when this profile is started.&lt;/p&gt;&lt;p&gt;None: ignore them. Use this if the server claims every domain and breaks public DNS.&lt;br/&gt;Prefer: resolve the names the server claims - its split-DNS suffixes and search domains - through them, and everything else as usual.&lt;br/&gt;Strict: also send every remote DNS query to them instead of the remote DNS server, and fail the lookups they cannot answer. Direct lookups are unchanged.&lt;/p&gt;&lt;p&gt;As an endpoint in a routing profile, Prefer and Strict both resolve only the names the server claims.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Prefer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strict</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tunnel DNS</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditTrustTunnel</name>
+    <message>
+        <source>Client Random</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom SNI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server name sent in the TLS ClientHello instead of the TLS server name, which is still used to verify the certificate; not compatible with ECH or REALITY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TLS ClientHello random prefix required by the server&apos;s client_random_prefix rule; not compatible with ECH or REALITY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>optional, e.g. cdn.example.net</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>prefix[/mask] (hex), e.g. a0b0/f0f0</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message numerus="yes">
+        <source>%n remote rule-set(s) refreshed</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Append &quot;%1&quot; to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Append process &quot;%1&quot; to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appended %1 to the %2 rules of &quot;%3&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appended to the %1 rules:
+%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Block</source>
+        <translation>مسدود کردن</translation>
+    </message>
+    <message>
+        <source>Close all connections (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all connections for &quot;%1&quot; (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collapse All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy Destination (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy Process Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy Process Name (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Diagnose this application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Direct</source>
+        <translation>مستقیم</translation>
+    </message>
+    <message>
+        <source>Expand All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No routing profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proxy</source>
+        <translation>پروکسی</translation>
+    </message>
+    <message>
+        <source>Rule not added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There is no active routing profile to add the rule to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update Rule-Sets</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -94,4 +94,4 @@ cmake --build out/build/windows-dev --target ui-smoke
 ```
 
 Look at the `ui-smoke` images even when they pass. If the merge touched Go under
-`core/`, note that `core/server/gen/*.pb.go` is generated and not committed.
+`core/`, note that `core/gen/*.pb.go` is generated and not committed.

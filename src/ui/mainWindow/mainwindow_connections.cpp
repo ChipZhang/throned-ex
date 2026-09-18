@@ -1,165 +1,424 @@
 #include "include/ui/mainwindow.h"
 #include "include/api/RPC.h"
-#include "include/database/DatabaseManager.h"
+#include "include/database/entities/RouteProfile.h"
 #include "include/database/RoutesRepo.h"
-#include "include/ui/setting/ThemeManager.hpp"
+#include "include/database/SettingsRepo.h"
 #include "include/global/LocalNetwork.hpp"
-#include "include/ui/utils/ConnectionCloseDelegate.h"
+#include "include/ui/setting/ThemeManager.hpp"
 #include "include/ui/utils/ConnectionsFilterHeader.h"
-#include "include/ui/utils/ConnectionsFilterProxyModel.h"
-#include "include/ui/utils/ConnectionsTableModel.h"
+#include "include/ui/utils/ConnectionsTreeFilterProxyModel.h"
+#include "include/ui/utils/ConnectionsTreeModel.h"
 #include "include/ui/widget/MaterialIcon.h"
+
+#include <QHostAddress>
 
 #include <QAbstractItemView>
 #include <QApplication>
 #include <QBoxLayout>
 #include <QClipboard>
-#include <QFileInfo>
 #include <QHeaderView>
-#include <QHostAddress>
 #include <QIcon>
+#include <QLabel>
 #include <QMenu>
+#include <QPainter>
+#include <QPixmap>
 #include <QTabWidget>
-#include <QTableView>
 #include <QTimer>
 #include <QToolButton>
 #include <QToolTip>
+#include <QTreeView>
+
+namespace {
+constexpr int kPanelIconSize = 18;
+
+// Two chevrons pointing apart (expand) or together (collapse), rendered per scale so they stay crisp.
+QIcon FoldIcon(bool expand, const QColor& color, int size) {
+    QIcon icon;
+    const qreal k = size / 16.0;
+    for (const qreal scale: {1.0, 2.0, 3.0}) {
+        QPixmap pixmap(QSize(size, size) * scale);
+        pixmap.setDevicePixelRatio(scale);
+        pixmap.fill(Qt::transparent);
+        QPainter painter(&pixmap);
+        painter.setRenderHint(QPainter::Antialiasing);
+        painter.setPen(QPen(color, 1.6 * k, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+        const auto chevron = [&painter, k](qreal y, bool up) {
+            const qreal tip = up ? -1.5 * k : 1.5 * k;
+            painter.drawPolyline(QPolygonF{{4.0 * k, y - tip}, {8.0 * k, y + tip}, {12.0 * k, y - tip}});
+        };
+        chevron(4.0 * k, expand);
+        chevron(12.0 * k, !expand);
+        painter.end();
+        icon.addPixmap(pixmap);
+    }
+    return icon;
+}
+
+int ColumnForSort(Stats::ConnectionSort sort) {
+    switch (sort) {
+        case Stats::ByProcess:
+            return ConnectionsTreeModel::ColTarget;
+        case Stats::BySource:
+            return ConnectionsTreeModel::ColSource;
+        case Stats::ByProtocol:
+            return ConnectionsTreeModel::ColProtocol;
+        case Stats::ByOutbound:
+            return ConnectionsTreeModel::ColOutbound;
+        case Stats::ByTraffic:
+        case Stats::ByDownload:
+        case Stats::ByUpload:
+            return ConnectionsTreeModel::ColTraffic;
+        case Stats::BySpeed:
+        case Stats::ByDownloadSpeed:
+        case Stats::ByUploadSpeed:
+            return ConnectionsTreeModel::ColSpeed;
+        default:
+            return -1;
+    }
+}
+} // namespace
 
 void MainWindow::setupConnectionList() {
-    connectionsModel = new ConnectionsTableModel(this);
-    connectionsFilterModel = new ConnectionsFilterProxyModel(this);
+    connectionsModel = new ConnectionsTreeModel(this);
+    connectionsFilterModel = new ConnectionsTreeFilterProxyModel(this);
     connectionsFilterModel->setSourceModel(connectionsModel);
     ui->connections->setModel(connectionsFilterModel);
 
     // Order matters: setModel() after this would re-init the sections and drop the resize modes below.
     connectionFilterHeader = new ConnectionsFilterHeader(ui->connections);
-    ui->connections->setHorizontalHeader(connectionFilterHeader);
+    ui->connections->setHeader(connectionFilterHeader);
+    // QTreeView::setHeader() re-applies setSortingEnabled(false), which switches section clicks back off.
+    connectionFilterHeader->setSectionsClickable(true);
 
-    connectionCloseDelegate = new ConnectionCloseDelegate(this);
-    ui->connections->setItemDelegateForColumn(ConnectionsTableModel::ColClose, connectionCloseDelegate);
-    connect(connectionCloseDelegate, &ConnectionCloseDelegate::closeRequested, this,
-            [this](const QString &id) { closeConnections({id}); });
-
-    auto *header = ui->connections->horizontalHeader();
+    auto* header = ui->connections->header();
     header->setHighlightSections(false);
-    header->setSectionResizeMode(ConnectionsTableModel::ColSource, QHeaderView::ResizeToContents);
-    header->setSectionResizeMode(ConnectionsTableModel::ColDest, QHeaderView::Stretch);
-    header->setSectionResizeMode(ConnectionsTableModel::ColProcess, QHeaderView::Stretch);
-    header->setSectionResizeMode(ConnectionsTableModel::ColProtocol, QHeaderView::ResizeToContents);
-    header->setSectionResizeMode(ConnectionsTableModel::ColOutbound, QHeaderView::ResizeToContents);
-    header->setSectionResizeMode(ConnectionsTableModel::ColTraffic, QHeaderView::ResizeToContents);
-    header->setSectionResizeMode(ConnectionsTableModel::ColSpeed, QHeaderView::ResizeToContents);
-    // The close column has no text, so ResizeToContents would collapse it to nothing.
-    header->setSectionResizeMode(ConnectionsTableModel::ColClose, QHeaderView::Fixed);
-    ui->connections->setColumnWidth(ConnectionsTableModel::ColClose, ConnectionCloseDelegate::ColumnWidth);
-    ui->connections->verticalHeader()->hide();
+    header->setSectionResizeMode(ConnectionsTreeModel::ColTarget, QHeaderView::Stretch);
+    header->setSectionResizeMode(ConnectionsTreeModel::ColSource, QHeaderView::ResizeToContents);
+    header->setSectionResizeMode(ConnectionsTreeModel::ColProtocol, QHeaderView::ResizeToContents);
+    header->setSectionResizeMode(ConnectionsTreeModel::ColOutbound, QHeaderView::ResizeToContents);
+    header->setSectionResizeMode(ConnectionsTreeModel::ColTraffic, QHeaderView::ResizeToContents);
+    header->setSectionResizeMode(ConnectionsTreeModel::ColSpeed, QHeaderView::ResizeToContents);
 
-    // Otherwise the five content-sized columns re-measure up to 1000 rows whenever a poll changes the count.
     header->setResizeContentsPrecision(20);
     ui->connections->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->connections->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->connections->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->connections->setAlternatingRowColors(true);
     ui->connections->setWordWrap(false);
+    ui->connections->setUniformRowHeights(true);
+    ui->connections->setAnimated(false);
+    // A single click already toggles a process row; QTreeView's own double-click toggle would undo it.
+    ui->connections->setExpandsOnDoubleClick(false);
 
-    ui->connections->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(ui->connections, &QWidget::customContextMenuRequested, this, &MainWindow::showConnectionMenu);
-
-    refreshConnectionCloseIcons();
+    refreshConnectionIcons();
     restoreConnectionSort();
     setupConnectionSortMenu();
     setupConnectionFilter();
 
-    connect(ui->connections, &QAbstractItemView::clicked, this, [this](const QModelIndex &index) {
-        if (!index.isValid() || index.column() == ConnectionsTableModel::ColClose) return;
-        const auto text = index.data(Qt::DisplayRole).toString();
-        if (text.isEmpty()) return;
+    ui->connections->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->connections, &QWidget::customContextMenuRequested, this, &MainWindow::onConnectionContextMenu);
 
-        QApplication::clipboard()->setText(text);
-        const QPoint pos = ui->connections->viewport()->mapToGlobal(ui->connections->visualRect(index).center());
-        QToolTip::showText(pos, tr("Copied!"), this);
-        auto r = ++toolTipID;
-        QTimer::singleShot(1500, this, [=, this] {
-            if (r != toolTipID) {
-                return;
-            }
-            QToolTip::hideText();
-        });
+    connect(ui->connections, &QAbstractItemView::clicked, this, [this](const QModelIndex& index) {
+        if (!index.data(ConnectionsTreeModel::IsProcessRole).toBool()) return;
+        // Expansion is keyed on column 0, so any other cell's index always reads as collapsed.
+        const QModelIndex group = index.siblingAtColumn(0);
+        ui->connections->setExpanded(group, !ui->connections->isExpanded(group));
     });
+    connect(ui->connections, &QTreeView::collapsed, this, [this](const QModelIndex& index) {
+        m_processExpanded.insert(index.data(ConnectionsTreeModel::ProcessNameRole).toString(), false);
+        syncConnectionExpandButton();
+    });
+    connect(ui->connections, &QTreeView::expanded, this, [this](const QModelIndex& index) {
+        m_processExpanded.insert(index.data(ConnectionsTreeModel::ProcessNameRole).toString(), true);
+        syncConnectionExpandButton();
+    });
+
+    connect(header, &QHeaderView::sectionClicked, this, [this](int section) {
+        Stats::ConnectionSort sort;
+        switch (section) {
+            case ConnectionsTreeModel::ColTarget:
+                sort = Stats::ByProcess;
+                break;
+            case ConnectionsTreeModel::ColSource:
+                sort = Stats::BySource;
+                break;
+            case ConnectionsTreeModel::ColProtocol:
+                sort = Stats::ByProtocol;
+                break;
+            case ConnectionsTreeModel::ColOutbound:
+                sort = Stats::ByOutbound;
+                break;
+            case ConnectionsTreeModel::ColTraffic:
+                sort = Stats::ByTraffic;
+                break;
+            case ConnectionsTreeModel::ColSpeed:
+                sort = Stats::BySpeed;
+                break;
+            default:
+                return;
+        }
+        // A third click on the same header falls back to the default oldest-first order.
+        if (Stats::connection_lister->getSort() == sort && Stats::connection_lister->isSortAscending()) sort = Stats::Default;
+        applyConnectionSort(sort);
+    });
+
     syncConnectionSourceColumn();
     refreshStatsPanelLabels();
 }
 
-namespace {
-struct RuleCandidate {
-    QString label;
-    QString entry;
-};
-
-QList<RuleCandidate> candidatesFor(const QString &dest, const QString &domain,
-                                   const QString &process, const QString &processPath) {
-    QList<RuleCandidate> candidates;
-    const QString address = Stats::EndpointHost(dest.trimmed());
-    QString host = domain.trimmed();
-    if (host.isEmpty() && QHostAddress(address).isNull()) host = address;
-    if (!host.isEmpty()) {
-        candidates.append({MainWindow::tr("This domain — %1").arg(host),
-                           QStringLiteral("domain:") + host});
-        candidates.append({MainWindow::tr("Domain and subdomains — *.%1").arg(host),
-                           QStringLiteral("suffix:") + host});
-    }
-    if (!process.isEmpty())
-        candidates.append({MainWindow::tr("This process — %1").arg(process),
-                           QStringLiteral("processName:") + process});
-    if (!processPath.isEmpty())
-        candidates.append({MainWindow::tr("This executable — %1").arg(QFileInfo(processPath).fileName()),
-                           QStringLiteral("processPath:") + processPath});
-    // dest is host:port, and a port makes a poor routing rule on its own.
-    if (!address.isEmpty() && !QHostAddress(address).isNull())
-        candidates.append({MainWindow::tr("This address — %1").arg(address),
-                           QStringLiteral("ip:") + address});
-    return candidates;
+void MainWindow::restoreConnectionSort() {
+    const auto* settings = Configs::dataManager->settingsRepo.get();
+    int stored = settings->connection_sort;
+    if (stored < Stats::Default || stored > Stats::BySource) return;
+    // The Source header is unreachable while its column is hidden, so that sort would be stuck for good.
+    if (stored == Stats::BySource && !LocalNetwork::LanInboundEnabled()) stored = Stats::Default;
+    // Runs before setup_rpc() spawns the lister thread, so writing the pair unguarded is safe.
+    Stats::connection_lister->restoreSort(static_cast<Stats::ConnectionSort>(stored), settings->connection_sort_asc);
+    const auto restored = Stats::connection_lister->getSort();
+    connectionFilterHeader->setSortSection(ColumnForSort(restored), Stats::SortIsDescending(restored, Stats::connection_lister->isSortAscending()));
 }
 
-struct RuleTarget {
-    Configs::simpleAction action;
-    QString label;
-};
+void MainWindow::applyConnectionSort(Stats::ConnectionSort sort) {
+    Stats::connection_lister->setSort(sort);
+    auto* settings = Configs::dataManager->settingsRepo.get();
+    settings->connection_sort = Stats::connection_lister->getSort();
+    settings->connection_sort_asc = Stats::connection_lister->isSortAscending();
+    settings->Save();
+    Stats::connection_lister->ForceUpdate();
 
-QList<RuleTarget> ruleTargets() {
-    return {
-        {Configs::proxy, MainWindow::tr("Through proxy")},
-        {Configs::bypass, MainWindow::tr("Directly")},
-        {Configs::block, MainWindow::tr("Block")},
+    const auto applied = Stats::connection_lister->getSort();
+    connectionFilterHeader->setSortSection(ColumnForSort(applied), Stats::SortIsDescending(applied, Stats::connection_lister->isSortAscending()));
+}
+
+void MainWindow::setupConnectionFilter() {
+    const auto panelButton = [this](const QString& tip) {
+        auto* button = new QToolButton(this);
+        button->setObjectName(QStringLiteral("panelIconButton"));
+        button->setToolTip(tip);
+        button->setCursor(Qt::PointingHandCursor);
+        button->setFocusPolicy(Qt::NoFocus);
+        button->setFixedSize(28, 28);
+        button->setIconSize(QSize(kPanelIconSize, kPanelIconSize));
+        return button;
     };
-}
-} // namespace
 
-QString MainWindow::existingRuleAction(const QString &entry) const {
-    const auto profile = Configs::dataManager->routesRepo->GetRouteProfile(
-        Configs::dataManager->settingsRepo->current_route_id);
-    if (!profile || profile->isRaw) return {};
-    for (const auto &target: ruleTargets())
-        if (profile->GetSimpleRules(target.action).split('\n', Qt::SkipEmptyParts).contains(entry))
-            return target.label;
-    return {};
+    auto* btnFilter = panelButton(tr("Enable Filter"));
+    connectionFilterButton = btnFilter;
+    btnFilter->setCheckable(true);
+    connect(btnFilter, &QToolButton::toggled, connectionFilterHeader, &ConnectionsFilterHeader::setFiltersVisible);
+    connect(connectionFilterHeader, &ConnectionsFilterHeader::closeRequested, btnFilter, [btnFilter] { btnFilter->setChecked(false); });
+    connect(btnFilter, &QToolButton::toggled, this, [this] { refreshConnectionIcons(); });
+
+    connectionExpandButton = panelButton({});
+    connect(connectionExpandButton, &QToolButton::clicked, this, [this] { setConnectionGroupsExpanded(!connectionGroupsExpanded()); });
+
+    connectionCloseAllButton = panelButton(tr("Close every connection listed below"));
+    connect(connectionCloseAllButton, &QToolButton::clicked, this, [this] { closeConnections(listedConnectionIds()); });
+    refreshConnectionIcons();
+
+    auto* corner = new QWidget(this);
+    corner->setProperty("statsPage", ui->connections_tab->objectName());
+    auto* cornerLayout = new QHBoxLayout(corner);
+    cornerLayout->setContentsMargins(0, 0, 0, 0);
+    cornerLayout->setSpacing(2);
+    cornerLayout->addWidget(btnFilter);
+    cornerLayout->addWidget(connectionExpandButton);
+    cornerLayout->addWidget(connectionCloseAllButton);
+    // The log tools already hold this corner, so join them there; taking it would evict them.
+    if (auto* host = ui->stats_widget->cornerWidget(Qt::TopRightCorner); host != nullptr && host->layout() != nullptr) {
+        host->layout()->addWidget(corner);
+    } else {
+        ui->stats_widget->setCornerWidget(corner, Qt::TopRightCorner);
+    }
+    statsPanelTools.append(corner);
+    refreshStatsPanelTools();
+
+    connectionFilterDebounce = new QTimer(this);
+    connectionFilterDebounce->setSingleShot(true);
+    connectionFilterDebounce->setInterval(50);
+    connect(connectionFilterDebounce, &QTimer::timeout, this, [this] { applyConnectionFilters(); });
+    connect(connectionFilterHeader, &ConnectionsFilterHeader::filtersChanged, this, [this] { connectionFilterDebounce->start(); });
+
+    syncConnectionExpandButton();
 }
 
-QString MainWindow::routeRuleAppendBlocker() const {
-    const auto &dm = Configs::dataManager;
-    const auto currentRoute = dm->routesRepo->GetRouteProfile(dm->settingsRepo->current_route_id);
-    if (!currentRoute) return tr("No active routing profile found.");
-    if (currentRoute->preventModifications) return tr("The current routing profile is locked against modifications.");
-    if (currentRoute->isRaw) return tr("The current routing profile is raw JSON.");
-    if (currentRoute->isRemote && currentRoute->autoUpdate) return tr("The current routing profile auto-updates from a URL.");
-    return {};
+void MainWindow::applyConnectionFilters() {
+    const auto filters = connectionFilterHeader->filters();
+    connectionsFilterModel->setFilters(filters.source, filters.target, filters.protocol, filters.outbound);
+    syncConnectionExpansion();
+    refreshStatsPanelLabels();
 }
 
-void MainWindow::addRuleFromConnection(const QString &entry, int action) {
+void MainWindow::syncConnectionSourceColumn() {
+    if (connectionsModel == nullptr) return;
+    const bool show = LocalNetwork::LanInboundEnabled();
+    if (ui->connections->isColumnHidden(ConnectionsTreeModel::ColSource) == !show) return;
+
+    ui->connections->setColumnHidden(ConnectionsTreeModel::ColSource, !show);
+    connectionFilterHeader->adjustPositions();
+    // Both must be cleared here: a hidden header can be reached by neither the filter field nor a sort click.
+    if (!show) {
+        connectionFilterHeader->clearFilterFor(ConnectionsTreeModel::ColSource);
+        if (Stats::connection_lister->getSort() == Stats::BySource) applyConnectionSort(Stats::Default);
+    }
+    applyConnectionFilters();
+}
+
+void MainWindow::setupConnectionSortMenu() {
+    auto* header = ui->connections->header();
+    header->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(header, &QWidget::customContextMenuRequested, this, [=, this](const QPoint& pos) {
+        const int columnIndex = header->logicalIndexAt(pos);
+        const bool isTraffic = columnIndex == ConnectionsTreeModel::ColTraffic;
+        const bool isSpeed = columnIndex == ConnectionsTreeModel::ColSpeed;
+        if (!isTraffic && !isSpeed) return;
+
+        struct SortOption {
+            Stats::ConnectionSort value;
+            QString label;
+        };
+        const QList<SortOption> options = isTraffic
+                                              ? QList<SortOption>{
+                                                    {Stats::ByTraffic, tr("Total")},
+                                                    {Stats::ByDownload, tr("Downloaded")},
+                                                    {Stats::ByUpload, tr("Uploaded")}}
+                                              : QList<SortOption>{{Stats::BySpeed, tr("Total")}, {Stats::ByDownloadSpeed, tr("Download Speed")}, {Stats::ByUploadSpeed, tr("Upload Speed")}};
+
+        QMenu menu(this);
+        auto* sortByLabel = menu.addAction(tr("Sort By:"));
+        sortByLabel->setEnabled(false);
+
+        const auto current = Stats::connection_lister->getSort();
+        for (const auto& opt: options) {
+            auto* act = menu.addAction(opt.label);
+            act->setData(static_cast<int>(opt.value));
+            act->setCheckable(true);
+            act->setChecked(current == opt.value);
+        }
+
+        auto* chosen = menu.exec(header->mapToGlobal(pos));
+        if (chosen == nullptr || !chosen->data().isValid()) return;
+
+        applyConnectionSort(static_cast<Stats::ConnectionSort>(chosen->data().toInt()));
+    });
+}
+
+void MainWindow::refreshConnectionIcons() {
+    const auto colors = themeManager()->Colors();
+    connectionCloseIcon = MaterialIcon::icon(MaterialIcon::Glyph::Block, colors.textMuted, kPanelIconSize);
+    connectionExpandIcon = FoldIcon(true, colors.textMuted, kPanelIconSize);
+    connectionCollapseIcon = FoldIcon(false, colors.textMuted, kPanelIconSize);
+    if (connectionCloseAllButton != nullptr) connectionCloseAllButton->setIcon(connectionCloseIcon);
+    if (connectionFilterButton != nullptr)
+        connectionFilterButton->setIcon(MaterialIcon::icon(
+            MaterialIcon::Glyph::Tune,
+            connectionFilterButton->isChecked() ? colors.accent : colors.textMuted, kPanelIconSize));
+    syncConnectionExpandButton();
+}
+
+QStringList MainWindow::listedConnectionIds() const {
+    QStringList ids;
+    const int groups = connectionsFilterModel->rowCount();
+    for (int row = 0; row < groups; row++) {
+        const QModelIndex group = connectionsFilterModel->index(row, 0);
+        const int leaves = connectionsFilterModel->rowCount(group);
+        for (int leaf = 0; leaf < leaves; leaf++)
+            ids << connectionsFilterModel->index(leaf, 0, group).data(ConnectionsTreeModel::ConnIdsRole).toStringList();
+    }
+    return ids;
+}
+
+void MainWindow::closeConnections(const QStringList& ids) {
+    if (ids.isEmpty()) return;
+    runOnNewThread([ids] {
+        bool rpcOK = false;
+        const auto err = API::defaultClient->CloseConnections(&rpcOK, ids);
+        if (!rpcOK || !err.isEmpty()) {
+            MW_show_log(tr("Failed to close connections: %1").arg(err.isEmpty() ? tr("IPC error") : err));
+            return;
+        }
+        Stats::connection_lister->ForceUpdate();
+    });
+}
+
+void MainWindow::UpdateConnectionList(const QList<Stats::ConnectionMetadata>& connections) {
+    if (connectionsModel == nullptr) return;
+    connectionsModel->setConnections(connections, Stats::connection_lister->getSort(), Stats::connection_lister->isSortAscending());
+    syncConnectionExpansion();
+    refreshStatsPanelLabels();
+}
+
+void MainWindow::refreshStatsPanelLabels() {
+    const int tab = ui->stats_widget->indexOf(ui->connections_tab);
+    if (tab < 0) return;
+    // The badge counts sockets, not rows: a process row stands for its children and a child for its merged ids.
+    int count = 0;
+    if (connectionsFilterModel != nullptr) {
+        for (int group = 0; group < connectionsFilterModel->rowCount(); group++) {
+            const QModelIndex parent = connectionsFilterModel->index(group, 0);
+            for (int leaf = 0; leaf < connectionsFilterModel->rowCount(parent); leaf++)
+                count += connectionsFilterModel->index(leaf, 0, parent).data(ConnectionsTreeModel::ConnIdsRole).toStringList().size();
+        }
+    }
+    const QString countText = count > 99 ? QStringLiteral("100+") : QString::number(count);
+    // The badge is a separate fixed-width label so the tabs stop jumping on every polling tick.
+    ui->stats_widget->setTabText(tab, tr("Connections"));
+    if (statsConnectionTabCount != nullptr) statsConnectionTabCount->setText(countText);
+    // The closed strip has no room for a badge widget, so the number joins the label.
+    if (statsConnectionStripCount != nullptr)
+        statsConnectionStripCount->setText(tr("Connections") + QStringLiteral("   ") + countText);
+}
+
+void MainWindow::syncConnectionExpansion() {
+    {
+        // Blocked so the expanded/collapsed handlers only ever record the user's own choices.
+        const QSignalBlocker blocker(ui->connections);
+        // Rows keep their expansion across polls; only rows new to the view (or re-shown by a filter) arrive collapsed.
+        for (int row = 0; row < connectionsFilterModel->rowCount(); row++) {
+            const QModelIndex group = connectionsFilterModel->index(row, 0);
+            const QString process = group.data(ConnectionsTreeModel::ProcessNameRole).toString();
+            const bool expand = m_processExpanded.value(process, m_processesExpandedByDefault);
+            if (ui->connections->isExpanded(group) != expand) ui->connections->setExpanded(group, expand);
+        }
+    }
+    syncConnectionExpandButton();
+}
+
+void MainWindow::setConnectionGroupsExpanded(bool expanded) {
+    // Also decides how processes that show up later start out, until one is toggled by hand.
+    m_processesExpandedByDefault = expanded;
+    m_processExpanded.clear();
+    {
+        const QSignalBlocker blocker(ui->connections);
+        if (expanded)
+            ui->connections->expandAll();
+        else
+            ui->connections->collapseAll();
+    }
+    syncConnectionExpandButton();
+}
+
+bool MainWindow::connectionGroupsExpanded() const {
+    const int groups = connectionsFilterModel->rowCount();
+    // With nothing listed, the button shows what the next processes will do.
+    if (groups == 0) return m_processesExpandedByDefault;
+    for (int row = 0; row < groups; row++)
+        if (ui->connections->isExpanded(connectionsFilterModel->index(row, 0))) return true;
+    return false;
+}
+
+void MainWindow::syncConnectionExpandButton() {
+    if (connectionExpandButton == nullptr) return;
+    const bool expanded = connectionGroupsExpanded();
+    connectionExpandButton->setIcon(expanded ? connectionCollapseIcon : connectionExpandIcon);
+    connectionExpandButton->setToolTip(expanded ? tr("Collapse All") : tr("Expand All"));
+}
+
+void MainWindow::addRuleFromConnection(const QString& entry, int action) {
     addRulesFromConnection({entry}, action);
 }
 
-void MainWindow::addRulesFromConnection(const QStringList &entries, int action) {
+void MainWindow::addRulesFromConnection(const QStringList& entries, int action) {
     if (const auto blocker = routeRuleAppendBlocker(); !blocker.isEmpty()) {
         MessageBoxWarning(tr("Rule not added"), blocker);
         return;
@@ -170,17 +429,11 @@ void MainWindow::addRulesFromConnection(const QStringList &entries, int action) 
         MessageBoxWarning(tr("No routing profile"), tr("There is no active routing profile to add the rule to."));
         return;
     }
-    if (profile->isRaw) {
-        MessageBoxWarning(tr("Raw routing profile"),
-                          tr("“%1” is a raw profile and is edited as JSON, so a rule cannot be appended to it here.")
-                              .arg(profile->name));
-        return;
-    }
     profile = std::make_shared<Configs::RouteProfile>(*profile);
     const auto simple = static_cast<Configs::simpleAction>(action);
     QStringList current = profile->GetSimpleRules(simple).split('\n', Qt::SkipEmptyParts);
     bool changed = false;
-    for (const auto &entry: entries) {
+    for (const auto& entry: entries) {
         if (entry.isEmpty() || current.contains(entry)) continue;
         if (!profile->AppendSimpleRule(entry, simple)) {
             MessageBoxWarning(tr("Rule not added"), tr("Failed to add routing rule: %1").arg(entry));
@@ -198,274 +451,150 @@ void MainWindow::addRulesFromConnection(const QStringList &entries, int action) 
     noteRestartNeeded(tr("Routing"));
 }
 
-void MainWindow::showConnectionMenu(const QPoint &pos) {
-    const auto index = ui->connections->indexAt(pos);
-    if (!index.isValid()) return;
-    const auto *conn = connectionsModel->metaAt(connectionsFilterModel->mapToSource(index).row());
-    if (conn == nullptr) return;
-    const QString dest = conn->dest;
-    const QString domain = conn->domain;
-    const QString processPath = conn->processPath;
-    const QString outbound = conn->outbound;
+QString MainWindow::routeRuleAppendBlocker() const {
+    const auto& dm = Configs::dataManager;
+    const auto currentRoute = dm->routesRepo->GetRouteProfile(dm->settingsRepo->current_route_id);
+    if (!currentRoute) return tr("No active routing profile found.");
+    if (currentRoute->preventModifications) return tr("The current routing profile is locked against modifications.");
+    if (currentRoute->isRaw) return tr("The current routing profile is raw JSON.");
+    if (currentRoute->isRemote && currentRoute->autoUpdate) return tr("The current routing profile auto-updates from a URL.");
+    return {};
+}
 
+bool MainWindow::addRuleToCurrentRoute(const QString& rawRule, Configs::simpleAction action) {
+    auto fail = [this](const QString& msg) {
+        MW_show_log(msg);
+        return false;
+    };
+
+    if (const auto blocker = routeRuleAppendBlocker(); !blocker.isEmpty()) return fail(blocker);
+
+    const auto& dm = Configs::dataManager;
+    const auto currentRoute = dm->routesRepo->GetRouteProfile(dm->settingsRepo->current_route_id);
+    if (!currentRoute) return fail(tr("No active routing profile found."));
+
+    if (!currentRoute->AppendSimpleRule(rawRule, action))
+        return fail(tr("Failed to add routing rule: %1").arg(rawRule));
+
+    if (!dm->routesRepo->Save(currentRoute))
+        return fail(tr("Failed to save routing rule: %1").arg(rawRule));
+
+    MW_show_log(tr("Appended %1 to the %2 rules of \"%3\"")
+                    .arg(rawRule, Configs::simpleActionToString(action), currentRoute->name));
+    noteRestartNeeded(tr("Routing"));
+    return true;
+}
+
+void MainWindow::onConnectionContextMenu(const QPoint& pos) {
     QMenu menu(this);
+    const QPoint globalPos = ui->connections->viewport()->mapToGlobal(pos);
+    auto addExpandActions = [this, &menu] {
+        connect(menu.addAction(tr("Expand All")), &QAction::triggered, this, [this] { setConnectionGroupsExpanded(true); });
+        connect(menu.addAction(tr("Collapse All")), &QAction::triggered, this, [this] { setConnectionGroupsExpanded(false); });
+    };
+
+    const QModelIndex proxyIndex = ui->connections->indexAt(pos);
+    if (!proxyIndex.isValid()) {
+        addExpandActions();
+        menu.exec(globalPos);
+        return;
+    }
+
+    const QModelIndex sourceIndex = connectionsFilterModel->mapToSource(proxyIndex);
+    ui->connections->setCurrentIndex(proxyIndex);
+
+    auto showTip = [this](const QString& text) {
+        QToolTip::showText(QCursor::pos(), text, this);
+        auto r = ++toolTipID;
+        QTimer::singleShot(2000, this, [=, this] {
+            if (r == toolTipID) QToolTip::hideText();
+        });
+    };
+
+    struct RouteAction {
+        Configs::simpleAction action;
+        QString label;
+    };
+    const RouteAction routeActions[] = {
+        {Configs::bypass, tr("Direct")},
+        {Configs::proxy, tr("Proxy")},
+        {Configs::block, tr("Block")},
+    };
+
+    const QString blocker = routeRuleAppendBlocker();
+
+    auto addRouteSubmenu = [&](const QString& title, const QString& rule) {
+        auto* sub = menu.addMenu(title);
+        if (!blocker.isEmpty()) {
+            sub->setEnabled(false);
+            sub->menuAction()->setToolTip(blocker);
+            return;
+        }
+        for (const auto& ra: routeActions) {
+            auto* act = sub->addAction(ra.label);
+            connect(act, &QAction::triggered, this, [this, rule, ra, showTip] {
+                if (addRuleToCurrentRoute(rule, ra.action))
+                    showTip(tr("Appended to the %1 rules:\n%2").arg(ra.label, rule));
+            });
+        }
+    };
+
+    auto addCopyAction = [&](const QString& label, const QString& text) {
+        connect(menu.addAction(label), &QAction::triggered, this, [text, showTip] {
+            QApplication::clipboard()->setText(text);
+            showTip(tr("Copied: %1").arg(text));
+        });
+    };
+
+    auto addCloseAction = [&](const QString& label, const QStringList& ids) {
+        connect(menu.addAction(label), &QAction::triggered, this, [this, ids] { closeConnections(ids); });
+    };
+
     menu.setToolTipsVisible(true);
-    const QString diagnosticProcess = processPath.isEmpty() ? conn->process : processPath;
+
+    const QString process = connectionsModel->processNameAt(sourceIndex);
+    const QStringList ids = connectionsModel->connectionIdsAt(sourceIndex);
+    const auto* meta = connectionsModel->metaAt(sourceIndex);
+    const QString diagnosticProcess = meta != nullptr && !meta->processPath.isEmpty() ? meta->processPath : process;
     if (!diagnosticProcess.isEmpty()) {
-        auto *diagnose = menu.addAction(MaterialIcon::icon(MaterialIcon::Glyph::Search,
+        auto* diagnose = menu.addAction(MaterialIcon::icon(MaterialIcon::Glyph::Search,
                                                            themeManager()->Colors().accent, 18),
                                         tr("Diagnose this application"));
         connect(diagnose, &QAction::triggered, this, [this, diagnosticProcess] { openDiagnostics(diagnosticProcess); });
         menu.addSeparator();
     }
-    auto *verdict = menu.addAction(tr("%1 → %2")
-                                       .arg(domain.isEmpty() ? dest : domain, outbound.isEmpty() ? tr("unknown") : outbound));
-    verdict->setEnabled(false);
-    menu.addSeparator();
 
-    const auto candidates = candidatesFor(dest, domain, conn->process, processPath);
-    if (candidates.isEmpty()) {
-        auto *none = menu.addAction(tr("Nothing to build a rule from"));
-        none->setEnabled(false);
-    }
-    const QString blocker = routeRuleAppendBlocker();
-    for (const auto &candidate: candidates) {
-        const QString already = existingRuleAction(candidate.entry);
-        auto *submenu = menu.addMenu(already.isEmpty()
-                                         ? candidate.label
-                                         : tr("%1  ·  already %2").arg(candidate.label, already.toLower()));
-        submenu->setToolTip(candidate.entry);
-        if (!blocker.isEmpty()) {
-            submenu->setEnabled(false);
-            submenu->menuAction()->setToolTip(blocker);
-            continue;
-        }
-        for (const auto &target: ruleTargets()) {
-            auto *action = submenu->addAction(target.label);
-            const QString entry = candidate.entry;
-            const int simple = target.action;
-            connect(action, &QAction::triggered, this, [this, entry, simple] {
-                addRuleFromConnection(entry, simple);
-            });
-        }
-    }
+    if (meta != nullptr) {
+        const QString domain = meta->domain.trimmed();
+        const QString host = domain.isEmpty() ? Stats::EndpointHost(meta->dest.trimmed()) : domain;
+        const bool isDomain = QHostAddress(host).isNull();
+        const QString addressRule = isDomain ? ("suffix:" + host) : ("ip:" + host);
 
-    menu.addSeparator();
-    if (!processPath.isEmpty()) {
-        auto *copyPath = menu.addAction(tr("Copy executable path"));
-        connect(copyPath, &QAction::triggered, this, [processPath] {
-            QApplication::clipboard()->setText(processPath);
-        });
-    }
-    auto *copyDest = menu.addAction(tr("Copy destination"));
-    connect(copyDest, &QAction::triggered, this, [dest, domain] {
-        QApplication::clipboard()->setText(domain.isEmpty() ? dest : domain);
-    });
-    menu.exec(ui->connections->viewport()->mapToGlobal(pos));
-}
+        if (!host.isEmpty()) addRouteSubmenu(tr("Append \"%1\" to").arg(host), addressRule);
+        if (!process.isEmpty()) addRouteSubmenu(tr("Append process \"%1\" to").arg(process), "processName:" + process);
 
-void MainWindow::restoreConnectionSort() {
-    const auto *settings = Configs::dataManager->settingsRepo.get();
-    int stored = settings->connection_sort;
-    if (stored < Stats::Default || stored > Stats::BySource) return;
-    // The Source header is unreachable while its column is hidden, so that sort would be stuck for good.
-    if (stored == Stats::BySource && !LocalNetwork::LanInboundEnabled()) stored = Stats::Default;
-    // Runs before setup_rpc() spawns the lister thread, so writing the pair unguarded is safe.
-    Stats::connection_lister->restoreSort(static_cast<Stats::ConnectionSort>(stored), settings->connection_sort_asc);
-}
+        menu.addSeparator();
+        if (!host.isEmpty()) addCopyAction(tr("Copy Destination (%1)").arg(host), host);
+        if (!process.isEmpty()) addCopyAction(tr("Copy Process Name (%1)").arg(process), process);
 
-void MainWindow::applyConnectionSort(Stats::ConnectionSort sort) {
-    Stats::connection_lister->setSort(sort);
-    auto *settings = Configs::dataManager->settingsRepo.get();
-    settings->connection_sort = Stats::connection_lister->getSort();
-    settings->connection_sort_asc = Stats::connection_lister->isSortAscending();
-    settings->Save();
-    Stats::connection_lister->ForceUpdate();
-}
-
-void MainWindow::setupConnectionFilter() {
-    auto *btnFilter = new QToolButton(this);
-    btnFilter->setObjectName(QStringLiteral("panelIconButton"));
-    btnFilter->setToolTip(tr("Enable Filter"));
-    btnFilter->setCheckable(true);
-    btnFilter->setCursor(Qt::PointingHandCursor);
-    btnFilter->setFocusPolicy(Qt::NoFocus);
-    btnFilter->setFixedSize(28, 28);
-    btnFilter->setIconSize(QSize(18, 18));
-    connect(btnFilter, &QToolButton::toggled, connectionFilterHeader, &ConnectionsFilterHeader::setFiltersVisible);
-    connect(connectionFilterHeader, &ConnectionsFilterHeader::closeRequested, btnFilter, [btnFilter] { btnFilter->setChecked(false); });
-
-    connectionCloseAllButton = new QToolButton(this);
-    connectionCloseAllButton->setObjectName(QStringLiteral("panelIconButton"));
-    connectionCloseAllButton->setToolTip(tr("Close every connection listed below"));
-    connectionCloseAllButton->setCursor(Qt::PointingHandCursor);
-    connectionCloseAllButton->setFocusPolicy(Qt::NoFocus);
-    connectionCloseAllButton->setFixedSize(28, 28);
-    connectionCloseAllButton->setIconSize(QSize(18, 18));
-    connect(connectionCloseAllButton, &QToolButton::clicked, this, [this] { closeConnections(listedConnectionIds()); });
-
-    const auto retintConnectionTools = [this, btnFilter] {
-        const auto colors = themeManager()->Colors();
-        btnFilter->setIcon(MaterialIcon::icon(
-            MaterialIcon::Glyph::Tune,
-            btnFilter->isChecked() ? colors.accent : colors.textMuted, 18));
-        if (connectionCloseAllButton != nullptr)
-            connectionCloseAllButton->setIcon(MaterialIcon::icon(
-                MaterialIcon::Glyph::Block, colors.textMuted, 18));
-    };
-    retintConnectionTools();
-    connect(btnFilter, &QToolButton::toggled, this, retintConnectionTools);
-    connect(themeManager(), &ThemeManager::themeChanged, this, retintConnectionTools);
-
-    auto *corner = new QWidget(this);
-    corner->setProperty("statsPage", ui->connections_tab->objectName());
-    auto *cornerLayout = new QHBoxLayout(corner);
-    cornerLayout->setContentsMargins(0, 0, 0, 0);
-    cornerLayout->setSpacing(2);
-    cornerLayout->addWidget(btnFilter);
-    cornerLayout->addWidget(connectionCloseAllButton);
-    // The log tools already hold this corner, so join them there; taking it would evict them.
-    if (auto *host = ui->stats_widget->cornerWidget(Qt::TopRightCorner);
-        host != nullptr && host->layout() != nullptr) {
-        host->layout()->addWidget(corner);
+        menu.addSeparator();
+        if (!ids.isEmpty())
+            addCloseAction(ids.size() > 1 ? tr("Close all connections (%1)").arg(ids.size()) : tr("Close connection"), ids);
     } else {
-        ui->stats_widget->setCornerWidget(corner, Qt::TopRightCorner);
-    }
-    statsPanelTools.append(corner);
-
-    // Only the active page contributes tools to the shared top-right corner.
-    // Disabled controls from another page still looked like part of the current
-    // toolbar and were especially noisy beside the log menu.
-    refreshStatsPanelTools();
-
-    connectionFilterDebounce = new QTimer(this);
-    connectionFilterDebounce->setSingleShot(true);
-    connectionFilterDebounce->setInterval(50);
-    connect(connectionFilterDebounce, &QTimer::timeout, this, [this] { applyConnectionFilters(); });
-    connect(connectionFilterHeader, &ConnectionsFilterHeader::filtersChanged, this, [this] { connectionFilterDebounce->start(); });
-}
-
-void MainWindow::applyConnectionFilters() {
-    const auto filters = connectionFilterHeader->filters();
-    connectionsFilterModel->setFilters(filters.source, filters.dest, filters.process, filters.protocol,
-                                       filters.outbound);
-    refreshStatsPanelLabels();
-}
-
-void MainWindow::syncConnectionSourceColumn() {
-    if (connectionsModel == nullptr) return;
-    const bool show = LocalNetwork::LanInboundEnabled();
-    // refresh_status() drives this on a 2s tick, so bail out unless the state actually flipped.
-    if (ui->connections->isColumnHidden(ConnectionsTableModel::ColSource) == !show) return;
-
-    ui->connections->setColumnHidden(ConnectionsTableModel::ColSource, !show);
-    connectionFilterHeader->adjustPositions();
-    // Both must be cleared here: a hidden header can be reached by neither the filter field nor a sort click.
-    if (!show) {
-        connectionFilterHeader->clearFilterFor(ConnectionsTableModel::ColSource);
-        if (Stats::connection_lister->getSort() == Stats::BySource) applyConnectionSort(Stats::Default);
-    }
-    applyConnectionFilters();
-}
-
-// Right-click the Traffic / Speed headers to pick the sub-field they sort by;
-// left-clicking still sorts by total.
-void MainWindow::setupConnectionSortMenu() {
-    auto *header = ui->connections->horizontalHeader();
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(header, &QWidget::customContextMenuRequested, this, [=, this](const QPoint &pos) {
-        const int columnIndex = header->logicalIndexAt(pos);
-        const bool isTraffic = columnIndex == ConnectionsTableModel::ColTraffic;
-        const bool isSpeed = columnIndex == ConnectionsTableModel::ColSpeed;
-        if (!isTraffic && !isSpeed) return;
-
-        struct SortOption {
-            Stats::ConnectionSort value;
-            QString label;
-        };
-        const QList<SortOption> options = isTraffic
-                                              ? QList<SortOption>{
-                                                    {Stats::ByTraffic, tr("Total")},
-                                                    {Stats::ByDownload, tr("Downloaded")},
-                                                    {Stats::ByUpload, tr("Uploaded")}}
-                                              : QList<SortOption>{{Stats::BySpeed, tr("Total")}, {Stats::ByDownloadSpeed, tr("Download Speed")}, {Stats::ByUploadSpeed, tr("Upload Speed")}};
-
-        QMenu menu(this);
-        auto *sortByLabel = menu.addAction(tr("Sort By:"));
-        sortByLabel->setEnabled(false);
-
-        const auto current = Stats::connection_lister->getSort();
-        for (const auto &opt: options) {
-            auto *act = menu.addAction(opt.label);
-            act->setData(static_cast<int>(opt.value));
-            act->setCheckable(true);
-            act->setChecked(current == opt.value);
+        if (!process.isEmpty()) {
+            addRouteSubmenu(tr("Append process \"%1\" to").arg(process), "processName:" + process);
+            addCopyAction(tr("Copy Process Name"), process);
         }
 
-        auto *chosen = menu.exec(header->mapToGlobal(pos));
-        if (chosen == nullptr || !chosen->data().isValid()) return;
-
-        applyConnectionSort(static_cast<Stats::ConnectionSort>(chosen->data().toInt()));
-    });
-}
-
-void MainWindow::refreshConnectionCloseIcons() {
-    // ApplyTheme() fires PaletteChange from the constructor, before setupUi() has built the table.
-    if (connectionCloseDelegate == nullptr) return;
-
-    const auto colors = themeManager()->Colors();
-    connectionCloseIcon = MaterialIcon::icon(MaterialIcon::Glyph::Close, colors.textMuted,
-                                             ConnectionCloseDelegate::IconSize);
-    connectionCloseDelegate->setIcon(connectionCloseIcon);
-    if (connectionCloseAllButton != nullptr)
-        connectionCloseAllButton->setIcon(MaterialIcon::icon(MaterialIcon::Glyph::Block,
-                                                             colors.textMuted, 18));
-    ui->connections->viewport()->update();
-}
-
-QStringList MainWindow::listedConnectionIds() const {
-    QStringList ids;
-    const int rows = connectionsFilterModel->rowCount();
-    ids.reserve(rows);
-    for (int row = 0; row < rows; row++) {
-        const auto id = connectionsFilterModel->index(row, 0).data(ConnectionsTableModel::ConnIdRole).toString();
-        if (!id.isEmpty()) ids << id;
-    }
-    return ids;
-}
-
-void MainWindow::closeConnections(const QStringList &ids) {
-    if (ids.isEmpty()) return;
-    // Blocks until the core has walked every id, and "close all listed" hands it the whole table.
-    runOnNewThread([ids] {
-        bool rpcOK = false;
-        const auto err = API::defaultClient->CloseConnections(&rpcOK, ids);
-        if (!rpcOK || !err.isEmpty()) {
-            MW_show_log(tr("Failed to close connections: %1").arg(err.isEmpty() ? tr("IPC error") : err));
-            return;
+        menu.addSeparator();
+        if (!ids.isEmpty()) {
+            addCloseAction(tr("Close all connections for \"%1\" (%2)")
+                               .arg(ConnectionsTreeModel::displayProcessName(process), QString::number(ids.size())),
+                           ids);
         }
-        Stats::connection_lister->ForceUpdate();
-    });
-}
+    }
 
-void MainWindow::UpdateConnectionList(const QList<Stats::ConnectionMetadata> &connections) {
-    if (connectionsModel == nullptr) return;
-    connectionsModel->setConnections(connections);
-    refreshStatsPanelLabels();
-}
-
-void MainWindow::refreshStatsPanelLabels() {
-    const int tab = ui->stats_widget->indexOf(ui->connections_tab);
-    if (tab < 0) return;
-    const int count = connectionsFilterModel == nullptr ? 0 : connectionsFilterModel->rowCount();
-    const QString countText = count > 99 ? QStringLiteral("100+") : QString::number(count);
-    // Keep the label and the number separate. Apart from matching the visual
-    // hierarchy, fixed-width badges stop the tabs jumping on every polling tick.
-    ui->stats_widget->setTabText(tab, tr("Connections"));
-    if (statsConnectionTabCount != nullptr) statsConnectionTabCount->setText(countText);
-    // The closed strip has no room for a badge widget, so the number joins the label.
-    if (statsConnectionStripCount != nullptr)
-        statsConnectionStripCount->setText(countText.isEmpty()
-                                               ? tr("Connections")
-                                               : tr("Connections") + QStringLiteral("   ") + countText);
+    menu.addSeparator();
+    addExpandActions();
+    menu.exec(globalPos);
 }

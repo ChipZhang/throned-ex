@@ -5,7 +5,7 @@
 #include <QMap>
 #include <QList>
 #ifndef Q_MOC_RUN
-#include <core/server/gen/libcore.pb.h>
+#include <core/gen/libcore.pb.h>
 #endif
 
 class QCheckBox;

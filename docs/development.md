@@ -6,7 +6,7 @@
 |----------------------|--------------------------------------------------------------------------------------|
 | `src/`               | C++ implementation of the desktop application.                                       |
 | `include/`           | C++ headers mirroring the feature layout under `src/`.                               |
-| `core/server/`       | Go module that builds the proxy core process.                                        |
+| `core/`              | Go module that builds the proxy core process.                                        |
 | `updater/`           | Go module for the updater and legacy launcher.                                       |
 | `res/`               | Runtime assets: tray/app artwork, translations, emoji fonts, schema, and the embedded dashboard. |
 | `skins/`             | Skin packages; shipped skins are embedded via `res/Throned.qrc`, with loose packages also supported. |
@@ -133,7 +133,7 @@ The following paths are generated locally and must stay out of Git:
 
 `.clang-format` is a four-space Google-derived style with no column limit and no
 include sorting. `.clang-format-ignore` and `script/format_cpp.sh` both exclude
-`3rdparty/` and `core/server/gen/`: vendored code stays byte-identical to
+`3rdparty/` and `core/gen/`: vendored code stays byte-identical to
 upstream so a future merge is a real diff, and generated code is regenerated
 rather than edited.
 

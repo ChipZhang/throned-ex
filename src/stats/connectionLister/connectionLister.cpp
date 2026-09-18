@@ -1,6 +1,6 @@
 #include <QThread>
 #include <QDateTime>
-#include <core/server/gen/libcore.pb.h>
+#include <core/gen/libcore.pb.h>
 #include <include/api/RPC.h>
 #include "include/ui/mainwindow_interface.h"
 #include <include/stats/connections/connectionLister.hpp>
@@ -55,7 +55,6 @@ void ConnectionLister::SetInView(bool inView) {
     }
 }
 
-// The core sends M.Socksaddr.String(): "1.2.3.4:5678" or "[fe80::1]:5678", so an unbracketed form must split at the last colon.
 QString EndpointHost(const QString& endpoint) {
     if (endpoint.startsWith('[')) {
         const auto close = endpoint.indexOf(']');
@@ -109,6 +108,20 @@ void sortSmallestFirst(QList<ConnectionMetadata>& list, bool asc, Key key) {
     });
 }
 } // namespace
+
+bool SortIsDescending(const ConnectionSort sort, const bool ascending) {
+    switch (sort) {
+        case Default:
+            return false;
+        case ByProcess:
+        case ByOutbound:
+        case ByProtocol:
+        case BySource:
+            return ascending;
+        default:
+            return !ascending;
+    }
+}
 
 void ConnectionLister::update(const bool pushToUi) {
     libcore::QueryConnectionsResp resp = API::defaultClient->QueryConnections();

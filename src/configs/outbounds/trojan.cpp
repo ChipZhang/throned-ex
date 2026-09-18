@@ -46,7 +46,7 @@ QString Trojan::ExportToLink() {
     if (!name.isEmpty()) url.setFragment(name);
     url.setUserName(password);
     if (tls->enabled) mergeUrlQuery(query, tls->ExportToLink());
-    if (!transport->type.isEmpty()) mergeUrlQuery(query, transport->ExportToLink());
+    if (!transport->type.isEmpty()) mergeUrlQuery(query, transport->ExportToLink(tls->enabled));
     if (multiplex->enabled) mergeUrlQuery(query, multiplex->ExportToLink());
     if (!query.isEmpty()) url.setQuery(query);
     return url.toString(QUrl::FullyEncoded);

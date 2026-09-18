@@ -63,7 +63,7 @@
         "y": 49
     },
     {
-        "class": "QTableView",
+        "class": "QTreeView",
         "h": 480,
         "name": "connections",
         "visible": false,
@@ -543,6 +543,15 @@
         "class": "QToolButton",
         "h": 28,
         "name": "panelIconButton",
+        "visible": false,
+        "w": 28,
+        "x": 913,
+        "y": 479
+    },
+    {
+        "class": "QToolButton",
+        "h": 28,
+        "name": "panelIconButton",
         "visible": true,
         "w": 28,
         "x": 913,
@@ -554,16 +563,7 @@
         "name": "panelIconButton",
         "visible": false,
         "w": 28,
-        "x": 913,
-        "y": 479
-    },
-    {
-        "class": "QToolButton",
-        "h": 28,
-        "name": "panelIconButton",
-        "visible": false,
-        "w": 28,
-        "x": 927,
+        "x": 916,
         "y": 480
     },
     {
@@ -572,7 +572,16 @@
         "name": "panelIconButton",
         "visible": false,
         "w": 28,
-        "x": 971,
+        "x": 949,
+        "y": 480
+    },
+    {
+        "class": "QToolButton",
+        "h": 28,
+        "name": "panelIconButton",
+        "visible": false,
+        "w": 28,
+        "x": 982,
         "y": 480
     },
     {

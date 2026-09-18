@@ -89,6 +89,7 @@ void SettingsRepo::initMaps() {
         {"allow_stopping_active_profile", &allow_stopping_active_profile},
         {"disable_mixed_inbound", &disable_mixed_inbound},
         {"url_scheme_auto_register", &url_scheme_auto_register},
+        {"file_assoc_auto_register", &file_assoc_auto_register},
         {"system_proxy_enabled", &remember_system_proxy},
         {"tun_mode_enabled", &remember_tun},
         {"reset_proxy_on_disable_sp", &reset_proxy_on_disable_sp},
@@ -214,6 +215,7 @@ void SettingsRepo::initMaps() {
         {"dpi_bypass_method", &dpi_bypass_method},
         {"dpi_bypass_spoof_sni", &dpi_bypass_spoof_sni},
         {"dpi_bypass_spoof_method", &dpi_bypass_spoof_method},
+        {"file_assoc_mirror", &file_assoc_mirror},
     };
 
     stringListMap = {
@@ -237,6 +239,7 @@ void SettingsRepo::initMaps() {
         {"udp_monitor_targets", &udp_monitor_targets},
         {"site_test_targets", &site_test_targets},
         {"warp_masque_ifc_addrs", &warp_masque_ifc_addrs},
+        {"warp_api_hosts", &warp_api_hosts},
     };
 }
 

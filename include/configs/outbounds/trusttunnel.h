@@ -8,6 +8,8 @@ public:
     QString username;
     QString password;
     QString congestion_control;
+    QString custom_sni;
+    QString client_random;
     bool health_check = false;
     bool quic = false;
     std::shared_ptr<TLS> tls = std::make_shared<TLS>();
@@ -24,6 +26,7 @@ public:
         return tls;
     }
 
+    bool ParseFromDeepLink(const QString& payload);
     bool ParseFromLink(const QString& link) override;
     bool ParseFromJson(const QJsonObject& object) override;
     QString ExportToLink() override;

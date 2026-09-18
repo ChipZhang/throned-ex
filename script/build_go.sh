@@ -47,7 +47,7 @@ case "$GOOS" in
 esac
 
 #### Go: core ####
-pushd core/server
+pushd core
 pushd gen
 protoc -I . --go_out=. --go-grpc_out=. libcore.proto
 popd

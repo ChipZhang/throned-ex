@@ -290,10 +290,10 @@ libcore::QueryStatsResp Client::QueryStats() {
     return {};
 }
 
-libcore::TestResp Client::Test(bool *rpcOK, const libcore::TestReq &request, QString *coreError) {
+libcore::TestResp Client::Test(bool *rpcOK, const libcore::TestReq &request, QString *coreError, int timeoutMs) {
     libcore::TestResp reply;
     std::vector<uint8_t> resp;
-    auto status = channel->Call("Test", spb::pb::serialize<std::string>(request), resp);
+    auto status = channel->Call("Test", spb::pb::serialize<std::string>(request), resp, timeoutMs);
 
     if (status == LocalSocketChannel::CallOK && tryDeserialize(resp, reply)) {
         *rpcOK = true;
@@ -348,10 +348,10 @@ libcore::QueryURLTestResponse Client::QueryURLTest(bool *rpcOK) {
     }
 }
 
-libcore::IPTestResp Client::IPTest(bool *rpcOK, const libcore::IPTestRequest &request, QString *coreError) {
+libcore::IPTestResp Client::IPTest(bool *rpcOK, const libcore::IPTestRequest &request, QString *coreError, int timeoutMs) {
     libcore::IPTestResp reply;
     std::vector<uint8_t> resp;
-    auto status = channel->Call("IPTest", spb::pb::serialize<std::string>(request), resp);
+    auto status = channel->Call("IPTest", spb::pb::serialize<std::string>(request), resp, timeoutMs);
 
     if (status == LocalSocketChannel::CallOK && tryDeserialize(resp, reply)) {
         *rpcOK = true;
@@ -650,6 +650,25 @@ QString Client::CloseConnections(bool *rpcOK, const QStringList &ids, int *close
     }
 }
 
+QString Client::UpdateRuleSets(bool *rpcOK, int *updatedCount) const {
+    if (updatedCount != nullptr) *updatedCount = 0;
+    libcore::EmptyReq request;
+    libcore::UpdateRuleSetsResponse reply;
+    std::vector<uint8_t> resp;
+    // Must outlast the core's 60 s deadline in rulesets.go.
+    const int timeoutMs = 75000;
+    auto status = channel->Call("UpdateRuleSets", spb::pb::serialize<std::string>(request), resp, timeoutMs);
+
+    if (status == LocalSocketChannel::CallOK && tryDeserialize(resp, reply)) {
+        *rpcOK = true;
+        if (updatedCount != nullptr) *updatedCount = reply.updated.value();
+        return QString::fromStdString(reply.error.value());
+    } else {
+        NOT_OK
+        return "IPC error";
+    }
+}
+
 QString Client::CheckConfig(bool *rpcOK, const QString &config, bool isXray) const {
     libcore::LoadConfigReq request;
     if (isXray) {
@@ -747,13 +766,17 @@ libcore::GenWgKeyPairResponse Client::GenWgKeyPair(bool *rpcOK) {
     }
 }
 
-libcore::WarpRegisterResponse Client::WarpRegister(bool *rpcOK, const QString &tunnelType, const QString &proxy) {
+libcore::WarpRegisterResponse Client::WarpRegister(bool *rpcOK, const QString &tunnelType, const QString &proxy,
+                                                   const QStringList &apiHosts) {
     libcore::WarpRegisterRequest request;
     request.tunnel_type = tunnelType.toStdString();
     request.proxy = proxy.toStdString();
+    for (const auto &host: apiHosts) request.api_hosts.push_back(host.toStdString());
     libcore::WarpRegisterResponse reply;
     std::vector<uint8_t> resp;
-    auto status = channel->Call("WarpRegister", spb::pb::serialize<std::string>(request), resp, 60000);
+    // Must outlast the core's per-host budget in warp.go.
+    const int timeoutMs = qMax(60000, 30000 + 25000 * static_cast<int>(apiHosts.size()));
+    auto status = channel->Call("WarpRegister", spb::pb::serialize<std::string>(request), resp, timeoutMs);
 
     if (status == LocalSocketChannel::CallOK && tryDeserialize(resp, reply)) {
         *rpcOK = true;
@@ -778,6 +801,32 @@ QString Client::InstallDashboard(bool *rpcOK, const QString &archivePath, const 
     } else {
         NOT_OK
         return "IPC error";
+    }
+}
+
+libcore::DiagnosticsResponse Client::CaptureDiagnostics(bool *rpcOK, const libcore::DiagnosticsRequest &request, int timeoutMs) {
+    libcore::DiagnosticsResponse reply;
+    std::vector<uint8_t> resp;
+    auto status = channel->Call("CaptureDiagnostics", spb::pb::serialize<std::string>(request), resp, timeoutMs);
+
+    if (status == LocalSocketChannel::CallOK && tryDeserialize(resp, reply)) {
+        *rpcOK = true;
+        return reply;
+    } else {
+        NOT_OK
+        return {};
+    }
+}
+
+void Client::StopDiagnostics(bool *rpcOK) {
+    const libcore::EmptyReq request;
+    std::vector<uint8_t> resp;
+    auto status = channel->Call("StopDiagnostics", spb::pb::serialize<std::string>(request), resp);
+
+    if (status == LocalSocketChannel::CallOK) {
+        *rpcOK = true;
+    } else {
+        NOT_OK
     }
 }
 

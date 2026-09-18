@@ -42,7 +42,7 @@ cmake --build out/build/linux
 ctest --test-dir out/build/linux --output-on-failure
 ```
 
-The C++ build does not need the Go core: `core/server/gen/libcore.proto` is
+The C++ build does not need the Go core: `core/gen/libcore.proto` is
 committed and the C++ side generates from it. Only packaging needs the built
 core. `srslist.h` is fetched into the build directory by CI; a local tree uses
 the copy at the repository root.

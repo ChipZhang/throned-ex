@@ -30,7 +30,8 @@ std::shared_ptr<WarpIdentity> RegisterWarp(const QString &tunnelType, QString *e
     if (!error->isEmpty()) return nullptr;
 
     bool rpcOK = false;
-    const auto reply = API::defaultClient->WarpRegister(&rpcOK, tunnelType, proxy);
+    const auto reply = API::defaultClient->WarpRegister(&rpcOK, tunnelType, proxy,
+                                                        Configs::dataManager->settingsRepo->warp_api_hosts);
     if (!rpcOK) {
         *error = QObject::tr("Failed to reach the core.");
         return nullptr;

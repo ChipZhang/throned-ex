@@ -1,6 +1,7 @@
 #include "include/ui/mainwindow.h"
 
 #include "include/ui/mainWindow/MainWindowInternal.h"
+#include "include/api/RPC.h"
 // Full definition: MainWindow's destructor lives here and destroys the unique_ptr.
 #include "include/ui/mainWindow/TestRunner.h"
 
@@ -23,8 +24,6 @@
 #include "include/sys/AutoRun.hpp"
 #include "include/sys/UrlScheme.hpp"
 
-#include "include/ui/utils/ConnectionsFilterHeader.h"
-#include "include/ui/utils/ConnectionsTableModel.h"
 #include "include/ui/setting/ThemeManager.hpp"
 #include "include/ui/setting/Icon.hpp"
 #include "include/ui/stats/dialog_site_reachability.h"
@@ -961,7 +960,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     };
     applyTablePalette();
     connect(themeManager(), &ThemeManager::themeChanged, this, [applyTablePalette] { applyTablePalette(); });
-    ui->connections->setShowGrid(false);
     // Every tab page of the bottom panel is a card too, for the same reason the
     // group pages are: the view inside fills its viewport square.
     for (int tab = 0; tab < ui->stats_widget->count(); ++tab) {
@@ -1603,6 +1601,28 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
         m_autoSelectorDialog->activateWindow();
     });
     connect(ui->actionCheck_For_Update, &QAction::triggered, this, [=, this] { runOnNewThread([=, this] { CheckUpdate(); }); });
+    connect(ui->actionUpdate_Rule_Sets, &QAction::triggered, this, [=, this] {
+        if (m_ruleSetUpdateBusy) return;
+        m_ruleSetUpdateBusy = true;
+        runOnNewThread([=, this] {
+            bool rpcOK = false;
+            int updated = 0;
+            const auto error = API::defaultClient->UpdateRuleSets(&rpcOK, &updated);
+            runOnUiThread([=, this] {
+                m_ruleSetUpdateBusy = false;
+                if (!rpcOK) {
+                    MessageBoxWarning(tr("Update Rule-Sets"), error);
+                    return;
+                }
+                const auto summary = tr("%n remote rule-set(s) refreshed", nullptr, updated);
+                if (!error.isEmpty()) {
+                    MessageBoxWarning(tr("Update Rule-Sets"), summary + "\n\n" + error);
+                } else {
+                    MessageBoxInfo(tr("Update Rule-Sets"), summary);
+                }
+            });
+        });
+    });
     if (!QFile::exists(QApplication::applicationDirPath() + "/updater") && !QFile::exists(QApplication::applicationDirPath() + "/updater.exe")) {
         ui->actionCheck_For_Update->setDisabled(true);
     }
@@ -1616,39 +1636,6 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
         syncConnectionViewState();
     });
     syncConnectionViewState();
-    connect(ui->connections->horizontalHeader(), &QHeaderView::sectionClicked, this, [=, this](int index) {
-        // The close column has no sort of its own; without this it would fall through and reset sorting.
-        if (index == ConnectionsTableModel::ColClose) return;
-
-        Stats::ConnectionSort sortType;
-
-        switch (index) {
-            case ConnectionsTableModel::ColSource:
-                sortType = Stats::BySource;
-                break;
-            case ConnectionsTableModel::ColProcess:
-                sortType = Stats::ByProcess;
-                break;
-            case ConnectionsTableModel::ColProtocol:
-                sortType = Stats::ByProtocol;
-                break;
-            case ConnectionsTableModel::ColOutbound:
-                sortType = Stats::ByOutbound;
-                break;
-            case ConnectionsTableModel::ColTraffic:
-                sortType = Stats::ByTraffic;
-                break;
-            case ConnectionsTableModel::ColSpeed:
-                sortType = Stats::BySpeed;
-                break;
-            default:
-                sortType = Stats::Default;
-                break;
-        }
-
-        applyConnectionSort(sortType);
-    });
-
     auto *graphContent = new QWidget(ui->graph_tab);
     graphContent->setObjectName(QStringLiteral("activityGraphs"));
     auto *graphLayout = new QHBoxLayout(graphContent);
@@ -2206,7 +2193,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
     this->refresh_groups();
     setFavoritesView(Configs::dataManager->settingsRepo->profiles_favorites_view);
 
-    tray = new QSystemTrayIcon(nullptr);
+    tray = new TrayIcon(this);
     tray->setIcon(Icon::GetTrayIcon(Icon::TrayIconStatus::None));
     QApplication::setWindowIcon(Icon::GetTaskbarIcon(Icon::TrayIconStatus::None));
     trayMenu = new QMenu();
@@ -2248,7 +2235,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
     trayMenu->addAction(ui->menu_exit);
     tray->setVisible(!Configs::dataManager->settingsRepo->disable_tray);
     tray->setContextMenu(trayMenu);
-    connect(tray, &QSystemTrayIcon::activated, qApp, [=, this](QSystemTrayIcon::ActivationReason reason) {
+    connect(tray, &TrayIcon::activated, qApp, [=, this](QSystemTrayIcon::ActivationReason reason) {
         if (reason == QSystemTrayIcon::Trigger && getOS() != Darwin) {
             trayClickEvent();
         }
@@ -2430,6 +2417,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
             });
             profilesMenu->addAction(action);
         }
+
+        ui->actionUpdate_Rule_Sets->setEnabled(running != nullptr && !m_ruleSetUpdateBusy);
+        ui->menuRouting_Menu->addAction(ui->actionUpdate_Rule_Sets);
 
         ui->menuRouting_Menu->addSeparator();
         for (const auto &route: Configs::dataManager->routesRepo->GetAllRouteProfiles()) {
@@ -2689,13 +2679,16 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
             profile_start(Configs::dataManager->settingsRepo->started_id);
     };
 
-    connect(tray, &QSystemTrayIcon::messageClicked, this, [this] {
+    connect(tray, &TrayIcon::messageClicked, this, [this] {
         if (!pendingUpdatePrompt) return;
         const auto prompt = std::exchange(pendingUpdatePrompt, {});
         prompt();
     });
 
-    if (!Configs::dataManager->settingsRepo->flag_tray) show();
+    if (!Configs::dataManager->settingsRepo->flag_tray)
+        show();
+    else if (tray->isVisible())
+        HideWindow(this);
 
     ui->data_view->setStyleSheet("background: transparent; border: none;");
 }

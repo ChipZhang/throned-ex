@@ -8,7 +8,7 @@
 #include "include/stats/autoselector/AutoSelectorMonitor.hpp"
 #include "include/configs/AutoSelectorPlan.h"
 #include "include/api/RPC.h"
-#include "include/ui/utils/MessageBoxTimer.h"
+#include "include/ui/utils/RestartPrompt.h"
 #include "include/ui/stats/dialog_endpoint_details.h"
 
 #include <QPushButton>
@@ -251,7 +251,7 @@ void MainWindow::profile_start(int _id) {
         }
     }
 
-    auto profile_start_stage2 = [=, this] {
+    auto profile_start_stage2 = [=, this](const QPointer<RestartPrompt> &restartPrompt) {
         libcore::LoadConfigReq req;
         req.core_config = QJsonObject2QString(result->coreConfig, true).toStdString();
         req.tun_ipv4_cidr = result->tunIPv4CIDR.toStdString();
@@ -278,6 +278,8 @@ void MainWindow::profile_start(int _id) {
         }
         bool rpcOK;
         const QString error = defaultClient->Start(&rpcOK, req);
+        // Queued ahead of every dialog below, so none of them can be shown over the prompt.
+        runOnUiThread([restartPrompt] { if (restartPrompt) restartPrompt->dismiss(); });
         if (!rpcOK) {
             return false;
         }
@@ -416,10 +418,8 @@ void MainWindow::profile_start(int _id) {
         return;
     }
 
-    const auto restartMsgbox = new QMessageBox(QMessageBox::Question, software_name, tr("If there is no response for a long time, it is recommended to restart the software."),
-                                               QMessageBox::Yes | QMessageBox::No, this);
-    connect(restartMsgbox, &QMessageBox::accepted, this, [=, this] { MW_dialog_message(MwMessage::RestartProgram, {}); });
-    const auto restartMsgboxTimer = new MessageBoxTimer(this, restartMsgbox, 10000);
+    const QPointer<RestartPrompt> restartPrompt =
+        new RestartPrompt(this, tr("If there is no response for a long time, it is recommended to restart the software."), 10000);
 
     runOnUiThread([this] {
         m_profileConnecting = true;
@@ -457,14 +457,12 @@ void MainWindow::profile_start(int _id) {
             mu_stopping.unlock();
         }
         MW_show_log(">>>>>>>> " + tr("Starting profile %1").arg(ent->outbound->DisplayTypeAndName()));
-        if (!profile_start_stage2()) {
+        if (!profile_start_stage2(restartPrompt)) {
             MW_show_log("<<<<<<<< " + tr("Failed to start profile %1").arg(ent->outbound->DisplayTypeAndName()));
         }
         // cancel timeout
         runOnUiThread([=, this] {
-            restartMsgboxTimer->cancel();
-            restartMsgboxTimer->deleteLater();
-            restartMsgbox->deleteLater();
+            if (restartPrompt) restartPrompt->dismiss();
             m_profileConnecting = false;
             refresh_startstop_button();
         });
@@ -479,7 +477,7 @@ void MainWindow::profile_stop(bool crash, bool block, bool manual) {
     Configs::dataManager->settingsRepo->internal_proxy_port = 0;
     Configs::dataManager->settingsRepo->internal_proxy_auth.clear();
 
-    auto profile_stop_stage2 = [=, this] {
+    auto profile_stop_stage2 = [=, this](const QPointer<RestartPrompt> &restartPrompt) {
         if (testRunner->isTestingCurrent()) {
             bool ok;
             defaultClient->StopTests(&ok);
@@ -488,6 +486,7 @@ void MainWindow::profile_stop(bool crash, bool block, bool manual) {
         if (!crash) {
             bool rpcOK;
             const QString error = defaultClient->Stop(&rpcOK);
+            runOnUiThread([restartPrompt] { if (restartPrompt) restartPrompt->dismiss(); });
             if (rpcOK && !error.isEmpty()) {
                 PostPassiveWarning(tr("Stop return error"), error);
                 return false;
@@ -523,14 +522,10 @@ void MainWindow::profile_stop(bool crash, bool block, bool manual) {
         Stats::trafficLooper->PersistTraffic();
         Stats::trafficStatsManager->Flush();
 
-        // runOnUiThread is a no-op before qApp exists, so the teardown must not chase these.
-        QMessageBox *restartMsgbox = nullptr;
-        MessageBoxTimer *restartMsgboxTimer = nullptr;
-        runOnUiThread([=, this, &restartMsgbox, &restartMsgboxTimer] {
-            restartMsgbox = new QMessageBox(QMessageBox::Question, software_name, tr("If there is no response for a long time, it is recommended to restart the software."),
-                                            QMessageBox::Yes | QMessageBox::No, this);
-            connect(restartMsgbox, &QMessageBox::accepted, this, [=, this] { MW_dialog_message(MwMessage::RestartProgram, {}); });
-            restartMsgboxTimer = new MessageBoxTimer(this, restartMsgbox, 5000);
+        // runOnUiThread is a no-op before qApp exists, so the teardown must not chase this.
+        QPointer<RestartPrompt> restartPrompt;
+        runOnUiThread([this, &restartPrompt] {
+            restartPrompt = new RestartPrompt(this, tr("If there is no response for a long time, it is recommended to restart the software."), 5000);
         },
                       true);
 
@@ -539,7 +534,7 @@ void MainWindow::profile_stop(bool crash, bool block, bool manual) {
         if (stopping != nullptr) {
             MW_show_log(">>>>>>>> " + tr("Stopping profile %1").arg(stopping->outbound->DisplayTypeAndName()));
         }
-        if (!profile_stop_stage2()) {
+        if (!profile_stop_stage2(restartPrompt)) {
             MW_show_log("<<<<<<<< " + tr("Failed to stop, please restart the program."));
         }
 
@@ -549,12 +544,8 @@ void MainWindow::profile_stop(bool crash, bool block, bool manual) {
         running = nullptr;
         coreStartedAt = 0;
 
-        runOnUiThread([=, this, &restartMsgboxTimer, &restartMsgbox] {
-            if (restartMsgboxTimer != nullptr) {
-                restartMsgboxTimer->cancel();
-                restartMsgboxTimer->deleteLater();
-            }
-            if (restartMsgbox != nullptr) restartMsgbox->deleteLater();
+        runOnUiThread([=, this, &restartPrompt] {
+            if (restartPrompt) restartPrompt->dismiss();
 
             m_profileDisconnecting = false;
             clearRestartNeeded();

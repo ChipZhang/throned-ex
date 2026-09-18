@@ -1055,6 +1055,16 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message numerus="yes">
+        <source>%n remote rule-set(s) refreshed</source>
+        <translation>
+            <numerusform>%n remote rule-set refreshed</numerusform>
+            <numerusform>%n remote rule-sets refreshed</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>SubscriptionPopover</name>
     <message numerus="yes">
         <source>%n day(s) left</source>

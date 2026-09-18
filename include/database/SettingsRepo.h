@@ -2,6 +2,7 @@
 
 #include "Database.h"
 #include "include/global/Const.hpp"
+#include "include/sys/UrlScheme.hpp"
 #include <QMutexLocker>
 #include <QJsonObject>
 #include <QMap>
@@ -159,9 +160,11 @@ public:
     // -1 until a filter column has been used.
     int last_filter_column = -1;
 
-    // Mirror of the throne:// registration we last wrote to the OS; startup re-registers only when it differs.
+    // Mirrors of the registrations we last wrote to the OS; startup re-registers only when they differ.
     QString url_scheme_mirror = "";
-    bool url_scheme_auto_register = true;
+    bool url_scheme_auto_register = UrlScheme_AutoRegisterByDefault();
+    QString file_assoc_mirror = "";
+    bool file_assoc_auto_register = false;
 
     // Network
     bool net_use_proxy = false;
@@ -312,7 +315,8 @@ public:
     QString warp_masque_ep = "";
     QStringList warp_masque_ifc_addrs = {};
     QString warp_masque_sni = "consumer-masque.cloudflareclient.com";
-    int warp_masque_http_mode = 0; // 0 = HTTP/3 with fallback, 1 = HTTP/3 only, 2 = HTTP/2
+    int warp_masque_http_mode = 0;   // 0 = HTTP/3 with fallback, 1 = HTTP/3 only, 2 = HTTP/2
+    QStringList warp_api_hosts = {}; // registration API domains, tried in order; empty = api.cloudflareclient.com
 
     // Hijack
     bool enable_dns_server = false;

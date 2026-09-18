@@ -69,6 +69,203 @@
     </message>
 </context>
 <context>
+    <name>ConnectionsTreeModel</name>
+    <message>
+        <source>Click To Sort By Outbound</source>
+        <translation>Нажмите для сортировки по Outbound</translation>
+    </message>
+    <message>
+        <source>Click To Sort By Process</source>
+        <translation>Нажмите для сортировки по процессу</translation>
+    </message>
+    <message>
+        <source>Click To Sort By Protocol</source>
+        <translation>Нажмите для сортировки по протоколу</translation>
+    </message>
+    <message>
+        <source>Click To Sort By Source</source>
+        <translation>Нажмите для сортировки по источнику</translation>
+    </message>
+    <message>
+        <source>Click to sort by speed; right-click to choose total/down/up</source>
+        <translation>Нажмите, чтобы отсортировать по скорости; щелкните правой кнопкой мыши, чтобы настроить сортировку</translation>
+    </message>
+    <message>
+        <source>Click to sort by traffic; right-click to choose total/down/up</source>
+        <translation>Нажмите, чтобы отсортировать по трафику; щелкните правой кнопкой мыши, чтобы настроить сортировку</translation>
+    </message>
+    <message>
+        <source>Destination: %1
+Connections: %2
+Process: %3
+Protocol: %4
+Outbound: %5
+Total traffic: %6↑ %7↓
+Total speed: %8/s↑ %9/s↓</source>
+        <translation>Назначение: %1
+Подключений: %2
+Процесс: %3
+Протокол: %4
+Выход: %5
+Всего трафика: %6↑ %7↓
+Общая скорость: %8/с↑ %9/с↓</translation>
+    </message>
+    <message>
+        <source>Destination: %1
+Process: %2
+Protocol: %3
+Outbound: %4</source>
+        <translation>Назначение: %1
+Процесс: %2
+Протокол: %3
+Выход: %4</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>Выход</translation>
+    </message>
+    <message>
+        <source>Process / Destination</source>
+        <translation>Процесс / Назначение</translation>
+    </message>
+    <message>
+        <source>Process: %1
+Active connections: %2
+Total traffic: %3↑ %4↓
+Total speed: %5/s↑ %6/s↓</source>
+        <translation>Процесс: %1
+Активных подключений: %2
+Всего трафика: %3↑ %4↓
+Общая скорость: %5/с↑ %6/с↓</translation>
+    </message>
+    <message>
+        <source>Protocol</source>
+        <translation>Протокол</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation>Источник</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation>Скорость</translation>
+    </message>
+    <message>
+        <source>System</source>
+        <translation>Система</translation>
+    </message>
+    <message>
+        <source>Traffic</source>
+        <translation>Трафик</translation>
+    </message>
+</context>
+<context>
+    <name>CoreDiagnostics</name>
+    <message>
+        <source>Could not reach the core. See the log for details.</source>
+        <translation>Не удалось связаться с ядром. Подробности в журнале.</translation>
+    </message>
+    <message>
+        <source>Could not save %1: %2</source>
+        <translation>Не удалось сохранить %1: %2</translation>
+    </message>
+    <message>
+        <source>Performance profile</source>
+        <translation>Профиль производительности</translation>
+    </message>
+    <message>
+        <source>Performance profile failed: %1</source>
+        <translation>Не удалось снять профиль производительности: %1</translation>
+    </message>
+    <message>
+        <source>Performance profile saved to %1</source>
+        <translation>Профиль производительности сохранён в %1</translation>
+    </message>
+    <message>
+        <source>Show in folder</source>
+        <translation>Показать в папке</translation>
+    </message>
+    <message>
+        <source>The core could not capture the profile: %1</source>
+        <translation>Ядру не удалось снять профиль: %1</translation>
+    </message>
+    <message>
+        <source>The core is not running.</source>
+        <translation>Ядро не запущено.</translation>
+    </message>
+    <message>
+        <source>The core returned an empty profile.</source>
+        <translation>Ядро вернуло пустой профиль.</translation>
+    </message>
+    <message>
+        <source>The performance profile was saved (%1).</source>
+        <translation>Профиль производительности сохранён (%1).</translation>
+    </message>
+</context>
+<context>
+    <name>DiagnosticsTab</name>
+    <message>
+        <source>Execution trace (larger file)</source>
+        <translation>Трассировка выполнения (файл больше)</translation>
+    </message>
+    <message>
+        <source>Finishing…</source>
+        <translation>Завершение…</translation>
+    </message>
+    <message>
+        <source>Include Throned logs</source>
+        <translation>Включить логи Throned</translation>
+    </message>
+    <message>
+        <source>Lock contention</source>
+        <translation>Конкуренция за блокировки</translation>
+    </message>
+    <message>
+        <source>Logs contain visited domains and server addresses.</source>
+        <translation>Логи содержат посещённые домены и адреса серверов.</translation>
+    </message>
+    <message>
+        <source>Open folder</source>
+        <translation>Открыть папку</translation>
+    </message>
+    <message>
+        <source>Performance profile</source>
+        <translation>Профиль производительности</translation>
+    </message>
+    <message>
+        <source>Profiles the Core using pprof. The profile itself does not contain any information about your configs, but if you include the logs too, there will be information about your configs in them.</source>
+        <translation>Профилирует ядро с помощью pprof. Сам профиль не содержит сведений о ваших конфигурациях, но если добавить логи, такие сведения будут в них.</translation>
+    </message>
+    <message>
+        <source>Recording… %1 left</source>
+        <translation>Запись… осталось %1</translation>
+    </message>
+    <message>
+        <source>Records where goroutines wait on locks and channels.</source>
+        <translation>Записывает, где горутины ждут блокировок и каналов.</translation>
+    </message>
+    <message>
+        <source>Saved %1 (%2)</source>
+        <translation>Сохранено %1 (%2)</translation>
+    </message>
+    <message>
+        <source>Show in folder</source>
+        <translation>Показать в папке</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Запустить</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Остановить</translation>
+    </message>
+    <message>
+        <source>The core is not running.</source>
+        <translation>Ядро не запущено.</translation>
+    </message>
+</context>
+<context>
     <name>DiagnosticsWindow</name>
     <message>
         <source>Unknown outbound</source>
@@ -2395,6 +2592,49 @@ This backup may have been created with a newer version of the application.</sour
     </message>
 </context>
 <context>
+    <name>DialogBasicSettings</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Adds Throned to the &quot;Open with&quot; list for JSON and YAML config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Добавляет Throned в список «Открыть с помощью» для файлов конфигураций JSON и YAML и заново регистрирует его при переносе установки.&lt;/p&gt;&lt;p&gt;Выключение не отменяет уже сделанную регистрацию: для этого нажмите «Удалить».&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throned as the handler for throne:// links, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Регистрирует Throned как обработчик ссылок throne:// и заново регистрирует его при переносе установки.&lt;/p&gt;&lt;p&gt;Выключение не отменяет уже сделанную регистрацию: для этого нажмите «Удалить».&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers the associations now, without waiting for the next start.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Регистрирует ассоциации сейчас, не дожидаясь следующего запуска.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every config file association Throned wrote, including those added by older versions. Associations owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Удаляет все ассоциации файлов конфигураций, созданные Throned, включая добавленные старыми версиями. Ассоциации других приложений не затрагиваются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes the throne:// handler Throned wrote. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Удаляет обработчик throne://, созданный Throned. Записи других приложений не затрагиваются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>A portable copy leaves config file associations alone. Use Install when you want them.</source>
+        <translation>Портативная копия не трогает ассоциации файлов конфигураций. Нажмите «Установить», если они нужны.</translation>
+    </message>
+    <message>
+        <source>Could not register the config file associations.</source>
+        <translation>Не удалось зарегистрировать ассоциации файлов конфигураций.</translation>
+    </message>
+    <message>
+        <source>Diagnostics</source>
+        <translation>Диагностика</translation>
+    </message>
+    <message>
+        <source>Links and Files</source>
+        <translation>Ссылки и файлы</translation>
+    </message>
+    <message>
+        <source>Register config files at startup</source>
+        <translation>Регистрировать файлы конфигураций при запуске</translation>
+    </message>
+</context>
+<context>
     <name>DialogEditGroup</name>
     <message>
         <source>Edit Group</source>
@@ -3982,6 +4222,21 @@ Use a number followed by ns, us, ms, s, m, h or d.</source>
     </message>
 </context>
 <context>
+    <name>DialogManageRoutes</name>
+    <message>
+        <source>Cloudflare API domains to try, in order, when generating a WARP config</source>
+        <translation>Домены Cloudflare API, которые перебираются по порядку при генерации конфигурации WARP</translation>
+    </message>
+    <message>
+        <source>Registration Domains…</source>
+        <translation>Домены регистрации…</translation>
+    </message>
+    <message>
+        <source>WARP Registration Domains</source>
+        <translation>Домены регистрации WARP</translation>
+    </message>
+</context>
+<context>
     <name>DialogRuntimeStats</name>
     <message>
         <source>Disabled</source>
@@ -5080,6 +5335,44 @@ rendezvous service. Replaces the server address and port.</source>
     </message>
 </context>
 <context>
+    <name>EditOpenConnect</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;How DNS uses the resolvers the VPN server pushes when this profile is started.&lt;/p&gt;&lt;p&gt;None: ignore them. Use this if the server claims every domain and breaks public DNS.&lt;br/&gt;Prefer: resolve the names the server claims - its split-DNS suffixes and search domains - through them, and everything else as usual.&lt;br/&gt;Strict: also send every remote DNS query to them instead of the remote DNS server, and fail the lookups they cannot answer. Direct lookups are unchanged.&lt;/p&gt;&lt;p&gt;As an endpoint in a routing profile, Prefer and Strict both resolve only the names the server claims.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Как DNS использует резолверы, которые VPN-сервер передаёт при запуске этого профиля.&lt;/p&gt;&lt;p&gt;Нет: игнорировать их. Используйте, если сервер заявляет все домены и ломает публичный DNS.&lt;br/&gt;Предпочитать: разрешать через них имена, которые заявляет сервер — его суффиксы split-DNS и домены поиска, — а остальное как обычно.&lt;br/&gt;Строго: кроме того, отправлять через них все удалённые DNS-запросы вместо удалённого DNS-сервера и считать неудачными те, на которые они не могут ответить. Прямые запросы не меняются.&lt;/p&gt;&lt;p&gt;В роли endpoint в профиле маршрутизации «Предпочитать» и «Строго» разрешают только имена, заявленные сервером.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Prefer</source>
+        <translation>Предпочитать</translation>
+    </message>
+    <message>
+        <source>Strict</source>
+        <translation>Строго</translation>
+    </message>
+    <message>
+        <source>Tunnel DNS</source>
+        <translation>DNS туннеля</translation>
+    </message>
+</context>
+<context>
+    <name>EditOpenVPN</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;How DNS uses the resolvers the VPN server pushes when this profile is started.&lt;/p&gt;&lt;p&gt;None: ignore them. Use this if the server claims every domain and breaks public DNS.&lt;br/&gt;Prefer: resolve the names the server claims - its split-DNS suffixes and search domains - through them, and everything else as usual.&lt;br/&gt;Strict: also send every remote DNS query to them instead of the remote DNS server, and fail the lookups they cannot answer. Direct lookups are unchanged.&lt;/p&gt;&lt;p&gt;As an endpoint in a routing profile, Prefer and Strict both resolve only the names the server claims.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Как DNS использует резолверы, которые VPN-сервер передаёт при запуске этого профиля.&lt;/p&gt;&lt;p&gt;Нет: игнорировать их. Используйте, если сервер заявляет все домены и ломает публичный DNS.&lt;br/&gt;Предпочитать: разрешать через них имена, которые заявляет сервер — его суффиксы split-DNS и домены поиска, — а остальное как обычно.&lt;br/&gt;Строго: кроме того, отправлять через них все удалённые DNS-запросы вместо удалённого DNS-сервера и считать неудачными те, на которые они не могут ответить. Прямые запросы не меняются.&lt;/p&gt;&lt;p&gt;В роли endpoint в профиле маршрутизации «Предпочитать» и «Строго» разрешают только имена, заявленные сервером.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Prefer</source>
+        <translation>Предпочитать</translation>
+    </message>
+    <message>
+        <source>Strict</source>
+        <translation>Строго</translation>
+    </message>
+    <message>
+        <source>Tunnel DNS</source>
+        <translation>DNS туннеля</translation>
+    </message>
+</context>
+<context>
     <name>EditSSH</name>
     <message>
         <source>User</source>
@@ -5282,6 +5575,33 @@ rendezvous service. Replaces the server address and port.</source>
     <message>
         <source>QUIC</source>
         <translation>QUIC</translation>
+    </message>
+</context>
+<context>
+    <name>EditTrustTunnel</name>
+    <message>
+        <source>Client Random</source>
+        <translation>Client Random</translation>
+    </message>
+    <message>
+        <source>Custom SNI</source>
+        <translation>Собственный SNI</translation>
+    </message>
+    <message>
+        <source>Server name sent in the TLS ClientHello instead of the TLS server name, which is still used to verify the certificate; not compatible with ECH or REALITY</source>
+        <translation>Имя сервера, отправляемое в TLS ClientHello вместо имени TLS-сервера, которое по-прежнему используется для проверки сертификата; несовместимо с ECH и REALITY</translation>
+    </message>
+    <message>
+        <source>TLS ClientHello random prefix required by the server&apos;s client_random_prefix rule; not compatible with ECH or REALITY</source>
+        <translation>Случайный префикс TLS ClientHello, требуемый правилом client_random_prefix на сервере; несовместимо с ECH и REALITY</translation>
+    </message>
+    <message>
+        <source>optional, e.g. cdn.example.net</source>
+        <translation>необязательно, например cdn.example.net</translation>
+    </message>
+    <message>
+        <source>prefix[/mask] (hex), e.g. a0b0/f0f0</source>
+        <translation>префикс[/маска] (hex), например a0b0/f0f0</translation>
     </message>
 </context>
 <context>
@@ -7256,6 +7576,87 @@ Name: %1</source>
     <message>
         <source>Profile</source>
         <translation>Профиль</translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message numerus="yes">
+        <source>%n remote rule-set(s) refreshed</source>
+        <translation>
+            <numerusform>Обновлён %n удалённый набор правил</numerusform>
+            <numerusform>Обновлено %n удалённых набора правил</numerusform>
+            <numerusform>Обновлено %n удалённых наборов правил</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Append &quot;%1&quot; to</source>
+        <translation>Добавить «%1» в</translation>
+    </message>
+    <message>
+        <source>Append process &quot;%1&quot; to</source>
+        <translation>Добавить процесс «%1» в</translation>
+    </message>
+    <message>
+        <source>Appended %1 to the %2 rules of &quot;%3&quot;</source>
+        <translation>«%1» добавлено в правила %2 профиля «%3»</translation>
+    </message>
+    <message>
+        <source>Appended to the %1 rules:
+%2</source>
+        <translation>Добавлено в правила %1:
+%2</translation>
+    </message>
+    <message>
+        <source>Close all connections (%1)</source>
+        <translation>Закрыть все подключения (%1)</translation>
+    </message>
+    <message>
+        <source>Close all connections for &quot;%1&quot; (%2)</source>
+        <translation>Закрыть все подключения для «%1» (%2)</translation>
+    </message>
+    <message>
+        <source>Close connection</source>
+        <translation>Закрыть подключение</translation>
+    </message>
+    <message>
+        <source>Collapse All</source>
+        <translation>Свернуть все</translation>
+    </message>
+    <message>
+        <source>Copied: %1</source>
+        <translation>Скопировано: %1</translation>
+    </message>
+    <message>
+        <source>Copy Destination (%1)</source>
+        <translation>Копировать назначение (%1)</translation>
+    </message>
+    <message>
+        <source>Copy Process Name</source>
+        <translation>Копировать имя процесса</translation>
+    </message>
+    <message>
+        <source>Copy Process Name (%1)</source>
+        <translation>Копировать имя процесса (%1)</translation>
+    </message>
+    <message>
+        <source>Diagnose this application</source>
+        <translation>Диагностировать это приложение</translation>
+    </message>
+    <message>
+        <source>Direct</source>
+        <translation>Напрямую</translation>
+    </message>
+    <message>
+        <source>Expand All</source>
+        <translation>Развернуть все</translation>
+    </message>
+    <message>
+        <source>Proxy</source>
+        <translation>Прокси</translation>
+    </message>
+    <message>
+        <source>Update Rule-Sets</source>
+        <translation>Обновить наборы правил</translation>
     </message>
 </context>
 <context>

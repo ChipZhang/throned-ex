@@ -211,8 +211,8 @@ struct BuildContext {
     QMap<QString, QString> vpnEndpointTags;
     QList<QString> vpnGateTags;
     QList<QString> vpnAuxTags;
-    // The gated tunnel that carries the whole profile refuses any DNS it cannot answer.
-    bool vpnBlockOutsideDns = false;
+    // The main-profile tunnel set to Strict tunnel DNS; its resolvers take every remote query.
+    QString vpnStrictTag;
     QList<QString> xrayIngressTags;
     QList<QString> singIngressTags;
     QList<coreBridgeConfig> singToXrayBridges;
@@ -840,11 +840,6 @@ QJsonObject buildDnsObj(BuildContext &ctx, QString address) {
         if (ctx.tunEnabled && ctx.isResolvedUsed) {
             return {{"type", "underlying"}};
         }
-        if (ctx.tunEnabled && ctx.os == Darwin) {
-            return {
-                {"type", "udp"},
-                {"server", dataManager->settingsRepo->core_box_underlying_dns}};
-        }
         return {{"type", "local"}};
     }
     if (address.startsWith("dhcp://")) {
@@ -931,11 +926,6 @@ QString chainDnsTag(const QString &outboundTag) {
 
 void buildDNSSection(BuildContext &ctx, bool useDnsObj = true) {
     const auto &settings = *dataManager->settingsRepo;
-    if (getOS() == Darwin && settings.core_box_underlying_dns.isEmpty() && settings.spmode_vpn) {
-        ctx.error = QObject::tr("Local DNS and Tun mode do not work together, please set an IP to be used as the Local DNS server in the Routing Settings -> Local override");
-        return;
-    }
-
     if (settings.use_dns_object && useDnsObj) {
         // The simple DNS box is only greyed out in the dialog, which is easy to
         // forget once it is closed.
@@ -1077,9 +1067,8 @@ void buildDNSSection(BuildContext &ctx, bool useDnsObj = true) {
         };
     }
 
-    // A gated tunnel takes the fall-through only where unmatched traffic can reach it.
-    QString vpnFinalDnsTag;
-    bool vpnDirectFinalDns = false;
+    // Strict tunnel DNS takes every query that would otherwise go to dns-remote.
+    QString remoteDnsTag = tags::dnsRemote;
     if (!ctx.forTest) {
         for (auto it = ctx.vpnEndpointTags.cbegin(); it != ctx.vpnEndpointTags.cend(); ++it) {
             const auto dnsTag = QString(tags::dnsVpnPrefix) + "-" + it.key();
@@ -1088,16 +1077,10 @@ void buildDNSSection(BuildContext &ctx, bool useDnsObj = true) {
                 {"type", it.value()},
                 {"endpoint", it.key()},
             };
-            if (ctx.vpnGateTags.contains(it.key())) {
+            if (it.key() == ctx.vpnStrictTag) {
                 server["accept_default_resolvers"] = true;
                 server["accept_search_domain"] = true;
-                if (it.key() == tags::proxy || it.key() == tags::warpBypass) {
-                    // dns-remote detours through this tunnel, so direct is the only reachable fallback.
-                    if (ctx.vpnBlockOutsideDns) {
-                        if (vpnFinalDnsTag.isEmpty()) vpnFinalDnsTag = dnsTag;
-                    } else
-                        vpnDirectFinalDns = true;
-                }
+                remoteDnsTag = dnsTag;
             }
             servers += server;
             headRules += QJsonObject{
@@ -1186,19 +1169,14 @@ void buildDNSSection(BuildContext &ctx, bool useDnsObj = true) {
     const bool useDirectFinalDNS = ctx.forTest || settings.dns_final_out == tags::direct;
 
     if (!ctx.forTest && dns.needProxyDnsRules && useDirectFinalDNS) {
-        appendDnsRoutingRules(rules, dns.proxy, tags::dnsRemote, settings.remote_dns_disable_ipv6);
+        appendDnsRoutingRules(rules, dns.proxy, remoteDnsTag, settings.remote_dns_disable_ipv6);
     }
     if (!ctx.forTest && useDirectFinalDNS && !dns.proxyProcess.isEmpty()) {
         appendProcessDnsRules(rules, dns.proxyProcess, tags::dnsRemote, settings.remote_dns_disable_ipv6);
     }
 
-    const bool finalIsDirect = useDirectFinalDNS || vpnDirectFinalDns;
-    appendDnsRoute(rules, QJsonObject{},
-                   !vpnFinalDnsTag.isEmpty() ? vpnFinalDnsTag
-                   : finalIsDirect           ? QString(tags::dnsDirect)
-                                             : QString(tags::dnsRemote),
-                   vpnFinalDnsTag.isEmpty() && (finalIsDirect ? settings.direct_dns_disable_ipv6
-                                                              : settings.remote_dns_disable_ipv6));
+    appendDnsRoute(rules, QJsonObject{}, useDirectFinalDNS ? QString(tags::dnsDirect) : remoteDnsTag,
+                   useDirectFinalDNS ? settings.direct_dns_disable_ipv6 : settings.remote_dns_disable_ipv6);
 
     auto dnsLocalAddress = settings.core_box_underlying_dns.isEmpty() ? "local" : settings.core_box_underlying_dns;
     auto dnsLocalObj = buildDnsObj(ctx, dnsLocalAddress);
@@ -1475,14 +1453,13 @@ void buildSingboxChain(BuildContext &ctx, const QList<std::shared_ptr<Profile>> 
             const bool gated = !opts.auxiliary &&
                                ((ovpn != nullptr && ovpn->only_advertised_routes) ||
                                 (ocon != nullptr && ocon->only_advertised_routes));
-            const bool tunnelDNS = (ovpn != nullptr && ovpn->use_tunnel_dns) ||
-                                   (ocon != nullptr && ocon->use_tunnel_dns);
-            // dns-remote detours through this tunnel, so it cannot be the fallback here.
-            const bool carriesProfile = tag == tags::proxy || tag == tags::warpBypass;
-            if (tunnelDNS || (gated && carriesProfile)) ctx.vpnEndpointTags.insert(tag, ent->type);
-            if (gated && carriesProfile)
-                ctx.vpnBlockOutsideDns = (ovpn != nullptr && ovpn->block_outside_dns) ||
-                                         (ocon != nullptr && ocon->block_outside_dns);
+            const QString tunnelDns = ovpn != nullptr   ? ovpn->tunnel_dns
+                                      : ocon != nullptr ? ocon->tunnel_dns
+                                                        : QString();
+            if (tunnelDns != kTunnelDnsNone) ctx.vpnEndpointTags.insert(tag, ent->type);
+            // Only the main profile owns the remote queries; an auxiliary tunnel keeps to the names it claims.
+            if (tunnelDns == kTunnelDnsStrict && (tag == tags::proxy || tag == tags::warpBypass))
+                ctx.vpnStrictTag = tag;
             if (gated) ctx.vpnGateTags << tag;
         }
         BuildResult built;
@@ -2230,6 +2207,10 @@ void buildRouteSection(BuildContext &ctx) {
 
     QJsonArray vpnFallthroughRules;
     if (!ctx.forTest && ctx.vpnGateTags.contains(finalTag)) {
+        // A hostname destination has no address for preferred_by to match until it is resolved.
+        QJsonObject gateResolve{{"action", "resolve"}};
+        if (!settings.resolve_domain_strategy.isEmpty()) gateResolve["strategy"] = settings.resolve_domain_strategy;
+        vpnFallthroughRules.append(gateResolve);
         vpnFallthroughRules.append(QJsonObject{
             {"preferred_by", QJsonArray{finalTag}},
             {"action", "route"},
@@ -2504,6 +2485,24 @@ std::shared_ptr<BuildConfigResult> BuildSingBoxConfig(const std::shared_ptr<Prof
                                 .arg(name));
             }
             res->coreConfig = obj;
+            // macOS points system DNS at the TUN address once the core starts; a full config supplies it itself.
+            for (const auto item: res->coreConfig["inbounds"].toArray()) {
+                const auto inbound = item.toObject();
+                if (inbound["type"].toString() != "tun") continue;
+                const auto address = inbound["address"];
+                QStringList addresses;
+                if (address.isString()) {
+                    addresses << address.toString();
+                } else {
+                    for (const auto entry: address.toArray()) addresses << entry.toString();
+                }
+                for (const auto &cidr: addresses) {
+                    if (cidr.contains(':')) continue;
+                    res->tunIPv4CIDR = cidr;
+                    break;
+                }
+                if (!res->tunIPv4CIDR.isEmpty()) break;
+            }
             return res;
         }
     }

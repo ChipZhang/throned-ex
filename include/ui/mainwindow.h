@@ -3,7 +3,7 @@
 #include <QMainWindow>
 #include <include/global/HTTPRequestHelper.hpp>
 #ifndef Q_MOC_RUN
-#include <core/server/gen/libcore.pb.h>
+#include <core/gen/libcore.pb.h>
 #endif
 
 #include "include/global/Configs.hpp"
@@ -11,6 +11,7 @@
 #include "include/ui/widget/ThroughputChart.h"
 #include "include/ui/stats/MiniChartWidget.h"
 #include "include/database/entities/Profile.h"
+#include "include/database/entities/RouteProfile.h"
 #ifdef Q_OS_LINUX
 #include <QtDBus>
 #endif
@@ -19,7 +20,7 @@
 
 #include <optional>
 #include <QKeyEvent>
-#include <QSystemTrayIcon>
+#include "include/ui/widget/TrayIcon.hpp"
 #include <QPointer>
 #include <QTimer>
 #include <QElapsedTimer>
@@ -360,8 +361,8 @@ private:
     // What the view is attached to: rows from the view or its selection model are
     // proxy rows, not profilesTableModel rows.
     ProfilesFilterProxyModel *profilesFilterModel = nullptr;
-    QSystemTrayIcon *tray;
-    QMenu *trayMenu = nullptr; // tray context menu
+    TrayIcon *tray;
+    QMenu *trayMenu = nullptr;
     // Tray "Select Server"/"Select Routing" open this small Qt-drawn popup instead of a
     // submenu, because a tray submenu isn't painted by Qt on Linux (SNI/DBusMenu) or macOS
     // (native NSMenu) and so can't reliably expand a dynamic list. Recreated on each open.
@@ -376,10 +377,8 @@ private:
     QLabel *statusDirectSpeed = nullptr;
     QList<QPointer<QLabel>> statusElidedLabels;
     void setStatusText(QLabel *label, const QString &text);
-    void showConnectionMenu(const QPoint &pos);
     void addRuleFromConnection(const QString &entry, int action);
     void addRulesFromConnection(const QStringList &entries, int action);
-    [[nodiscard]] QString existingRuleAction(const QString &entry) const;
     QPointer<TrayOtpCodes> trayOtpCodes;
     void openTrayOtpCodes();
     QShortcut *shortcut_esc = new QShortcut(QKeySequence::Cancel, this);
@@ -406,6 +405,7 @@ private:
     // prompt: a batch test can surface the missing-asset error for many profiles at
     // once, and we only want one prompt/download. Touched on the UI thread only.
     bool m_xrayGeoAssetBusy = false;
+    bool m_ruleSetUpdateBusy = false;
     QString traffic_update_cache;
     qint64 last_test_time = 0;
     int proxy_last_order = -1;
@@ -416,13 +416,18 @@ private:
     ExitReason exit_reason = ExitReason::None;
     QMutex mu_download_update;
     QMutex mu_download_dashboard;
-    class ConnectionsTableModel *connectionsModel = nullptr;
-    class ConnectionsFilterProxyModel *connectionsFilterModel = nullptr;
-    class ConnectionCloseDelegate *connectionCloseDelegate = nullptr;
+    class ConnectionsTreeModel *connectionsModel = nullptr;
+    class ConnectionsTreeFilterProxyModel *connectionsFilterModel = nullptr;
     class ConnectionsFilterHeader *connectionFilterHeader = nullptr;
+    QHash<QString, bool> m_processExpanded; // per-process choices; the rest follow m_processesExpandedByDefault
+    bool m_processesExpandedByDefault = true;
     QTimer *connectionFilterDebounce = nullptr;
+    QToolButton *connectionExpandButton = nullptr;
     QToolButton *connectionCloseAllButton = nullptr;
+    QToolButton *connectionFilterButton = nullptr;
     QIcon connectionCloseIcon;
+    QIcon connectionExpandIcon;
+    QIcon connectionCollapseIcon;
     int toolTipID;
     ThroughputChart *speedChartWidget;
     class RuntimeStatsWidget *runtimeStatsWidget = nullptr;
@@ -778,7 +783,11 @@ private:
 
     void setupConnectionSortMenu();
 
+    void onConnectionContextMenu(const QPoint &pos);
+
     QString routeRuleAppendBlocker() const;
+
+    bool addRuleToCurrentRoute(const QString &rawRule, Configs::simpleAction action);
 
     void setupConnectionFilter();
 
@@ -790,12 +799,19 @@ private:
 
     void syncConnectionSourceColumn();
 
-    // Rows are rewritten on every poll, so ids are read at click time, never captured.
+    void syncConnectionExpansion();
+
+    void setConnectionGroupsExpanded(bool expanded);
+
+    bool connectionGroupsExpanded() const;
+
+    void syncConnectionExpandButton();
+
     void closeConnections(const QStringList &ids);
 
     QStringList listedConnectionIds() const;
 
-    void refreshConnectionCloseIcons();
+    void refreshConnectionIcons();
 
     // The window's own component, not an outside caller: it drives the data
     // view, the profile table and the geo-asset prompt while a sweep runs.

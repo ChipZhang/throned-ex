@@ -14,6 +14,7 @@
 #include <QScrollBar>
 #include <QTabWidget>
 #include <QTableView>
+#include <QTreeView>
 #include <QTextBrowser>
 #include <QTimer>
 #include <QToolButton>
@@ -81,7 +82,7 @@ void CaptureUpdateStatusPreviews(MainWindow *window, const QString &prefix) {
 void CaptureConnectionsPreview(MainWindow *window, const QString &prefix) {
     window->grab().save(prefix + QStringLiteral("-window.png"), "PNG");
     SaveGeometryReport(window, prefix + QStringLiteral("-window.png"));
-    auto *table = window->findChild<QTableView *>(QStringLiteral("connections"));
+    auto *table = window->findChild<QTreeView *>(QStringLiteral("connections"));
     if (table == nullptr || table->model() == nullptr || table->model()->rowCount() == 0) {
         qApp->exit(2);
         return;
@@ -249,7 +250,7 @@ void BeginMainWindowCapture(MainWindow *window, const QString &prefix) {
             QTabWidget *statsTabs = nullptr;
             for (auto *tabs: window->findChildren<QTabWidget *>()) {
                 for (int tab = 0; tab < tabs->count(); ++tab)
-                    if (tabs->widget(tab)->findChild<QTableView *>(QStringLiteral("connections")) != nullptr) {
+                    if (tabs->widget(tab)->findChild<QTreeView *>(QStringLiteral("connections")) != nullptr) {
                         statsTabs = tabs;
                         break;
                     }

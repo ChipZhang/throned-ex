@@ -27,7 +27,7 @@ esac
 mapfile -t files < <(
     git ls-files --cached --others --exclude-standard -- '*.c' '*.cc' '*.cpp' '*.h' '*.hpp' \
         | grep -v '^3rdparty/' \
-        | grep -v '^core/server/gen/'
+        | grep -v '^core/gen/'
 )
 
 if ((check)); then
