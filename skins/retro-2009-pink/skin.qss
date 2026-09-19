@@ -38,6 +38,6 @@ QPushButton#quickAddPrimaryButton {
     border-color: #FF9CC8;
 }
 
-QTableView::item:selected, QTableWidget::item:selected {
+QTableView::item:selected, QTableWidget::item:selected, QTreeView::item:selected {
     background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #D63A82, stop:1 #B92770);
 }
