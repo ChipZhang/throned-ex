@@ -316,39 +316,21 @@
     },
     {
         "class": "QCheckBox",
-        "h": 24,
+        "h": 30,
         "name": "file_assoc_auto_register",
         "visible": false,
-        "w": 323,
-        "x": 21,
-        "y": 410
-    },
-    {
-        "class": "QPushButton",
-        "h": 27,
-        "name": "file_assoc_install",
-        "visible": false,
-        "w": 85,
-        "x": 448,
-        "y": 409
+        "w": 100,
+        "x": 520,
+        "y": 549
     },
     {
         "class": "QLabel",
-        "h": 27,
+        "h": 38,
         "name": "file_assoc_status",
         "visible": false,
-        "w": 92,
-        "x": 350,
-        "y": 409
-    },
-    {
-        "class": "QPushButton",
-        "h": 27,
-        "name": "file_assoc_uninstall",
-        "visible": false,
-        "w": 80,
-        "x": 539,
-        "y": 409
+        "w": 89,
+        "x": 288,
+        "y": 597
     },
     {
         "class": "QCheckBox",
@@ -1261,10 +1243,10 @@
     },
     {
         "class": "QFrame",
-        "h": 133,
+        "h": 57,
         "name": "settingsField",
         "visible": false,
-        "w": 312,
+        "w": 252,
         "x": 258,
         "y": 192
     },
@@ -1279,10 +1261,10 @@
     },
     {
         "class": "QFrame",
-        "h": 57,
+        "h": 133,
         "name": "settingsField",
         "visible": false,
-        "w": 252,
+        "w": 312,
         "x": 258,
         "y": 192
     },
@@ -1351,7 +1333,7 @@
     },
     {
         "class": "QFrame",
-        "h": 39,
+        "h": 57,
         "name": "settingsField",
         "visible": false,
         "w": 312,
@@ -1360,7 +1342,7 @@
     },
     {
         "class": "QFrame",
-        "h": 57,
+        "h": 39,
         "name": "settingsField",
         "visible": false,
         "w": 312,
@@ -1405,7 +1387,7 @@
     },
     {
         "class": "QFrame",
-        "h": 76,
+        "h": 57,
         "name": "settingsField",
         "visible": false,
         "w": 312,
@@ -1414,7 +1396,7 @@
     },
     {
         "class": "QFrame",
-        "h": 57,
+        "h": 76,
         "name": "settingsField",
         "visible": false,
         "w": 312,
@@ -1450,7 +1432,7 @@
     },
     {
         "class": "QFrame",
-        "h": 39,
+        "h": 95,
         "name": "settingsField",
         "visible": false,
         "w": 312,
@@ -1459,7 +1441,7 @@
     },
     {
         "class": "QFrame",
-        "h": 95,
+        "h": 39,
         "name": "settingsField",
         "visible": false,
         "w": 312,
@@ -1662,6 +1644,15 @@
         "visible": false,
         "w": 312,
         "x": 258,
+        "y": 530
+    },
+    {
+        "class": "QFrame",
+        "h": 57,
+        "name": "settingsField",
+        "visible": false,
+        "w": 312,
+        "x": 258,
         "y": 550
     },
     {
@@ -1689,7 +1680,7 @@
         "visible": false,
         "w": 312,
         "x": 258,
-        "y": 603
+        "y": 587
     },
     {
         "class": "QFrame",
@@ -1726,15 +1717,6 @@
         "w": 312,
         "x": 258,
         "y": 657
-    },
-    {
-        "class": "QFrame",
-        "h": 76,
-        "name": "settingsField",
-        "visible": false,
-        "w": 312,
-        "x": 258,
-        "y": 660
     },
     {
         "class": "QFrame",
@@ -1797,7 +1779,7 @@
         "visible": false,
         "w": 312,
         "x": 258,
-        "y": 736
+        "y": 717
     },
     {
         "class": "QFrame",
@@ -1807,6 +1789,15 @@
         "w": 312,
         "x": 258,
         "y": 749
+    },
+    {
+        "class": "QFrame",
+        "h": 76,
+        "name": "settingsField",
+        "visible": false,
+        "w": 312,
+        "x": 258,
+        "y": 774
     },
     {
         "class": "QFrame",
@@ -1843,6 +1834,15 @@
         "w": 312,
         "x": 258,
         "y": 845
+    },
+    {
+        "class": "QFrame",
+        "h": 57,
+        "name": "settingsField",
+        "visible": false,
+        "w": 312,
+        "x": 258,
+        "y": 850
     },
     {
         "class": "QFrame",
@@ -2098,24 +2098,6 @@
     },
     {
         "class": "QLabel",
-        "h": 114,
-        "name": "settingsFieldTitle",
-        "visible": false,
-        "w": 0,
-        "x": 270,
-        "y": 202
-    },
-    {
-        "class": "QLabel",
-        "h": 38,
-        "name": "settingsFieldTitle",
-        "visible": false,
-        "w": 0,
-        "x": 270,
-        "y": 202
-    },
-    {
-        "class": "QLabel",
         "h": 38,
         "name": "settingsFieldTitle",
         "visible": false,
@@ -2130,6 +2112,24 @@
         "visible": false,
         "w": 0,
         "x": 270,
+        "y": 202
+    },
+    {
+        "class": "QLabel",
+        "h": 114,
+        "name": "settingsFieldTitle",
+        "visible": false,
+        "w": 0,
+        "x": 270,
+        "y": 202
+    },
+    {
+        "class": "QLabel",
+        "h": 38,
+        "name": "settingsFieldTitle",
+        "visible": false,
+        "w": 232,
+        "x": 270,
         "y": 221
     },
     {
@@ -2155,7 +2155,7 @@
         "h": 38,
         "name": "settingsFieldTitle",
         "visible": false,
-        "w": 232,
+        "w": 0,
         "x": 270,
         "y": 221
     },
@@ -2188,15 +2188,6 @@
     },
     {
         "class": "QLabel",
-        "h": 20,
-        "name": "settingsFieldTitle",
-        "visible": false,
-        "w": 232,
-        "x": 270,
-        "y": 278
-    },
-    {
-        "class": "QLabel",
         "h": 38,
         "name": "settingsFieldTitle",
         "visible": false,
@@ -2219,6 +2210,15 @@
         "name": "settingsFieldTitle",
         "visible": false,
         "w": 0,
+        "x": 270,
+        "y": 278
+    },
+    {
+        "class": "QLabel",
+        "h": 20,
+        "name": "settingsFieldTitle",
+        "visible": false,
+        "w": 232,
         "x": 270,
         "y": 278
     },
@@ -2497,6 +2497,15 @@
         "h": 38,
         "name": "settingsFieldTitle",
         "visible": false,
+        "w": 232,
+        "x": 270,
+        "y": 540
+    },
+    {
+        "class": "QLabel",
+        "h": 38,
+        "name": "settingsFieldTitle",
+        "visible": false,
         "w": 0,
         "x": 270,
         "y": 560
@@ -2524,9 +2533,9 @@
         "h": 38,
         "name": "settingsFieldTitle",
         "visible": false,
-        "w": 232,
+        "w": 0,
         "x": 270,
-        "y": 613
+        "y": 597
     },
     {
         "class": "QLabel",
@@ -2563,15 +2572,6 @@
         "w": 232,
         "x": 270,
         "y": 667
-    },
-    {
-        "class": "QLabel",
-        "h": 57,
-        "name": "settingsFieldTitle",
-        "visible": false,
-        "w": 232,
-        "x": 270,
-        "y": 670
     },
     {
         "class": "QLabel",
@@ -2632,9 +2632,9 @@
         "h": 38,
         "name": "settingsFieldTitle",
         "visible": false,
-        "w": 0,
+        "w": 232,
         "x": 270,
-        "y": 746
+        "y": 727
     },
     {
         "class": "QLabel",
@@ -2644,6 +2644,15 @@
         "w": 0,
         "x": 270,
         "y": 759
+    },
+    {
+        "class": "QLabel",
+        "h": 57,
+        "name": "settingsFieldTitle",
+        "visible": false,
+        "w": 232,
+        "x": 270,
+        "y": 784
     },
     {
         "class": "QLabel",
@@ -2680,6 +2689,15 @@
         "w": 0,
         "x": 270,
         "y": 855
+    },
+    {
+        "class": "QLabel",
+        "h": 38,
+        "name": "settingsFieldTitle",
+        "visible": false,
+        "w": 0,
+        "x": 270,
+        "y": 860
     },
     {
         "class": "QLabel",
@@ -2857,52 +2875,52 @@
         "h": 61,
         "name": "settingsHeading",
         "visible": false,
-        "w": 312,
-        "x": 258,
-        "y": 131
-    },
-    {
-        "class": "QFrame",
-        "h": 80,
-        "name": "settingsHeading",
-        "visible": false,
-        "w": 312,
-        "x": 258,
-        "y": 131
-    },
-    {
-        "class": "QFrame",
-        "h": 80,
-        "name": "settingsHeading",
-        "visible": false,
-        "w": 312,
-        "x": 258,
-        "y": 131
-    },
-    {
-        "class": "QFrame",
-        "h": 61,
-        "name": "settingsHeading",
-        "visible": false,
-        "w": 312,
-        "x": 258,
-        "y": 131
-    },
-    {
-        "class": "QFrame",
-        "h": 80,
-        "name": "settingsHeading",
-        "visible": false,
-        "w": 312,
-        "x": 258,
-        "y": 131
-    },
-    {
-        "class": "QFrame",
-        "h": 61,
-        "name": "settingsHeading",
-        "visible": false,
         "w": 252,
+        "x": 258,
+        "y": 131
+    },
+    {
+        "class": "QFrame",
+        "h": 80,
+        "name": "settingsHeading",
+        "visible": false,
+        "w": 312,
+        "x": 258,
+        "y": 131
+    },
+    {
+        "class": "QFrame",
+        "h": 61,
+        "name": "settingsHeading",
+        "visible": false,
+        "w": 312,
+        "x": 258,
+        "y": 131
+    },
+    {
+        "class": "QFrame",
+        "h": 80,
+        "name": "settingsHeading",
+        "visible": false,
+        "w": 312,
+        "x": 258,
+        "y": 131
+    },
+    {
+        "class": "QFrame",
+        "h": 80,
+        "name": "settingsHeading",
+        "visible": false,
+        "w": 312,
+        "x": 258,
+        "y": 131
+    },
+    {
+        "class": "QFrame",
+        "h": 61,
+        "name": "settingsHeading",
+        "visible": false,
+        "w": 312,
         "x": 258,
         "y": 131
     },
@@ -2962,15 +2980,6 @@
     },
     {
         "class": "QFrame",
-        "h": 61,
-        "name": "settingsHeading",
-        "visible": false,
-        "w": 312,
-        "x": 258,
-        "y": 542
-    },
-    {
-        "class": "QFrame",
         "h": 80,
         "name": "settingsHeading",
         "visible": false,
@@ -2995,6 +3004,15 @@
         "w": 312,
         "x": 258,
         "y": 619
+    },
+    {
+        "class": "QFrame",
+        "h": 61,
+        "name": "settingsHeading",
+        "visible": false,
+        "w": 312,
+        "x": 258,
+        "y": 656
     },
     {
         "class": "QFrame",
@@ -3082,24 +3100,6 @@
         "h": 24,
         "name": "settingsHero",
         "visible": false,
-        "w": 314,
-        "x": 257,
-        "y": 67
-    },
-    {
-        "class": "QLabel",
-        "h": 24,
-        "name": "settingsHero",
-        "visible": false,
-        "w": 332,
-        "x": 257,
-        "y": 67
-    },
-    {
-        "class": "QLabel",
-        "h": 24,
-        "name": "settingsHero",
-        "visible": false,
         "w": 254,
         "x": 257,
         "y": 67
@@ -3110,6 +3110,24 @@
         "name": "settingsHero",
         "visible": false,
         "w": 314,
+        "x": 257,
+        "y": 67
+    },
+    {
+        "class": "QLabel",
+        "h": 24,
+        "name": "settingsHero",
+        "visible": false,
+        "w": 314,
+        "x": 257,
+        "y": 67
+    },
+    {
+        "class": "QLabel",
+        "h": 24,
+        "name": "settingsHero",
+        "visible": false,
+        "w": 332,
         "x": 257,
         "y": 67
     },
@@ -3280,15 +3298,6 @@
         "h": 19,
         "name": "settingsMuted",
         "visible": false,
-        "w": 332,
-        "x": 257,
-        "y": 101
-    },
-    {
-        "class": "QLabel",
-        "h": 19,
-        "name": "settingsMuted",
-        "visible": false,
         "w": 254,
         "x": 257,
         "y": 101
@@ -3307,6 +3316,15 @@
         "h": 19,
         "name": "settingsMuted",
         "visible": false,
+        "w": 332,
+        "x": 257,
+        "y": 101
+    },
+    {
+        "class": "QLabel",
+        "h": 19,
+        "name": "settingsMuted",
+        "visible": false,
         "w": 284,
         "x": 272,
         "y": 163
@@ -3322,7 +3340,7 @@
     },
     {
         "class": "QLabel",
-        "h": 38,
+        "h": 19,
         "name": "settingsMuted",
         "visible": false,
         "w": 284,
@@ -3349,7 +3367,7 @@
     },
     {
         "class": "QLabel",
-        "h": 19,
+        "h": 38,
         "name": "settingsMuted",
         "visible": false,
         "w": 284,
@@ -3493,15 +3511,6 @@
     },
     {
         "class": "QLabel",
-        "h": 19,
-        "name": "settingsMuted",
-        "visible": false,
-        "w": 284,
-        "x": 272,
-        "y": 574
-    },
-    {
-        "class": "QLabel",
         "h": 38,
         "name": "settingsMuted",
         "visible": false,
@@ -3553,6 +3562,15 @@
         "w": 0,
         "x": 270,
         "y": 662
+    },
+    {
+        "class": "QLabel",
+        "h": 19,
+        "name": "settingsMuted",
+        "visible": false,
+        "w": 284,
+        "x": 272,
+        "y": 688
     },
     {
         "class": "QLabel",
@@ -3736,7 +3754,7 @@
     },
     {
         "class": "QWidget",
-        "h": 1360,
+        "h": 1438,
         "name": "settingsPage",
         "visible": false,
         "w": 342,
@@ -3745,16 +3763,7 @@
     },
     {
         "class": "QWidget",
-        "h": 743,
-        "name": "settingsPage",
-        "visible": false,
-        "w": 342,
-        "x": 243,
-        "y": 59
-    },
-    {
-        "class": "QWidget",
-        "h": 1077,
+        "h": 706,
         "name": "settingsPage",
         "visible": false,
         "w": 342,
@@ -3772,7 +3781,7 @@
     },
     {
         "class": "QWidget",
-        "h": 706,
+        "h": 857,
         "name": "settingsPage",
         "visible": false,
         "w": 342,
@@ -3781,7 +3790,16 @@
     },
     {
         "class": "QWidget",
-        "h": 1438,
+        "h": 1360,
+        "name": "settingsPage",
+        "visible": false,
+        "w": 342,
+        "x": 243,
+        "y": 59
+    },
+    {
+        "class": "QWidget",
+        "h": 1077,
         "name": "settingsPage",
         "visible": false,
         "w": 342,
@@ -3946,6 +3964,24 @@
         "h": 37,
         "name": "settingsSecondaryButton",
         "visible": false,
+        "w": 88,
+        "x": 383,
+        "y": 597
+    },
+    {
+        "class": "QPushButton",
+        "h": 37,
+        "name": "settingsSecondaryButton",
+        "visible": false,
+        "w": 81,
+        "x": 477,
+        "y": 597
+    },
+    {
+        "class": "QPushButton",
+        "h": 37,
+        "name": "settingsSecondaryButton",
+        "visible": false,
         "w": 176,
         "x": 322,
         "y": 629
@@ -4024,7 +4060,7 @@
     },
     {
         "class": "QFrame",
-        "h": 274,
+        "h": 234,
         "name": "settingsSection",
         "visible": false,
         "w": 314,
@@ -4042,7 +4078,7 @@
     },
     {
         "class": "QFrame",
-        "h": 406,
+        "h": 196,
         "name": "settingsSection",
         "visible": false,
         "w": 314,
@@ -4060,15 +4096,6 @@
     },
     {
         "class": "QFrame",
-        "h": 234,
-        "name": "settingsSection",
-        "visible": false,
-        "w": 314,
-        "x": 257,
-        "y": 130
-    },
-    {
-        "class": "QFrame",
         "h": 789,
         "name": "settingsSection",
         "visible": false,
@@ -4078,7 +4105,16 @@
     },
     {
         "class": "QFrame",
-        "h": 196,
+        "h": 274,
+        "name": "settingsSection",
+        "visible": false,
+        "w": 314,
+        "x": 257,
+        "y": 130
+    },
+    {
+        "class": "QFrame",
+        "h": 406,
         "name": "settingsSection",
         "visible": false,
         "w": 314,
@@ -4096,7 +4132,7 @@
     },
     {
         "class": "QFrame",
-        "h": 195,
+        "h": 309,
         "name": "settingsSection",
         "visible": false,
         "w": 314,
@@ -4132,15 +4168,6 @@
     },
     {
         "class": "QFrame",
-        "h": 253,
-        "name": "settingsSection",
-        "visible": false,
-        "w": 314,
-        "x": 257,
-        "y": 541
-    },
-    {
-        "class": "QFrame",
         "h": 437,
         "name": "settingsSection",
         "visible": false,
@@ -4165,6 +4192,15 @@
         "w": 314,
         "x": 257,
         "y": 618
+    },
+    {
+        "class": "QFrame",
+        "h": 253,
+        "name": "settingsSection",
+        "visible": false,
+        "w": 314,
+        "x": 257,
+        "y": 655
     },
     {
         "class": "QFrame",
@@ -4234,7 +4270,7 @@
         "h": 19,
         "name": "settingsSectionTitle",
         "visible": false,
-        "w": 284,
+        "w": 224,
         "x": 272,
         "y": 142
     },
@@ -4243,7 +4279,7 @@
         "h": 19,
         "name": "settingsSectionTitle",
         "visible": false,
-        "w": 224,
+        "w": 284,
         "x": 272,
         "y": 142
     },
@@ -4335,15 +4371,6 @@
         "visible": false,
         "w": 284,
         "x": 272,
-        "y": 553
-    },
-    {
-        "class": "QLabel",
-        "h": 19,
-        "name": "settingsSectionTitle",
-        "visible": false,
-        "w": 284,
-        "x": 272,
         "y": 558
     },
     {
@@ -4363,6 +4390,15 @@
         "w": 284,
         "x": 272,
         "y": 630
+    },
+    {
+        "class": "QLabel",
+        "h": 19,
+        "name": "settingsSectionTitle",
+        "visible": false,
+        "w": 284,
+        "x": 272,
+        "y": 667
     },
     {
         "class": "QLabel",

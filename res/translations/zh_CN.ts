@@ -2279,6 +2279,10 @@ Select which parts to restore:</source>
         <source>Last profile</source>
         <translation>上次的分析数据</translation>
     </message>
+    <message>
+        <source>Config files</source>
+        <translation>配置文件</translation>
+    </message>
 </context>
 <context>
     <name>DialogEditGroup</name>

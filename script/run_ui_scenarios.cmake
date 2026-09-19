@@ -106,7 +106,7 @@ add_ui_scenario(selection GROUPS smoke all
     EXPECTED selection-selected.png selection-cleared.png)
 add_ui_scenario(settings GROUPS smoke all
     ARGS -ui-preview @PREFIX@ -ui-preview-docs -theme "Throned Graphite" -ui-preview-settings
-    EXPECTED settings-settings.png settings-settings-diagnostics.png)
+    EXPECTED settings-settings.png settings-settings-security.png settings-settings-diagnostics.png)
 add_ui_scenario(protocol-editors GROUPS all
     ARGS -ui-preview @PREFIX@ -ui-preview-docs -theme "Throned Graphite" -ui-preview-protocols -lang en
     EXPECTED protocol-editors-masque.png protocol-editors-naive.png protocol-editors-warp.png)

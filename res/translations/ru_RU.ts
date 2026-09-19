@@ -2651,6 +2651,10 @@ This backup may have been created with a newer version of the application.</sour
         <source>Last profile</source>
         <translation>Последний профиль</translation>
     </message>
+    <message>
+        <source>Config files</source>
+        <translation>Файлы конфигураций</translation>
+    </message>
 </context>
 <context>
     <name>DialogEditGroup</name>

@@ -1685,6 +1685,10 @@ Total speed: %5/s↑ %6/s↓</source>
         <source>Last profile</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Config files</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DialogManageRoutes</name>

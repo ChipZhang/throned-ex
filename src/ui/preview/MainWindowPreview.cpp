@@ -515,6 +515,7 @@ void RunMainWindow(const QString &prefix) {
                 // Designer buttons by overwriting their object name, so they no longer
                 // answer to it. Their row is proven by url_scheme_status beside them.
                 for (const auto &name: {"url_scheme_auto_register", "url_scheme_status",
+                                        "file_assoc_auto_register", "file_assoc_status",
                                         "siteTargetsEdit", "siteTimeoutSpin"}) {
                     auto *control = dialog->findChild<QWidget *>(QString::fromLatin1(name));
                     if (control == nullptr || control->parentWidget() == nullptr) {
@@ -539,17 +540,22 @@ void RunMainWindow(const QString &prefix) {
                         qApp->exit(2);
                         return;
                     }
-                    nav.last()->click();
-                    QTimer::singleShot(200, dialog, [dialog, prefix] {
-                        dialog->grab().save(prefix + QStringLiteral("-settings-diagnostics.png"), "PNG");
-                        SaveGeometryReport(dialog, prefix + QStringLiteral("-settings-diagnostics.png"));
-                        if (dialog->findChild<DiagnosticsTab *>() == nullptr) {
-                            qWarning() << "The diagnostics settings page is missing";
-                            qApp->exit(2);
-                            return;
-                        }
-                        dialog->close();
-                        qApp->exit(0);
+                    // Security carries the url-scheme and file-association rows; diagnostics is the last entry.
+                    nav.at(nav.size() - 2)->click();
+                    QTimer::singleShot(200, dialog, [dialog, prefix, nav] {
+                        dialog->grab().save(prefix + QStringLiteral("-settings-security.png"), "PNG");
+                        nav.last()->click();
+                        QTimer::singleShot(200, dialog, [dialog, prefix] {
+                            dialog->grab().save(prefix + QStringLiteral("-settings-diagnostics.png"), "PNG");
+                            SaveGeometryReport(dialog, prefix + QStringLiteral("-settings-diagnostics.png"));
+                            if (dialog->findChild<DiagnosticsTab *>() == nullptr) {
+                                qWarning() << "The diagnostics settings page is missing";
+                                qApp->exit(2);
+                                return;
+                            }
+                            dialog->close();
+                            qApp->exit(0);
+                        });
                     });
                 });
             });

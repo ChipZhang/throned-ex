@@ -842,6 +842,18 @@ DialogBasicSettings::DialogBasicSettings(QWidget *parent)
                 schemeLayout->addWidget(ui->url_scheme_install);
                 schemeLayout->addWidget(ui->url_scheme_uninstall);
                 addControlRow(layout, tr("Registration"), schemeTools);
+
+                addToggleRow(layout, ui->file_assoc_auto_register->text(), ui->file_assoc_auto_register);
+                auto *assocTools = new QWidget(this);
+                auto *assocLayout = new QHBoxLayout(assocTools);
+                assocLayout->setContentsMargins(0, 0, 0, 0);
+                assocLayout->setSpacing(6);
+                ui->file_assoc_install->setObjectName(QStringLiteral("settingsSecondaryButton"));
+                ui->file_assoc_uninstall->setObjectName(QStringLiteral("settingsSecondaryButton"));
+                assocLayout->addWidget(ui->file_assoc_status);
+                assocLayout->addWidget(ui->file_assoc_install);
+                assocLayout->addWidget(ui->file_assoc_uninstall);
+                addControlRow(layout, tr("Config files"), assocTools);
                 pageLayout->addWidget(urlScheme);
 
                 auto *certificates = makeSection(tr("Certificates"), tr("Certificate stores and TLS validation defaults."));
