@@ -69,6 +69,10 @@ for locale in "${TRANSLATED[@]}"; do
     printf '  %-6s %5d strings, %4d unfinished\n' "$locale" "$total" "$unfinished"
 done
 
-((status)) && echo && echo "Translation check failed. Add the string with <translation type=\"unfinished\"></translation> where you cannot translate it."
-((status)) || echo && echo "Translation check passed."
+echo
+if ((status)); then
+    echo "Translation check failed. Add the string with <translation type=\"unfinished\"></translation> where you cannot translate it."
+else
+    echo "Translation check passed."
+fi
 exit $status
