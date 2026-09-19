@@ -1490,8 +1490,8 @@ It stays a preference, not a lock: if that profile stops working the selector st
         <translation>启用自定义图标</translation>
     </message>
     <message>
-        <source>Follow the connection status icon in the dock/taskbar. When off, it always shows the Throne icon</source>
-        <translation>应用坞/任务栏中图标跟随连接状态。当关闭时，它始终显示 Throne 图标</translation>
+        <source>Follow the connection status icon in the dock/taskbar. When off, it always shows the Throned icon</source>
+        <translation>应用坞/任务栏中图标跟随连接状态。当关闭时，它始终显示 Throned 图标</translation>
     </message>
     <message>
         <source>Follow Status Icon in Taskbar</source>
@@ -2001,16 +2001,16 @@ It stays a preference, not a lock: if that profile stops working the selector st
         <translation>自定义图标</translation>
     </message>
     <message>
-        <source>Throne Backup (*.thrbackup)</source>
-        <translation>Throne 备份 (*.thrbackup)</translation>
+        <source>Throned Backup (*.thrbackup)</source>
+        <translation>Throned 备份 (*.thrbackup)</translation>
     </message>
     <message>
         <source>Select at least one part to include in the backup.</source>
         <translation>至少选择一个部分以包含在备份中。</translation>
     </message>
     <message>
-        <source>Backup restored successfully. Throne will now restart for the changes to take effect.</source>
-        <translation>备份成功恢复。 Throne 现在将要重启以使得更改生效。</translation>
+        <source>Backup restored successfully. Throned will now restart for the changes to take effect.</source>
+        <translation>备份成功恢复。 Throned 现在将要重启以使得更改生效。</translation>
     </message>
     <message>
         <source>Backup created on %1.
@@ -2069,8 +2069,8 @@ Included: %2</source>
         <translation>无法打开备份文件: %1</translation>
     </message>
     <message>
-        <source>Not a valid Throne backup file.</source>
-        <translation>不是有效的 Throne 备份文件。</translation>
+        <source>Not a valid Throned backup file.</source>
+        <translation>不是有效的 Throned 备份文件。</translation>
     </message>
     <message>
         <source>Unsupported backup format version: %1.
@@ -2084,8 +2084,8 @@ This backup may have been created with a newer version of the application.</sour
     </message>
     <message>
         <source>Each selected part replaces the current data. This cannot be undone.
-Throne will restart to complete the restore.</source>
-        <translation>每个选定的部分会替换当前的数据。 这个操作无法撤销。 Throne 将会重启以完成恢复。</translation>
+Throned will restart to complete the restore.</source>
+        <translation>每个选定的部分会替换当前的数据。 这个操作无法撤销。 Throned 将会重启以完成恢复。</translation>
     </message>
     <message>
         <source>Select at least one part to restore.</source>
@@ -2168,7 +2168,7 @@ Throne will restart to complete the restore.</source>
         <translation>单个网站的等待时间</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throne as the handler for throne:// links and adds it to the &quot;Open with&quot; list for config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throned as the handler for throne:// links and adds it to the &quot;Open with&quot; list for config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2184,7 +2184,7 @@ Throne will restart to complete the restore.</source>
         <translation>安装</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every entry Throne wrote for the handler and the config file associations. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every entry Throned wrote for the handler and the config file associations. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3559,8 +3559,8 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
         <translation>更新选定项</translation>
     </message>
     <message>
-        <source>Paste a Throne route link, a remoteRoute link, a base64 blob, or a JSON rule array</source>
-        <translation>粘贴一个 Throne 路由链接，一个 remoteRoute 链接，一个 base64 blob 或者一个 JSON 规则数组</translation>
+        <source>Paste a Throned route link, a remoteRoute link, a base64 blob, or a JSON rule array</source>
+        <translation>粘贴一个 Throned 路由链接，一个 remoteRoute 链接，一个 base64 blob 或者一个 JSON 规则数组</translation>
     </message>
     <message>
         <source>Add remote routing profiles</source>
@@ -4666,8 +4666,8 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
         <translation>Xray Outbound JSON，详情请阅读 Xray 文档。</translation>
     </message>
     <message>
-        <source>Xray full config (Throne adds a socks inbound and uses sing-box for tun/routing).</source>
-        <translation>Xray 完整配置 (Throne 添加一个 socks inbound (套接字入站)并把 sing-box 用于 tun / 路由)。</translation>
+        <source>Xray full config (Throned adds a socks inbound and uses sing-box for tun/routing).</source>
+        <translation>Xray 完整配置 (Throned 添加一个 socks inbound (套接字入站)并把 sing-box 用于 tun / 路由)。</translation>
     </message>
     <message>
         <source>Please fill the complete config.</source>
@@ -5127,7 +5127,7 @@ rendezvous service. Replaces the server address and port.</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;默认传输层网络(协议)。留空表示使用核心的默认设置 (udp)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static challenge text shown by the server when it asks for a second authentication response. When a challenge is set and an OTP profile is bound, Throne sends the answer itself and no interactive prompt appears.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static challenge text shown by the server when it asks for a second authentication response. When a challenge is set and an OTP profile is bound, Throned sends the answer itself and no interactive prompt appears.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务器在要求第二次身份验证响应时显示的静态质询文本。当设置了质询文本并绑定了 OTP 配置档时，Throned 将自行发送应答，而不出现交互式提示。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
@@ -6777,8 +6777,8 @@ Please start your profile again.</source>
 </translation>
     </message>
     <message>
-        <source>Please run Throne as admin</source>
-        <translation>请以管理员身份运行 Throne</translation>
+        <source>Please run Throned as admin</source>
+        <translation>请以管理员身份运行 Throned</translation>
     </message>
     <message>
         <source>Click To Sort By Protocol</source>
@@ -7621,8 +7621,8 @@ Release note:
         <translation>弱加密</translation>
     </message>
     <message>
-        <source>[Warn] Throne did not shut down cleanly last time. Diagnostics were saved to: %1</source>
-        <translation>[警告] 上次 Throne 没有正常干净的关闭。诊断信息已被保存到: %1</translation>
+        <source>[Warn] Throned did not shut down cleanly last time. Diagnostics were saved to: %1</source>
+        <translation>[警告] 上次 Throned 没有正常干净的关闭。诊断信息已被保存到: %1</translation>
     </message>
     <message>
         <source>An auto selector cannot be a hop in a chain: it moves to a different server on its own whenever one degrades.</source>
@@ -8185,7 +8185,7 @@ Release note:
         <translation>预期 --form-entry=FORM:OPTION=VALUE，已忽略： %1</translation>
     </message>
     <message>
-        <source>Configure a proxy through Throne&apos;s chain instead, ignored: %1</source>
+        <source>Configure a proxy through Throned&apos;s chain instead, ignored: %1</source>
         <translation>改为通过 Throned 的链来配置代理，已忽略： %1</translation>
     </message>
     <message>
@@ -8281,11 +8281,11 @@ Release note:
         <translation>流量统计已暂停</translation>
     </message>
     <message>
-        <source>The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throne restarts.</source>
+        <source>The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throned restarts.</source>
         <translation>统计数据库不可用 (%1)。 本次会话将暂停统计功能，将在 Throned 重启时重建该文件。</translation>
     </message>
     <message>
-        <source>Writing statistics keeps failing (%1). Statistics are paused until Throne restarts.</source>
+        <source>Writing statistics keeps failing (%1). Statistics are paused until Throned restarts.</source>
         <translation>写入统计信息持续失败（%1）。统计功能将暂停，直至 Throned 重启。</translation>
     </message>
     <message>
@@ -8479,11 +8479,11 @@ How to update?</source>
     </message>
     <message>
         <source>Use the route object exactly as written (outbound ids are still resolved to tags).
-Throne will NOT add its DNS-hijack or xray bridge plumbing, so DNS, chained/xray
-outbounds and other Throne features may break. For advanced users only.</source>
+Throned will NOT add its DNS-hijack or xray bridge plumbing, so DNS, chained/xray
+outbounds and other Throned features may break. For advanced users only.</source>
         <translation>按原样使用路由对象 (outbounds 标识符仍被解析为标记)。
-在 Throne 中「不会」添加它的 DNS-hijack (DNS劫持)或 xray bridge plumbing (桥接)，所以 DNS、链式/xray
-出口和其它 Throne 功能可能会失效。仅限高级用户。</translation>
+在 Throned 中「不会」添加它的 DNS-hijack (DNS劫持)或 xray bridge plumbing (桥接)，所以 DNS、链式/xray
+出口和其它 Throned 功能可能会失效。仅限高级用户。</translation>
     </message>
     <message>
         <source>Valid JSON</source>
@@ -9885,7 +9885,7 @@ Deleted %3 Profiles:
         <translation>在浏览器中打开</translation>
     </message>
     <message>
-        <source>This server requires single sign-on in a browser, which Throne does not support yet. Cancel here and use a profile with direct credentials, or supply an authentication cookie in the profile&apos;s advanced settings.</source>
+        <source>This server requires single sign-on in a browser, which Throned does not support yet. Cancel here and use a profile with direct credentials, or supply an authentication cookie in the profile&apos;s advanced settings.</source>
         <translation>这个服务器想要在浏览器中进行单点登录，而 Throned 还未支持。可以在这里取消，然后使用带直接凭证的配置档，或者在配置档的高级设置中提高认证的 cookie。</translation>
     </message>
     <message>
@@ -10021,7 +10021,7 @@ Improves hole-punching reliability. Requires IPv4.</source>
         <translation>本地主机名</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the token the core generates itself. To use a Throne OTP profile, bind it on the main editor instead.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the token the core generates itself. To use a Throned OTP profile, bind it on the main editor instead.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;这是核心自己生成的令牌。要使用 Throned OTP 配置档，请改为在主编辑器上绑定它。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>

@@ -1642,7 +1642,7 @@ Total speed: %5/s↑ %6/s↓</source>
         <translation>چقدر برای پاسخ یک سایت صبر شود</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throne as the handler for throne:// links and adds it to the &quot;Open with&quot; list for config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throned as the handler for throne:// links and adds it to the &quot;Open with&quot; list for config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1658,7 +1658,7 @@ Total speed: %5/s↑ %6/s↓</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every entry Throne wrote for the handler and the config file associations. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every entry Throned wrote for the handler and the config file associations. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1687,6 +1687,10 @@ Total speed: %5/s↑ %6/s↓</source>
     </message>
     <message>
         <source>Config files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow the connection status icon in the dock/taskbar. When off, it always shows the Throned icon</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2210,7 +2214,7 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static challenge text shown by the server when it asks for a second authentication response. When a challenge is set and an OTP profile is bound, Throne sends the answer itself and no interactive prompt appears.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static challenge text shown by the server when it asks for a second authentication response. When a challenge is set and an OTP profile is bound, Throned sends the answer itself and no interactive prompt appears.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3051,7 +3055,7 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
 </translation>
     </message>
     <message>
-        <source>Please run Throne as admin</source>
+        <source>Please run Throned as admin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3760,7 +3764,7 @@ Release note:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Configure a proxy through Throne&apos;s chain instead, ignored: %1</source>
+        <source>Configure a proxy through Throned&apos;s chain instead, ignored: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3856,11 +3860,11 @@ Release note:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throne restarts.</source>
+        <source>The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throned restarts.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Writing statistics keeps failing (%1). Statistics are paused until Throne restarts.</source>
+        <source>Writing statistics keeps failing (%1). Statistics are paused until Throned restarts.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6010,7 +6014,7 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This server requires single sign-on in a browser, which Throne does not support yet. Cancel here and use a profile with direct credentials, or supply an authentication cookie in the profile&apos;s advanced settings.</source>
+        <source>This server requires single sign-on in a browser, which Throned does not support yet. Cancel here and use a profile with direct credentials, or supply an authentication cookie in the profile&apos;s advanced settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6128,7 +6132,7 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the token the core generates itself. To use a Throne OTP profile, bind it on the main editor instead.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the token the core generates itself. To use a Throned OTP profile, bind it on the main editor instead.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

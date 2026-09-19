@@ -394,7 +394,7 @@ void TrafficStatsRepo::onFailure(const char* op, const DbError& err, bool trip) 
                        rebuild ? QString("; the database will be rebuilt at the next start") : QString()));
     PostPassiveWarning(QObject::tr("Traffic statistics paused"),
                        rebuild
-                           ? QObject::tr("The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throne restarts.").arg(what)
-                           : QObject::tr("Writing statistics keeps failing (%1). Statistics are paused until Throne restarts.").arg(what));
+                           ? QObject::tr("The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throned restarts.").arg(what)
+                           : QObject::tr("Writing statistics keeps failing (%1). Statistics are paused until Throned restarts.").arg(what));
 }
 } // namespace Configs

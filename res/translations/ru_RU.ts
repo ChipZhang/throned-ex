@@ -2555,8 +2555,8 @@ This backup may have been created with a newer version of the application.</sour
         <translation>Сколько ждать ответа от одного сайта</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throne as the handler for throne:// links and adds it to the &quot;Open with&quot; list for config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Регистрирует Throne в качестве обработчика ссылок throne:// и добавляет его в список &quot;Открыть с помощью&quot; для конфигурационных файлов, повторно применяя регистрацию при каждом перемещении установки.&lt;/p&gt;&lt;p&gt;Отключение этой опции не отменяет существующую регистрацию: для этого воспользуйтесь функцией &quot;Удалить&quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers Throned as the handler for throne:// links and adds it to the &quot;Open with&quot; list for config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Регистрирует Throned в качестве обработчика ссылок throne:// и добавляет его в список &quot;Открыть с помощью&quot; для конфигурационных файлов, повторно применяя регистрацию при каждом перемещении установки.&lt;/p&gt;&lt;p&gt;Отключение этой опции не отменяет существующую регистрацию: для этого воспользуйтесь функцией &quot;Удалить&quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Register throne:// links at startup</source>
@@ -2571,16 +2571,16 @@ This backup may have been created with a newer version of the application.</sour
         <translation>Установить</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every entry Throne wrote for the handler and the config file associations. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Удаляет все записи, созданные Throne для обработчика, и связи с конфигурационными файлами. Записи, принадлежащие другим приложениям, остаются без изменений.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every entry Throned wrote for the handler and the config file associations. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Удаляет все записи, созданные Throned для обработчика, и связи с конфигурационными файлами. Записи, принадлежащие другим приложениям, остаются без изменений.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Uninstall</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <source>Follow the connection status icon in the dock/taskbar. When off, it always shows the Throne icon</source>
-        <translation>Показывать иконку статуса в доке/панели. При отключении отображается иконка Throne</translation>
+        <source>Follow the connection status icon in the dock/taskbar. When off, it always shows the Throned icon</source>
+        <translation>Показывать иконку статуса в доке/панели. При отключении отображается иконка Throned</translation>
     </message>
     <message>
         <source>Follow Status Icon in Taskbar</source>
@@ -5582,7 +5582,7 @@ rendezvous service. Replaces the server address and port.</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static challenge text shown by the server when it asks for a second authentication response. When a challenge is set and an OTP profile is bound, Throne sends the answer itself and no interactive prompt appears.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static challenge text shown by the server when it asks for a second authentication response. When a challenge is set and an OTP profile is bound, Throned sends the answer itself and no interactive prompt appears.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -9097,7 +9097,7 @@ Deleted %5 Profiles:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Configure a proxy through Throne&apos;s chain instead, ignored: %1</source>
+        <source>Configure a proxy through Throned&apos;s chain instead, ignored: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -9201,11 +9201,11 @@ Deleted %5 Profiles:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throne restarts.</source>
+        <source>The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throned restarts.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Writing statistics keeps failing (%1). Statistics are paused until Throne restarts.</source>
+        <source>Writing statistics keeps failing (%1). Statistics are paused until Throned restarts.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -11031,7 +11031,7 @@ goes to the default above.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This server requires single sign-on in a browser, which Throne does not support yet. Cancel here and use a profile with direct credentials, or supply an authentication cookie in the profile&apos;s advanced settings.</source>
+        <source>This server requires single sign-on in a browser, which Throned does not support yet. Cancel here and use a profile with direct credentials, or supply an authentication cookie in the profile&apos;s advanced settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -11174,7 +11174,7 @@ Improves hole-punching reliability. Requires IPv4.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the token the core generates itself. To use a Throne OTP profile, bind it on the main editor instead.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the token the core generates itself. To use a Throned OTP profile, bind it on the main editor instead.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
