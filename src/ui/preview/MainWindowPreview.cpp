@@ -38,6 +38,7 @@
 #include "include/ui/mainwindow_interface.h"
 #include "include/ui/setting/ThemeManager.hpp"
 #include "include/ui/setting/dialog_basic_settings.h"
+#include "include/ui/setting/DiagnosticsTab.h"
 #include "include/ui/stats/RuntimeStatsWidget.h"
 #include "include/ui/stats/diagnostics_window.h"
 #include "include/ui/stats/dialog_site_reachability.h"
@@ -531,8 +532,25 @@ void RunMainWindow(const QString &prefix) {
                 QTimer::singleShot(150, dialog, [dialog, prefix] {
                     dialog->grab().save(prefix + QStringLiteral("-settings.png"), "PNG");
                     SaveGeometryReport(dialog, prefix + QStringLiteral("-settings.png"));
-                    dialog->close();
-                    qApp->exit(0);
+                    // Diagnostics is the last nav entry and the only page built outside this dialog.
+                    const auto nav = dialog->findChildren<QPushButton *>(QStringLiteral("settingsNav"));
+                    if (nav.isEmpty()) {
+                        qWarning() << "Settings navigation is missing";
+                        qApp->exit(2);
+                        return;
+                    }
+                    nav.last()->click();
+                    QTimer::singleShot(200, dialog, [dialog, prefix] {
+                        dialog->grab().save(prefix + QStringLiteral("-settings-diagnostics.png"), "PNG");
+                        SaveGeometryReport(dialog, prefix + QStringLiteral("-settings-diagnostics.png"));
+                        if (dialog->findChild<DiagnosticsTab *>() == nullptr) {
+                            qWarning() << "The diagnostics settings page is missing";
+                            qApp->exit(2);
+                            return;
+                        }
+                        dialog->close();
+                        qApp->exit(0);
+                    });
                 });
             });
             return;

@@ -2267,6 +2267,18 @@ Select which parts to restore:</source>
         <translation>备份创建在 %1。
 选择要恢复哪些部分:</translation>
     </message>
+    <message>
+        <source>Capture</source>
+        <translation>采集</translation>
+    </message>
+    <message>
+        <source>The core keeps running while the profile is recorded.</source>
+        <translation>记录性能分析数据期间核心继续运行。</translation>
+    </message>
+    <message>
+        <source>Last profile</source>
+        <translation>上次的分析数据</translation>
+    </message>
 </context>
 <context>
     <name>DialogEditGroup</name>

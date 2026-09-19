@@ -1673,6 +1673,18 @@ Total speed: %5/s↑ %6/s↓</source>
         <source>Direct Test URL</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Capture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The core keeps running while the profile is recorded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last profile</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DialogManageRoutes</name>

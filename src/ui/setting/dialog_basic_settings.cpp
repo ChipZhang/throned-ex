@@ -40,9 +40,11 @@
 #include <QDialogButtonBox>
 #include <QButtonGroup>
 #include <QFrame>
+#include <QGroupBox>
 #include <QLabel>
 #include <QPlainTextEdit>
 #include <QPushButton>
+#include <QProgressBar>
 #include <QSpinBox>
 #include <QScrollArea>
 #include <QStackedWidget>
@@ -407,9 +409,72 @@ DialogBasicSettings::DialogBasicSettings(QWidget *parent)
         headingLayout->addWidget(titleLabel);
         auto *subtitleLabel = new QLabel(subtitle, heading);
         subtitleLabel->setObjectName(QStringLiteral("settingsMuted"));
+        // Ignored, like the field labels: a wrapping label otherwise asks for a width no dialog can give it.
+        subtitleLabel->setWordWrap(true);
+        subtitleLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred);
         headingLayout->addWidget(subtitleLabel);
         layout->addWidget(heading);
         return section;
+    };
+
+    // Upstream ships diagnostics as a group box of plain buttons; move its controls into this dialog's cards.
+    const auto dressDiagnosticsPage = [this, &makeSection, &makeFieldRow, &makeToggle](QWidget *page) {
+        auto *root = qobject_cast<QVBoxLayout *>(page->layout());
+        auto *group = page->findChild<QGroupBox *>(QStringLiteral("groupProfile"));
+        auto *intro = page->findChild<QLabel *>(QStringLiteral("intro"));
+        auto *start = page->findChild<QPushButton *>(QStringLiteral("startButton"));
+        auto *stop = page->findChild<QPushButton *>(QStringLiteral("stopButton"));
+        auto *progress = page->findChild<QProgressBar *>(QStringLiteral("progress"));
+        auto *status = page->findChild<QLabel *>(QStringLiteral("status"));
+        auto *showInFolder = page->findChild<QPushButton *>(QStringLiteral("showInFolder"));
+        auto *openFolder = page->findChild<QPushButton *>(QStringLiteral("openFolder"));
+        if (root == nullptr || group == nullptr || intro == nullptr || start == nullptr || stop == nullptr ||
+            progress == nullptr || status == nullptr || showInFolder == nullptr || openFolder == nullptr) {
+            qWarning() << "Diagnostics page layout changed upstream; leaving it undressed";
+            return;
+        }
+
+        auto *section = makeSection(group->title(), intro->text());
+        auto *layout = qobject_cast<QVBoxLayout *>(section->layout());
+        for (const auto &name: {"contention", "trace", "includeLogs"}) {
+            auto *box = page->findChild<QCheckBox *>(QLatin1String(name));
+            if (box == nullptr) continue;
+            // makeToggle reparents and hides the box, so its text and tip are read first.
+            const QString title = box->text();
+            const QString hint = box->toolTip();
+            layout->addWidget(makeFieldRow(title, hint, makeToggle(box)));
+        }
+
+        const auto inlineHost = [](QWidget *parent) {
+            auto *host = new QWidget(parent);
+            host->setObjectName(QStringLiteral("settingsInlineControl"));
+            auto *layout = new QHBoxLayout(host);
+            layout->setContentsMargins(0, 0, 0, 0);
+            layout->setSpacing(6);
+            return host;
+        };
+
+        start->setObjectName(QStringLiteral("settingsPrimaryButton"));
+        stop->setObjectName(QStringLiteral("settingsSecondaryButton"));
+        auto *captureHost = inlineHost(section);
+        auto *captureLayout = qobject_cast<QHBoxLayout *>(captureHost->layout());
+        captureLayout->addWidget(progress, 1);
+        captureLayout->addWidget(start);
+        captureLayout->addWidget(stop);
+        layout->addWidget(makeFieldRow(tr("Capture"), tr("The core keeps running while the profile is recorded."), captureHost));
+
+        showInFolder->setObjectName(QStringLiteral("settingsSecondaryButton"));
+        openFolder->setObjectName(QStringLiteral("settingsSecondaryButton"));
+        auto *resultHost = inlineHost(section);
+        auto *resultLayout = qobject_cast<QHBoxLayout *>(resultHost->layout());
+        status->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Preferred);
+        resultLayout->addWidget(status, 1);
+        resultLayout->addWidget(showInFolder);
+        resultLayout->addWidget(openFolder);
+        layout->addWidget(makeFieldRow(tr("Last profile"), QString(), resultHost));
+
+        root->insertWidget(0, section);
+        delete group;
     };
 
     // Save tab names/pages before replacing QTabWidget with a scrollable stack.
@@ -797,6 +862,7 @@ DialogBasicSettings::DialogBasicSettings(QWidget *parent)
                 legacyPages[index]->setParent(pageHost);
                 legacyPages[index]->setObjectName(QStringLiteral("settingsLegacyPage"));
                 legacyPages[index]->setVisible(true);
+                if (qobject_cast<DiagnosticsTab *>(legacyPages[index]) != nullptr) dressDiagnosticsPage(legacyPages[index]);
                 pageLayout->addWidget(legacyPages[index], 1);
                 break;
         }

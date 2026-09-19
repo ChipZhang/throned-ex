@@ -1,4 +1,5 @@
 #include <csignal>
+#include <algorithm>
 #include <memory>
 
 #include <QApplication>
@@ -685,7 +686,9 @@ int RunControlClient(const QStringList &serverNames, QStringList words) {
 } // namespace
 
 int main(int argc, char *argv[]) {
-    Logging::InstallQtMessageHandler();
+    // The screenshot harness reads a failed preview assertion off stderr, and its log lives in a temporary dir that is gone by then.
+    const bool uiPreviewRun = std::any_of(argv, argv + argc, [](const char *a) { return qstrcmp(a, "-ui-preview") == 0; });
+    if (!uiPreviewRun) Logging::InstallQtMessageHandler();
 
 #ifdef Q_OS_WIN
     Windows_SetCrashHandler();

@@ -2639,6 +2639,18 @@ This backup may have been created with a newer version of the application.</sour
         <source>Direct Test URL</source>
         <translation>URL прямой проверки</translation>
     </message>
+    <message>
+        <source>Capture</source>
+        <translation>Захват</translation>
+    </message>
+    <message>
+        <source>The core keeps running while the profile is recorded.</source>
+        <translation>Ядро продолжает работать, пока идёт запись профиля.</translation>
+    </message>
+    <message>
+        <source>Last profile</source>
+        <translation>Последний профиль</translation>
+    </message>
 </context>
 <context>
     <name>DialogEditGroup</name>

@@ -106,7 +106,7 @@ add_ui_scenario(selection GROUPS smoke all
     EXPECTED selection-selected.png selection-cleared.png)
 add_ui_scenario(settings GROUPS smoke all
     ARGS -ui-preview @PREFIX@ -ui-preview-docs -theme "Throned Graphite" -ui-preview-settings
-    EXPECTED settings-settings.png)
+    EXPECTED settings-settings.png settings-settings-diagnostics.png)
 add_ui_scenario(protocol-editors GROUPS all
     ARGS -ui-preview @PREFIX@ -ui-preview-docs -theme "Throned Graphite" -ui-preview-protocols -lang en
     EXPECTED protocol-editors-masque.png protocol-editors-naive.png protocol-editors-warp.png)
@@ -245,8 +245,9 @@ foreach (_scenario IN LISTS _selected)
     endif ()
 
     message(STATUS "UI scenario: ${_scenario}")
+    # The app is a WIN32 binary: without this a failed preview assertion goes to the debugger, not to the log.
     execute_process(
-        COMMAND "${THRONED_EXECUTABLE}" ${_args}
+        COMMAND "${CMAKE_COMMAND}" -E env QT_FORCE_STDERR_LOGGING=1 "${THRONED_EXECUTABLE}" ${_args}
         RESULT_VARIABLE _result
         OUTPUT_VARIABLE _stdout
         ERROR_VARIABLE _stderr
