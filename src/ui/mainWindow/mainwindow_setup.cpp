@@ -1064,7 +1064,7 @@ QToolButton#statusCellButton { background: transparent; border: 1px solid #2F313
 QToolButton#statusCellButton:hover { background: #222529; border-color: #4A4F57; }
 QToolButton#panelIconButton { background: transparent; border: 1px solid #2F3136; border-radius: 5px; padding: 3px; }
 QToolButton#panelIconButton:hover { background: #222529; }
-QToolButton#panelIconButton:checked { background: #182B38; border-color: #2E749A; }
+QToolButton#panelIconButton:checked { background: #182530; border-color: #237AE9; }
 QToolButton#panelIconButton::menu-indicator { image: none; width: 0px; }
 QToolButton#connectionRowCloseButton { background: transparent; border: none; border-radius: 4px; padding: 2px; }
 QToolButton#connectionRowCloseButton:hover { background: #3A2227; }
@@ -1114,7 +1114,7 @@ QTabWidget#logsCard QTabBar::tab {
     padding: 5px 11px; margin: 4px 2px 4px 0; color: #A4ABB4; font-weight: 500;
 }
 QTabWidget#logsCard QTabBar::tab:hover { color: #F1F3F5; background: #222529; }
-QTabWidget#logsCard QTabBar::tab:selected { color: #F1F3F5; background: #292D33; border-color: #3E454F; }
+QTabWidget#logsCard QTabBar::tab:selected { color: #F1F3F5; background: #182530; border-color: #237AE9; }
 QTabWidget#logsCard QTabBar QLabel#tabCountBadge {
     color: #747C86; background: transparent; border: none; font-weight: 550;
 }
@@ -1133,7 +1133,7 @@ QWidget[thronedCard="true"] {
 QWidget[thronedPanelPage="true"] { background: transparent; border: none; }
 /* The group page paints the card; the table and its headers stay transparent so
    the rounded corners are not filled in square by the view. */
-QTableView, QTableWidget, QTextBrowser {
+QTableView, QTableWidget, QTreeView, QTextBrowser {
     background: transparent; border: none; outline: none;
     selection-color: #F1F3F5; selection-background-color: #143C48;
 }
@@ -1168,8 +1168,8 @@ QTableCornerButton::section {
     border-right: 1px solid #2F3136; border-bottom: 1px solid #2F3136;
     border-top-left-radius: 8px;
 }
-QTableView::item, QTableWidget::item { border-bottom: 1px solid #2F3136; padding: 3px 7px; }
-QTableView::item:selected, QTableWidget::item:selected {
+QTableView::item, QTableWidget::item, QTreeView::item { border-bottom: 1px solid #2F3136; padding: 3px 7px; }
+QTableView::item:selected, QTableWidget::item:selected, QTreeView::item:selected {
     color: white; background: #143C48;
     border-top: 1px solid #1D7585; border-bottom: 1px solid #1D7585;
 }
