@@ -2,6 +2,21 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
+    <name>ConnectionsFilterHeader</name>
+    <message>
+        <source>Disable Filter</source>
+        <translation>禁用筛选</translation>
+    </message>
+    <message>
+        <source>Enable Filter</source>
+        <translation>启用筛选</translation>
+    </message>
+    <message>
+        <source>Filter...</source>
+        <translation>筛选...</translation>
+    </message>
+</context>
+<context>
     <name>ConnectionsTreeModel</name>
     <message>
         <source>Click To Sort By Outbound</source>
@@ -90,6 +105,42 @@ Total speed: %5/s↑ %6/s↓</source>
     <message>
         <source>Traffic</source>
         <translation>流量</translation>
+    </message>
+    <message>
+        <source>Process: %1
+Active connections: %2
+Total traffic: %3↑ %4↓
+Total speed: %5/s↑ %6/s↓</source>
+        <translation>进程: %1
+活动连接数: %2
+流量合计: %3↑ %4↓
+速度合计: %5/s↑ %6/s↓</translation>
+    </message>
+    <message>
+        <source>Destination: %1
+Connections: %2
+Process: %3
+Protocol: %4
+Outbound: %5
+Total traffic: %6↑ %7↓
+Total speed: %8/s↑ %9/s↓</source>
+        <translation>目标: %1
+连接数: %2
+进程: %3
+协议: %4
+出站: %5
+流量合计: %6↑ %7↓
+速度合计: %8/s↑ %9/s↓</translation>
+    </message>
+    <message>
+        <source>Destination: %1
+Process: %2
+Protocol: %3
+Outbound: %4</source>
+        <translation>目标: %1
+进程: %2
+协议: %3
+出站: %4</translation>
     </message>
 </context>
 <context>
@@ -1324,7 +1375,7 @@ It stays a preference, not a lock: if that profile stops working the selector st
     </message>
     <message>
         <source>optional — use the OS network state</source>
-        <translation type="unfinished"></translation>
+        <translation>可选 - 使用操作系统的网络状态</translation>
     </message>
     <message>
         <source>Basic Settings</source>
@@ -2122,15 +2173,15 @@ Throne will restart to complete the restore.</source>
     </message>
     <message>
         <source>Register throne:// links at startup</source>
-        <translation type="unfinished"></translation>
+        <translation>启动时注册 throne:// 链接</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registers the handler now, without waiting for the next start.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;立即注册该处理工具，无需等待下次启动。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Install</source>
-        <translation type="unfinished"></translation>
+        <translation>安装</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes every entry Throne wrote for the handler and the config file associations. Entries owned by other applications are left alone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -2138,11 +2189,9 @@ Throne will restart to complete the restore.</source>
     </message>
     <message>
         <source>Uninstall</source>
-        <translation type="unfinished"></translation>
+        <translation>卸载</translation>
     </message>
-</context>
-<context>
-    <name>DialogBasicSettings</name>
+
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Adds Throned to the &quot;Open with&quot; list for JSON and YAML config files, re-applying the registration whenever the install is moved.&lt;/p&gt;&lt;p&gt;Turning this off does not undo an existing registration: use Uninstall for that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;将 Throned 添加到 JSON 和 YAML 配置文件的“打开方式”列表，并在安装位置移动后重新注册。&lt;/p&gt;&lt;p&gt;关闭此项不会撤销已有的注册：请使用“卸载”。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -2187,6 +2236,37 @@ Throne will restart to complete the restore.</source>
         <source>Register config files at startup</source>
         <translation>启动时注册配置文件关联</translation>
     </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Socks
+                                                                + HTTP Proxy&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Socks+ HTTP 代理&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fetched &lt;span style=&quot; font-weight:600;&quot;&gt;without&lt;/span&gt; any proxy, so features that must tell a dead internet connection apart from dead servers — such as the auto selector — can check the connection itself, and notice the moment it comes back.&lt;/p&gt;&lt;p&gt;Only put a URL here that is reachable &lt;span style=&quot; font-weight:600;&quot;&gt;directly&lt;/span&gt; on your network. Leave it empty to rely on the operating system&apos;s network state instead.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;不用&lt;/span&gt;任何代理获取，因此如自动选择器之类需要区分互联网连接中断和服务器故障的功能，可自行检查网络连接，并在恢复时立即察觉。&lt;/p&gt;&lt;p&gt;仅在这里填写可通过网络&lt;span style=&quot; font-weight:600;&quot;&gt;直接&lt;/span&gt;访问到的 URL。留空则改为依赖系统的网络状态。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Direct Test URL</source>
+        <translation>直连测试 URL</translation>
+    </message>
+    <message>
+        <source>Clash API</source>
+        <translation>Clash API</translation>
+    </message>
+    <message>
+        <source>Unsupported backup format version: %1.
+This backup may have been created with a newer version of the application.</source>
+        <translation>不支持的备份格式版本: %1。
+整个备份可能用该应用程序的较新版本创建。</translation>
+    </message>
+    <message>
+        <source>Backup created on %1.
+Select which parts to restore:</source>
+        <translation>备份创建在 %1。
+选择要恢复哪些部分:</translation>
+    </message>
 </context>
 <context>
     <name>DialogEditGroup</name>
@@ -2220,7 +2300,7 @@ Throne will restart to complete the restore.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation></translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Copy profile share links</source>
@@ -2841,7 +2921,137 @@ Throne will restart to complete the restore.</source>
     </message>
     <message>
         <source>Finalmask</source>
-        <translation type="unfinished"></translation>
+        <translation>最终掩码</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation>传输(网络)</translation>
+    </message>
+    <message>
+        <source>Disabled</source>
+        <translation>禁用</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>xPaddingObfsMode</source>
+        <translation>xPaddingObfsMode</translation>
+    </message>
+    <message>
+        <source>xPaddingMethod</source>
+        <translation>xPaddingMethod</translation>
+    </message>
+    <message>
+        <source>xPaddingPlacement</source>
+        <translation>xPaddingPlacement</translation>
+    </message>
+    <message>
+        <source>xPaddingKey</source>
+        <translation>xPaddingKey</translation>
+    </message>
+    <message>
+        <source>xPaddingHeader</source>
+        <translation>xPaddingHeader</translation>
+    </message>
+    <message>
+        <source>scMaxEachPostBytes</source>
+        <translation>scMaxEachPostBytes</translation>
+    </message>
+    <message>
+        <source>scMinPostsIntervalMs</source>
+        <translation>scMinPostsIntervalMs</translation>
+    </message>
+    <message>
+        <source>scMaxBufferedPosts</source>
+        <translation>scMaxBufferedPosts</translation>
+    </message>
+    <message>
+        <source>uplinkHTTPMethod</source>
+        <translation>uplinkHTTPMethod</translation>
+    </message>
+    <message>
+        <source>uplinkDataPlacement</source>
+        <translation>uplinkDataPlacement</translation>
+    </message>
+    <message>
+        <source>uplinkDataKey</source>
+        <translation>uplinkDataKey</translation>
+    </message>
+    <message>
+        <source>uplinkChunkSize</source>
+        <translation>uplinkChunkSize</translation>
+    </message>
+    <message>
+        <source>noGRPCHeader</source>
+        <translation>noGRPCHeader</translation>
+    </message>
+    <message>
+        <source>noSSEHeader</source>
+        <translation>noSSEHeader</translation>
+    </message>
+    <message>
+        <source>scStreamUpServerSecs</source>
+        <translation>scStreamUpServerSecs</translation>
+    </message>
+    <message>
+        <source>sessionPlacement</source>
+        <translation>sessionPlacement</translation>
+    </message>
+    <message>
+        <source>sessionKey</source>
+        <translation>sessionKey</translation>
+    </message>
+    <message>
+        <source>sessionIDTable</source>
+        <translation>sessionIDTable</translation>
+    </message>
+    <message>
+        <source>sessionIDLength</source>
+        <translation>sessionIDLength</translation>
+    </message>
+    <message>
+        <source>seqPlacement</source>
+        <translation>seqPlacement</translation>
+    </message>
+    <message>
+        <source>seqKey</source>
+        <translation>seqKey</translation>
+    </message>
+    <message>
+        <source>Xmux</source>
+        <translation>Xmux</translation>
+    </message>
+    <message>
+        <source>maxConcurrency</source>
+        <translation>maxConcurrency</translation>
+    </message>
+    <message>
+        <source>maxConnections</source>
+        <translation>maxConnections</translation>
+    </message>
+    <message>
+        <source>hMaxRequestTimes</source>
+        <translation>hMaxRequestTimes</translation>
+    </message>
+    <message>
+        <source>hMaxReusableSecs</source>
+        <translation>hMaxReusableSecs</translation>
+    </message>
+    <message>
+        <source>cMaxReuseTimes</source>
+        <translation>cMaxReuseTimes</translation>
+    </message>
+    <message>
+        <source>hKeepAlivePeriod</source>
+        <translation>hKeepAlivePeriod</translation>
+    </message>
+    <message>
+        <source>JSON: %1
+%2</source>
+        <translation>JSON: %1
+%2</translation>
     </message>
 </context>
 <context>
@@ -3438,43 +3648,43 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
     </message>
     <message>
         <source>Predefined DNS Answers</source>
-        <translation type="unfinished"></translation>
+        <translation>预定义的 DNS 回答</translation>
     </message>
     <message>
         <source>Enable predefined answers</source>
-        <translation type="unfinished"></translation>
+        <translation>启用预定义回答</translation>
     </message>
     <message>
         <source>Advanced DNS Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>高级 DNS 设置</translation>
     </message>
     <message>
         <source>10s (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>10s (10秒，默认)</translation>
     </message>
     <message>
         <source>3d (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>3d (3天，默认)</translation>
     </message>
     <message>
         <source>Not a valid duration: </source>
-        <translation type="unfinished"></translation>
+        <translation>不是有效的时长: </translation>
     </message>
     <message>
         <source>DNS Object</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS 对象</translation>
     </message>
     <message>
         <source>The DNS object is not a valid JSON object</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS 对象不是有效的 JSON 对象</translation>
     </message>
     <message>
         <source>Exported with warnings</source>
-        <translation type="unfinished"></translation>
+        <translation>带警告导出</translation>
     </message>
     <message>
         <source>Save Cache To File</source>
-        <translation type="unfinished"></translation>
+        <translation>保存缓存到文件</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Write cached DNS answers and FakeIP mappings to the core's cache file so they survive a restart. Off by default: each entry costs a disk write.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -3494,19 +3704,19 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
     </message>
     <message>
         <source>HTTP Version</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP 版本</translation>
     </message>
     <message>
         <source>HTTP/3 (fallback to HTTP/2)</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP/3 (回退到 HTTP/2)</translation>
     </message>
     <message>
         <source>HTTP/3 only</source>
-        <translation type="unfinished"></translation>
+        <translation>仅 HTTP/3</translation>
     </message>
     <message>
         <source>HTTP/3 runs over UDP; HTTP/2 runs over TLS on TCP and works where UDP is blocked.</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP/3 基于 UDP 运行；HTTP/2 基于 TCP 上的 TLS 运行并在 UDP 被阻断的情况下也可工作。</translation>
     </message>
     <message>
         <source>Mode</source>
@@ -3514,7 +3724,7 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
     </message>
     <message>
         <source>Peer Public Key</source>
-        <translation type="unfinished"></translation>
+        <translation>对端公钥</translation>
     </message>
     <message>
         <source>Success!</source>
@@ -3522,11 +3732,9 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
     </message>
     <message>
         <source>WireGuard runs over UDP. MASQUE tunnels over HTTP/3 or HTTP/2 and passes networks that block WireGuard.</source>
-        <translation type="unfinished"></translation>
+        <translation>WireGuard 基于 UDP 运行。MASQUE 通过 HTTP/3 或 HTTP/2 建立隧道，并穿透阻止 WireGuard 的网络。</translation>
     </message>
-</context>
-<context>
-    <name>DialogManageRoutes</name>
+
     <message>
         <source>Cloudflare API domains to try, in order, when generating a WARP config</source>
         <translation>生成 WARP 配置时按顺序尝试的 Cloudflare API 域名</translation>
@@ -3538,6 +3746,58 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
     <message>
         <source>WARP Registration Domains</source>
         <translation>WARP 注册域名</translation>
+    </message>
+    <message>
+        <source>Base64 DER of the server&apos;s public key. When set, it pins the server certificate.</source>
+        <translation>服务器公钥的 Base64 DER 编码。设置时，它会固定服务器证书。</translation>
+    </message>
+    <message>
+        <source>DNS</source>
+        <translation>DNS</translation>
+    </message>
+    <message>
+        <source>This is especially important and it is recommended to use the default value of &quot;localhost&quot;.
+If the default value does not work, try changing it to &quot;223.5.5.5&quot;.
+For more information, see the document &quot;Configuration/DNS&quot;.</source>
+        <translation>这个尤其重要，建议使用默认值 &quot;localhost&quot;。
+如果默认值不起作用，请尝试改为 &quot;223.5.5.5&quot;。
+更多信息，请参阅文档 &quot;配置/DNS&quot;。</translation>
+    </message>
+    <message>
+        <source>One domain per line. They are tried in order and the first one that accepts the registration is used. Leave empty to use %1.</source>
+        <translation>每行一个域名。它们将按顺序尝试并使用第一个接受注册的域名。留空则使用 %1。</translation>
+    </message>
+    <message>
+        <source>Not a valid predefined DNS entry:
+</source>
+        <translation>不是有效的预定义 DNS 条目:
+</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Write cached DNS answers and FakeIP mappings to the core&apos;s cache file so they survive a restart. Off by default: each entry costs a disk write.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;将缓存的 DNS 应答和 FakeIP 映射写到核心的缓存文件，以便在重启后仍然存在。默认关闭：每个条目都会耗费一次磁盘写入。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>
+Use a number followed by ns, us, ms, s, m, h or d.</source>
+        <translation>
+使用后跟 ns, us, ms, s, m, h 或 d 的数字(分别代表纳秒、微秒、秒、分、小时、天)。</translation>
+    </message>
+    <message>
+        <source>Note:</source>
+        <translation>备注:</translation>
+    </message>
+    <message>
+        <source>Could not import this routing profile:
+</source>
+        <translation>无法导入这个路由配置档:
+</translation>
+    </message>
+    <message>
+        <source>Updated %1, failed %2:
+%3</source>
+        <translation>更新了 %1, 失败了 %2:
+%3</translation>
     </message>
 </context>
 <context>
@@ -3756,15 +4016,15 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
     <message>
         <source>Invalid Private Range</source>
-        <translation type="unfinished"></translation>
+        <translation>无效私有地址范围</translation>
     </message>
     <message>
         <source>&quot;%1&quot; is not a valid address or CIDR.</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; 不是有效的地址或 CIDR。</translation>
     </message>
     <message>
         <source>&quot;%1&quot; covers every address, which would stop Tun from routing anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; 涵盖一切地址，这将导致 Tun 无法路由任何流量。</translation>
     </message>
 </context>
 <context>
@@ -3863,67 +4123,131 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
     <message>
         <source>Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>接口</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Requires privilege and cannot conflict with existing system interfaces. The internal network stack is used when disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;需要特权，且不能与现有的系统接口冲突。 禁用时使用内部网络协议栈。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Custom system interface name. A generated name is used by default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自定义系统接口名称。默认使用生成的名称。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Interface Name</source>
-        <translation type="unfinished"></translation>
+        <translation>接口名称</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP NAT expiration time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP NAT 过期时间。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>UDP Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP 超时</translation>
     </message>
     <message>
         <source>5m (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>5m (5分，默认)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP NAT mapping behavior. endpoint_independent is used by default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP NAT 映射行为。默认使用 endpoint_independent (端点独立)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>UDP Mapping</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP 映射</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP NAT filtering behavior. endpoint_independent is used by default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP NAT 过滤行为。默认使用 endpoint_independent (端点独立)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>UDP Filtering</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP 过滤</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum number of UDP NAT entries.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP NAT 条目的最大数量。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>UDP NAT Max</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP NAT 上限</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Whether this profile injects a forged ClientHello. &amp;quot;Keep Default&amp;quot; follows Preset Settings, unless a Spoof SNI is set below.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;这个配置档是否注入一个伪造的 ClientHello。 &amp;quot;Keep Default&amp;quot; (保持默认)表示使用“预设设置”，除非下面设定了“伪装 SNI”。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Inject a forged TLS ClientHello carrying this SNI before the real one, to pass SNI filtering that allows specific hostnames.&lt;/p&gt;&lt;p&gt;Client only. Requires elevated privileges (root / Administrator). Not supported on Windows ARM64. &amp;quot;wrong-timestamp&amp;quot; is not supported on macOS.&lt;/p&gt;&lt;p&gt;Leave empty to inherit the global value from Preset Settings.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;在真实的 TLS ClientHello 之前注入一个携带这个 SNI 的伪造 TLS ClientHello，以绕过允许特定主机名的 SNI 过滤。&lt;/p&gt;&lt;p&gt;仅适用于客户端。需要提权 (root / 管理员)。在 Windows ARM64 上不被支持。macOS 上不支持 &amp;quot;wrong-timestamp&amp;quot;。&lt;/p&gt;&lt;p&gt;留空则继承来自“预设设置”的全局值。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Empty fields fall back to the global values in Preset Settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>空字段回退到“预设设置”中的全局值。</translation>
+    </message>
+    <message>
+        <source>Use System Interface</source>
+        <translation>使用系统接口</translation>
+    </message>
+    <message>
+        <source>TLS Spoof</source>
+        <translation>TLS 伪装</translation>
+    </message>
+    <message>
+        <source>Keep Default</source>
+        <translation>保持默认</translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation>开启</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <source>Spoof SNI</source>
+        <translation>伪装 SNI</translation>
+    </message>
+    <message>
+        <source>Allowed SNI to forge</source>
+        <translation>允许 SNI 伪装</translation>
+    </message>
+    <message>
+        <source>Method</source>
+        <translation>方法</translation>
+    </message>
+    <message>
+        <source>QUIC Parameters</source>
+        <translation>QUIC 参数</translation>
+    </message>
+    <message>
+        <source>Idle Timeout</source>
+        <translation>空闲超时</translation>
+    </message>
+    <message>
+        <source>Keep Alive Period</source>
+        <translation>保活周期</translation>
+    </message>
+    <message>
+        <source>Stream Receive Window</source>
+        <translation>流接收窗口</translation>
+    </message>
+    <message>
+        <source>Connection Receive Window</source>
+        <translation>连接接收窗口</translation>
+    </message>
+    <message>
+        <source>Max Concurrent Streams</source>
+        <translation>最大并发流数</translation>
+    </message>
+    <message>
+        <source>Initial Packet Size</source>
+        <translation>初始数据包大小</translation>
+    </message>
+    <message>
+        <source>Disable Path MTU Discovery</source>
+        <translation>禁用路径 MTU 发现</translation>
     </message>
 </context>
 <context>
@@ -4271,6 +4595,18 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
         <source>The rest will be measured before the selector starts.</source>
         <translation>其余的在选择器开始前将被测量。</translation>
     </message>
+    <message>
+        <source>optional — inherits the Direct Test URL</source>
+        <translation>可选 - 继承直连测试 URL</translation>
+    </message>
+    <message>
+        <source>Fetched WITHOUT the proxy to tell a dead internet connection apart from dead servers, and to notice the moment it comes back. Leave empty to inherit the Direct Test URL from Basic Settings, and empty there too to rely on the operating system&apos;s network state. A URL that turns out to be blocked can only delay a resume by a few minutes; it can never keep the selector paused.</source>
+        <translation>“不用”代理获取，以区分互联网连接中断和服务器故障，并在恢复时立即觉察。留空则继承「基本设置」中的「直连测试 URL」，而且若那里也为空则依赖操作系统的网络状态。若 URL 后来发现被拦截，最多只会使恢复延迟数分钟，绝不会使选择器一直处于暂停状态。</translation>
+    </message>
+    <message>
+        <source>Every profile&apos;s last test failed, which usually means the network was down rather than the servers, so all %1 are kept and will be re-checked.</source>
+        <translation>每个配置档的上次测试均失败，这通常意味着网络中断而不是服务器宕机，因此将保留私有 %1 个配置档并将会重新检查。</translation>
+    </message>
 </context>
 <context>
     <name>EditChain</name>
@@ -4439,55 +4775,67 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
     <message>
         <source>Hop Interval Max</source>
-        <translation type="unfinished"></translation>
+        <translation>最大跳跃间隔</translation>
     </message>
     <message>
         <source>When set, each hop waits a random duration between Hop Interval and this value. Requires Hop Interval.</source>
-        <translation type="unfinished"></translation>
+        <translation>在设置时，每次跳跃都会等待一个随机时间（介于”跳跃间隔“和这个值之间）。需要”跳跃间隔“。</translation>
     </message>
     <message>
         <source>BBR Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>BBR 配置档</translation>
     </message>
     <message>
         <source>Congestion control aggressiveness. Leave empty to use the default (standard).</source>
-        <translation type="unfinished"></translation>
+        <translation>拥塞控制的激进程度。留空表示使用默认（标准）设置。</translation>
     </message>
     <message>
         <source>Obfuscation</source>
-        <translation type="unfinished"></translation>
+        <translation>混淆</translation>
     </message>
     <message>
         <source>salamander</source>
-        <translation type="unfinished"></translation>
+        <translation>salamander</translation>
     </message>
     <message>
         <source>gecko</source>
-        <translation type="unfinished"></translation>
+        <translation>gecko</translation>
     </message>
     <message>
         <source>Minimum Packet Size</source>
-        <translation type="unfinished"></translation>
+        <translation>最小数据包大小</translation>
     </message>
     <message>
         <source>Maximum Packet Size</source>
-        <translation type="unfinished"></translation>
+        <translation>最大数据包大小</translation>
     </message>
     <message>
         <source>Disable Chrome Parrot</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用 Chrome 模仿</translation>
     </message>
     <message>
         <source>Realm (NAT Traversal)</source>
-        <translation type="unfinished"></translation>
+        <translation>Realm (NAT 遍历)</translation>
     </message>
     <message>
         <source>Realm Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Realm 选项</translation>
     </message>
     <message>
         <source>Realm needs a URL, an ID and at least one STUN server.</source>
-        <translation type="unfinished"></translation>
+        <translation>Realm 需要一个 URL、一个 ID 和至少一个 STUN 服务器。</translation>
+    </message>
+    <message>
+        <source>Parroting makes the QUIC handshake look like Chrome&apos;s. On by default.
+It overrides idle timeout, max concurrent streams,
+initial packet size and the initial receive windows.</source>
+        <translation>模仿功能使 QUIC 握手看起来类似 Chrome 的。默认开启。它会覆盖空闲超时、最大并发流数、初始数据包大小和初始接收窗口。</translation>
+    </message>
+    <message>
+        <source>Reach a Hysteria2 server behind NAT through a Hysteria Realm
+rendezvous service. Replaces the server address and port.</source>
+        <translation>通过 Hysteria Realm 会合服务访问位于 NAT 后的 Hysteria2 服务器。
+替换服务器地址和端口。</translation>
     </message>
 </context>
 <context>
@@ -4495,6 +4843,10 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     <message>
         <source>Password</source>
         <translation>密码</translation>
+    </message>
+    <message>
+        <source>UUID</source>
+        <translation>UUID</translation>
     </message>
 </context>
 <context>
@@ -4544,7 +4896,7 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
     <message>
         <source>Extra Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>额外标头</translation>
     </message>
     <message>
         <source>Headers sent to the proxy server, e.g. X-Username="user" X-Password="pass"</source>
@@ -4552,11 +4904,19 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
     <message>
         <source>Insecure Concurrency</source>
-        <translation type="unfinished"></translation>
+        <translation>不安全并发</translation>
     </message>
     <message>
         <source>Parallel tunnel connections to the server, 0 to disable. More connections are easier to detect.</source>
-        <translation type="unfinished"></translation>
+        <translation>到服务器的并行隧道连接数，0 表示禁用。连接越多越容易被检测到。</translation>
+    </message>
+    <message>
+        <source>QUIC</source>
+        <translation>QUIC</translation>
+    </message>
+    <message>
+        <source>Headers sent to the proxy server, e.g. X-Username=&quot;user&quot; X-Password=&quot;pass&quot;</source>
+        <translation>发送到代理服务器的标头，如 X-Username=&quot;user&quot; X-Password=&quot;pass&quot;</translation>
     </message>
 </context>
 <context>
@@ -4581,6 +4941,147 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
         <source>Tunnel DNS</source>
         <translation>隧道 DNS</translation>
     </message>
+
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenConnect protocol flavor. Leave empty to use the core default (anyconnect).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenConnect 协议类型。留空则使用核心的默认类型 (anyconnect)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Flavor</source>
+        <translation>类型</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Username used to fill matching authentication form fields.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于填写匹配的身份验证表单字段的用户名。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Password used to fill matching authentication form fields.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于填写匹配的身份验证表单字段的密码。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Preselects a matching group, realm, domain or gateway choice when the flavor supports it.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;档协议类型支持时，预选匹配的组、认证域(Realm)、域或网关选择项。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Auth Group</source>
+        <translation>认证组</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Path part of the server URL, appended to the address above. Load-bearing on gp, f5 and fortinet portals.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务器 URL 的路径部分，追加到上方的地址之后。在 gp、f5 和 fortinet 门户中为必要项(Load-bearing)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Server Path</source>
+        <translation>服务器路径</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Preferred tunnel MTU. Values below 576 are treated as 576; the maximum is 65535.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;首选隧道 MTU。低于 576 的值按 576 处理；最大值为 65535。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Traffic that falls through to this profile reaches the tunnel only when the destination is inside a subnet the VPN server advertises; anything else is blocked. Routing rules that name this profile explicitly are not affected and always win.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;落入这个配置档的兜底(falls through)流量，仅当目标地址位于 VPN 服务器广告的子网内时才会进入该隧道；除此之外的任何流量将被拦截。而那些显式指定这个配置档的路由规则不受影响，且始终赢得优先级。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Only route advertised network</source>
+        <translation>仅路由通告的网络</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Resolve the names the VPN server claims - its split-DNS suffixes and search domains - through the resolvers it pushes. Turn this off if the server claims every domain and breaks public DNS. Kept on regardless while this profile carries all traffic with &quot;Only route advertised network&quot; enabled, since the pushed resolvers are then the only reachable ones.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolve through this tunnel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fail a lookup the tunnel cannot answer instead of retrying it directly. Leave this off for a management VPN: names it does not claim then still resolve through the direct resolver.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Block outside DNS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disables verification of the server certificate and hostname. This lets an active attacker impersonate the VPN server; prefer a CA certificate or a peer fingerprint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;禁用服务器证书和主机名验证。这会使主动攻击者能够冒充 VPN 服务器；建议优先使用 CA 证书或对端指纹。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Server name used for TLS SNI and certificate hostname verification. The hostname from the address is used when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于 TLS SNI 和证书主机名验证的服务器名称。留空时使用来自地址中的主机名。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Server Name</source>
+        <translation>服务器名称</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Additional trusted CA certificate content in PEM format, added to the system certificate pool.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;采用 PEM 格式的其他受信任 CA （证书颁发机构）证书，添加到系统证书池。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>CA Certificate</source>
+        <translation>CA 证书</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Password for the encrypted client private key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;加密客户端私钥的密码。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Client Key Password</source>
+        <translation>客户端钥匙密码</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Binds an authenticator entry to this profile. %1 in the username, password, software token or form entry fields is replaced with a generated code at connect time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;绑定身份验证器条目到这个配置档。用户名、密码、软件令牌或表单条目字段中的 %1 会在连接时被生成的代码替换。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>%1 is replaced at connect time</source>
+        <translation>%1 在连接时被替换</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <source>MTU</source>
+        <translation>MTU</translation>
+    </message>
+    <message>
+        <source>OTP</source>
+        <translation>OTP</translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation>高级</translation>
+    </message>
+    <message>
+        <source>TLS</source>
+        <translation>TLS</translation>
+    </message>
+    <message>
+        <source>Allow insecure</source>
+        <translation>允许不安全</translation>
+    </message>
+    <message>
+        <source>Not set</source>
+        <translation>未设置</translation>
+    </message>
+    <message>
+        <source>Client Certificate</source>
+        <translation>客户端证书</translation>
+    </message>
+    <message>
+        <source>Client Key</source>
+        <translation>客户端钥匙</translation>
+    </message>
+    <message>
+        <source>Already set</source>
+        <translation>已设置</translation>
+    </message>
 </context>
 <context>
     <name>EditOpenVPN</name>
@@ -4603,6 +5104,127 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     <message>
         <source>Tunnel DNS</source>
         <translation>隧道 DNS</translation>
+    </message>
+
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Default transport network. Leave empty to use the core default (udp).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;默认传输层网络(协议)。留空表示使用核心的默认设置 (udp)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static challenge text shown by the server when it asks for a second authentication response. When a challenge is set and an OTP profile is bound, Throne sends the answer itself and no interactive prompt appears.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务器在要求第二次身份验证响应时显示的静态质询文本。当设置了质询文本并绑定了 OTP 配置档时，Throned 将自行发送应答，而不出现交互式提示。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Static Challenge</source>
+        <translation>静态质询</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show the static challenge response as plain text.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;显示静态质询响应为纯文本。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Echo challenge response</source>
+        <translation>回显质询响应</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tunnel MTU. Empty uses 1500 until the server pushes a value.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;隧道 MTU。留空使用 1500，直至服务器推送一个值。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Trusted CA certificate content (PEM).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;受信任的 CA (颁发机构)证书内容 (PEM)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN tls-auth / tls-crypt / tls-crypt-v2 control channel wrapping. Disabled when the type is empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN tls-auth / tls-crypt / tls-crypt-v2 控制通道封装。类型为空时禁用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Control Channel Wrap</source>
+        <translation>控制通道封装</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>钥匙</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;tls-auth key direction. Only used when the type is tls_auth; the key is bidirectional when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;tls-auth 钥匙方向。仅当类型为 tls_auth 时使用；留空时则钥匙双向使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Direction</source>
+        <translation>方向</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Binds an authenticator entry to this profile. %1 in the username or password is replaced with a generated code at connect time, and a static challenge is answered with the same code.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;绑定一个认证条目到这个配置档。在用户名或密码中的 %1 会在连接时替换为生成的代码，并用相同的代码应答静态质询。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Control Channel Wrap Key</source>
+        <translation>控制通道封装钥匙</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation>网络协议</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <source>MTU</source>
+        <translation>MTU</translation>
+    </message>
+    <message>
+        <source>OTP</source>
+        <translation>OTP</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Traffic that falls through to this profile reaches the tunnel only when the destination is inside a subnet the VPN server advertises; anything else is blocked. Routing rules that name this profile explicitly are not affected and always win.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;落入这个配置档的兜底(falls through)流量，仅当目标地址位于 VPN 服务器广告的子网内时才会进入该隧道；除此之外的任何流量将被拦截。而那些显式指定这个配置档的路由规则不受影响，且始终赢得优先级。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Only route advertised network</source>
+        <translation>仅路由通告的网络</translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation>高级</translation>
+    </message>
+    <message>
+        <source>TLS</source>
+        <translation>TLS</translation>
+    </message>
+    <message>
+        <source>CA Certificate</source>
+        <translation>CA 证书</translation>
+    </message>
+    <message>
+        <source>Not set</source>
+        <translation>未设置</translation>
+    </message>
+    <message>
+        <source>Client Certificate</source>
+        <translation>客户端证书</translation>
+    </message>
+    <message>
+        <source>Client Key</source>
+        <translation>客户端钥匙</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>类型</translation>
+    </message>
+    <message>
+        <source>%1 is replaced at connect time</source>
+        <translation>%1 在连接时被替换</translation>
+    </message>
+    <message>
+        <source>Already set</source>
+        <translation>已设置</translation>
     </message>
 </context>
 <context>
@@ -4777,9 +5399,7 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
         <source>Congestion Control</source>
         <translation>拥塞控制</translation>
     </message>
-</context>
-<context>
-    <name>EditTrustTunnel</name>
+
     <message>
         <source>Client Random</source>
         <translation>Client Random</translation>
@@ -4803,6 +5423,22 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     <message>
         <source>prefix[/mask] (hex), e.g. a0b0/f0f0</source>
         <translation>前缀[/掩码]（十六进制），例如 a0b0/f0f0</translation>
+    </message>
+    <message>
+        <source>bbr</source>
+        <translation>bbr</translation>
+    </message>
+    <message>
+        <source>cubic</source>
+        <translation>cubic</translation>
+    </message>
+    <message>
+        <source>bbr_standard</source>
+        <translation>标准BBR</translation>
+    </message>
+    <message>
+        <source>bbr_variant</source>
+        <translation>BBR变体</translation>
     </message>
 </context>
 <context>
@@ -4831,6 +5467,18 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
         <source>UDP over Stream</source>
         <translation>UDP over Stream</translation>
     </message>
+    <message>
+        <source>bbr</source>
+        <translation>bbr</translation>
+    </message>
+    <message>
+        <source>cubic</source>
+        <translation>cubic</translation>
+    </message>
+    <message>
+        <source>native</source>
+        <translation>native</translation>
+    </message>
 </context>
 <context>
     <name>EditVMess</name>
@@ -4840,7 +5488,7 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
     <message>
         <source>Alter Id</source>
-        <translation></translation>
+        <translation>Alter Id (备用ID)</translation>
     </message>
     <message>
         <source>Packet Encoding</source>
@@ -5102,15 +5750,19 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     </message>
     <message>
         <source>Enable Amnezia</source>
-        <translation type="unfinished"></translation>
+        <translation>启用 Amnezia</translation>
     </message>
     <message>
         <source>Edit the AmneziaWG obfuscation parameters (junk packets, magic headers, signatures).</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑 AmneziaWG 混淆参数（垃圾数据包、魔法标头、签名）。</translation>
     </message>
     <message>
         <source>Amnezia Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Amnezia 选项</translation>
+    </message>
+    <message>
+        <source>MTU</source>
+        <translation>MTU</translation>
     </message>
 </context>
 <context>
@@ -5126,6 +5778,10 @@ https://matsuridayo.github.io/n-configuration/#vpn-tun</translation>
     <message>
         <source>Flow</source>
         <translation>流</translation>
+    </message>
+    <message>
+        <source>UUID</source>
+        <translation>UUID</translation>
     </message>
 </context>
 <context>
@@ -6374,23 +7030,23 @@ Release note:
     </message>
     <message>
         <source>Listening on all interfaces (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>正在监听所有接口 (%1)</translation>
     </message>
     <message>
         <source>Connect OK</source>
-        <translation type="unfinished"></translation>
+        <translation>连接通过</translation>
     </message>
     <message>
         <source>Connecting</source>
-        <translation type="unfinished"></translation>
+        <translation>正在连接</translation>
     </message>
     <message>
         <source>Waiting for authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>正在等待认证</translation>
     </message>
     <message>
         <source>Tunnel error</source>
-        <translation type="unfinished"></translation>
+        <translation>隧道错误</translation>
     </message>
     <message>
         <source>[VPN] %1: %2</source>
@@ -6398,119 +7054,117 @@ Release note:
     </message>
     <message>
         <source>VPN endpoint problem</source>
-        <translation type="unfinished"></translation>
+        <translation>VPN 端点问题</translation>
     </message>
     <message>
         <source>VPN endpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>VPN 端点</translation>
     </message>
     <message>
         <source>[VPN] %1: the core did not answer the sign-in prompt.</source>
-        <translation type="unfinished"></translation>
+        <translation>[VPN] %1: 核心未应答登录提示。</translation>
     </message>
     <message>
         <source>[VPN] %1: could not answer the sign-in prompt: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>[VPN] %1: 无法应答登录提示: %2</translation>
     </message>
     <message>
         <source>[VPN] %1: signed in again with a new one-time code.</source>
-        <translation type="unfinished"></translation>
+        <translation>[VPN] %1: 用新的一次性代码再次登录。</translation>
     </message>
     <message>
         <source>[VPN] %1 rejected the saved credentials; restarting the profile with a new one-time code.</source>
-        <translation type="unfinished"></translation>
+        <translation>[VPN] %1 拒绝了保存的凭据; 正在用新的一次性代码重启该配置档。</translation>
     </message>
     <message>
         <source>The server refused the credentials saved with this profile. Enter the ones to use for this session; the profile itself is left unchanged.</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器拒绝了随这个配置档保存的凭据。请输入用于本次会话的凭据；该配置档本身将保持不变。</translation>
     </message>
     <message>
         <source>[VPN] %1 rejected the saved credentials.</source>
-        <translation type="unfinished"></translation>
+        <translation>[VPN] %1 拒绝了保存的凭据。</translation>
     </message>
     <message>
         <source>Config files (*.json *.conf *.txt *.yaml *.yml *.ini *.ovpn *.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation>配置文件 (*.json *.conf *.txt *.yaml *.yml *.ini *.ovpn *.xml)</translation>
     </message>
     <message>
         <source>The sing-box API is disabled. Set a listen port in Preferences &gt; Basic Settings &gt; Core.</source>
-        <translation type="unfinished"></translation>
+        <translation>sing-box API 被禁用。在“首选项 &gt; 基本设置 &gt; 核心” 中设置一个监听端口。</translation>
     </message>
     <message>
         <source>Start a profile first; the dashboard is served by the running core.</source>
-        <translation type="unfinished"></translation>
+        <translation>首先启动一个配置档； 该仪表盘由正在运行的核心提供服务。</translation>
     </message>
     <message>
         <source>Web dashboard</source>
-        <translation type="unfinished"></translation>
+        <translation>网络仪表盘</translation>
     </message>
     <message>
         <source>The dashboard is not installed yet. Download it now?</source>
-        <translation type="unfinished"></translation>
+        <translation>仪表盘未安装。立即下载吗?</translation>
     </message>
     <message>
         <source>A dashboard download is already running</source>
-        <translation type="unfinished"></translation>
+        <translation>仪表盘下载已在运行中</translation>
     </message>
     <message>
         <source>The core did not answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>核心不应答。</translation>
     </message>
     <message>
         <source>Failed to install the dashboard</source>
-        <translation type="unfinished"></translation>
+        <translation>安装仪表盘失败</translation>
     </message>
     <message>
         <source>OTP Codes</source>
-        <translation type="unfinished"></translation>
+        <translation>OTP 代码</translation>
     </message>
     <message>
         <source>Close every connection listed below</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭下面列出的每个连接</translation>
     </message>
     <message>
         <source>Failed to close connections: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭连接失败: %1</translation>
     </message>
     <message>
         <source>IPC error</source>
-        <translation type="unfinished"></translation>
+        <translation>IPC 错误</translation>
     </message>
     <message>
         <source>No active routing profile found.</source>
-        <translation type="unfinished"></translation>
+        <translation>找不到活动的路由配置档。</translation>
     </message>
     <message>
         <source>The current routing profile is locked against modifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>当前路由配置档被锁定不得修改。</translation>
     </message>
     <message>
         <source>The current routing profile is raw JSON.</source>
-        <translation type="unfinished"></translation>
+        <translation>当前路由配置档是原始的 JSON。</translation>
     </message>
     <message>
         <source>The current routing profile auto-updates from a URL.</source>
-        <translation type="unfinished"></translation>
+        <translation>当前路由配置档从一个 URL 自动更新。</translation>
     </message>
     <message>
         <source>Failed to add routing rule: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>添加路由规则失败: %1</translation>
     </message>
     <message>
         <source>Failed to save routing rule: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>保存路由规则失败: %1</translation>
     </message>
     <message>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>配置档</translation>
     </message>
     <message>
         <source>This installation cannot grant the core privileges by itself.</source>
         <translation>此安装方式无法自行为核心授予权限。</translation>
     </message>
-</context>
-<context>
-    <name>MainWindow</name>
+
     <message numerus="yes">
         <source>%n remote rule-set(s) refreshed</source>
         <translation>
@@ -6602,6 +7256,22 @@ Release note:
     <message>
         <source>Update Rule-Sets</source>
         <translation>更新规则集</translation>
+    </message>
+    <message>
+        <source>Appended to the %1 rules:
+%2</source>
+        <translation>追加到 %1 条规则:
+%2</translation>
+    </message>
+    <message>
+        <source>The link could not be parsed:
+</source>
+        <translation>该链接无法解析:
+</translation>
+    </message>
+    <message>
+        <source>Strict routing unavailable</source>
+        <translation>严格的路由不可用</translation>
     </message>
 </context>
 <context>
@@ -7152,503 +7822,603 @@ Release note:
     </message>
     <message>
         <source>Response larger than %1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>响应大于 %1 MB</translation>
     </message>
     <message>
         <source>Failed to import the OpenVPN profile.</source>
-        <translation type="unfinished"></translation>
+        <translation>导入 OpenVPN 配置档失败。</translation>
     </message>
     <message>
         <source>Failed to import the OpenConnect profile.</source>
-        <translation type="unfinished"></translation>
+        <translation>导入 OpenConnect 配置档失败。</translation>
     </message>
     <message>
         <source>Failed to decode the vpn:// link.</source>
-        <translation type="unfinished"></translation>
+        <translation>解码 vpn:// 链接失败。</translation>
     </message>
     <message>
         <source>No importable profile found in the vpn:// link.</source>
-        <translation type="unfinished"></translation>
+        <translation>在 vpn:// 链接中找不到可导入的配置档。</translation>
     </message>
     <message>
         <source>Subscription update already queued: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>订阅更新已排队: %1</translation>
     </message>
     <message>
         <source>The routing profile lists an endpoint profile (id %1) that no longer exists</source>
-        <translation type="unfinished"></translation>
+        <translation>路由配置中引用了一个不再存在的端点配置 (id %1)</translation>
     </message>
     <message>
         <source>%1 is listed as a routing profile endpoint but is empty or corrupted</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 被列为路由配置档端点，但内容为空或已损坏</translation>
     </message>
     <message>
         <source>%1 is listed as a routing profile endpoint but a hop of it no longer exists</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 被列为路由配置档端点，但它的其中一跳转节点不再存在</translation>
     </message>
     <message>
         <source>%1 is listed as a routing profile endpoint, so its last hop must be an OpenVPN or OpenConnect profile</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 被列为路由配置档端点，因此它的最后一跳节点必须是 OpenVPN 或 OpenConnect 配置档</translation>
     </message>
     <message>
         <source>Hops of the routing profile endpoint %1 cannot use an extra core, a full config, or be a chain</source>
-        <translation type="unfinished"></translation>
+        <translation>路由配置档端点 %1 的跳转节点不能使用额外核心、完整配置，也不能构成链</translation>
     </message>
     <message>
         <source>Hops of the routing profile endpoint %1 cannot run on the Xray core</source>
-        <translation type="unfinished"></translation>
+        <translation>路由配置档端点 %1 的跳转节点不能运行在 Xray 核心上</translation>
     </message>
     <message>
         <source>%1 is used as an endpoint of the routing profile and by the started profile at the same time, remove it from one of them</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 同时被用作路由配置档的端点和被启动的配置档使用，请从其中一个中移除它</translation>
     </message>
     <message>
         <source>%1 is listed twice in the endpoints of the routing profile</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 在路由配置档的端点中重复出现</translation>
     </message>
     <message>
         <source>Static Key</source>
-        <translation type="unfinished"></translation>
+        <translation>静态钥匙</translation>
     </message>
     <message>
         <source>Unverified TLS</source>
-        <translation type="unfinished"></translation>
+        <translation>未验证的 TLS</translation>
     </message>
     <message>
         <source>OpenVPN or OpenConnect profile</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenVPN 或 OpenConnect 配置档</translation>
     </message>
     <message>
         <source>%1 route prefer</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 路由优选</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>已连接</translation>
     </message>
     <message>
         <source>Waiting for sign-in</source>
-        <translation type="unfinished"></translation>
+        <translation>正在等待登录</translation>
     </message>
     <message>
         <source>Too much data to fit in a QR code.</source>
-        <translation type="unfinished"></translation>
+        <translation>数据太多，无法放入二维码中。</translation>
     </message>
     <message>
         <source>null</source>
-        <translation type="unfinished"></translation>
+        <translation>null</translation>
     </message>
     <message>
         <source>boolean</source>
-        <translation type="unfinished"></translation>
+        <translation>boolean</translation>
     </message>
     <message>
         <source>number</source>
-        <translation type="unfinished"></translation>
+        <translation>number</translation>
     </message>
     <message>
         <source>string</source>
-        <translation type="unfinished"></translation>
+        <translation>string</translation>
     </message>
     <message>
         <source>array</source>
-        <translation type="unfinished"></translation>
+        <translation>array</translation>
     </message>
     <message>
         <source>object</source>
-        <translation type="unfinished"></translation>
+        <translation>object</translation>
     </message>
     <message>
         <source>Empty document</source>
-        <translation type="unfinished"></translation>
+        <translation>空文档</translation>
     </message>
     <message>
         <source>Unexpected content after the end of the document</source>
-        <translation type="unfinished"></translation>
+        <translation>文档结尾后有意外内容</translation>
     </message>
     <message>
         <source>The document is nested too deeply</source>
-        <translation type="unfinished"></translation>
+        <translation>文档嵌套太深</translation>
     </message>
     <message>
         <source>Unexpected end of document</source>
-        <translation type="unfinished"></translation>
+        <translation>文档意外结束</translation>
     </message>
     <message>
         <source>Expected a property name in quotes</source>
-        <translation type="unfinished"></translation>
+        <translation>预期引号中的属性名</translation>
     </message>
     <message>
         <source>Expected a colon after the property name</source>
-        <translation type="unfinished"></translation>
+        <translation>预期在属性名称后有一个冒号</translation>
     </message>
     <message>
         <source>Trailing comma</source>
-        <translation type="unfinished"></translation>
+        <translation>尾随逗号</translation>
     </message>
     <message>
         <source>Expected a comma or a closing brace</source>
-        <translation type="unfinished"></translation>
+        <translation>预期出现逗号或右大括号</translation>
     </message>
     <message>
         <source>Expected a comma or a closing bracket</source>
-        <translation type="unfinished"></translation>
+        <translation>预期出现逗号或右括号</translation>
     </message>
     <message>
         <source>Unterminated string</source>
-        <translation type="unfinished"></translation>
+        <translation>未终止的字符串</translation>
     </message>
     <message>
         <source>Unterminated escape sequence</source>
-        <translation type="unfinished"></translation>
+        <translation>未终止的转义序列</translation>
     </message>
     <message>
         <source>Incomplete unicode escape sequence</source>
-        <translation type="unfinished"></translation>
+        <translation>不完整的 Unicode 转义序列</translation>
     </message>
     <message>
         <source>Invalid unicode escape sequence</source>
-        <translation type="unfinished"></translation>
+        <translation>无效的 Unicode 转义序列</translation>
     </message>
     <message>
         <source>Invalid escape sequence</source>
-        <translation type="unfinished"></translation>
+        <translation>无效的转义序列</translation>
     </message>
     <message>
         <source>Control character in string</source>
-        <translation type="unfinished"></translation>
+        <translation>字符串中的控制字符</translation>
     </message>
     <message>
         <source>Invalid value</source>
-        <translation type="unfinished"></translation>
+        <translation>无效值</translation>
     </message>
     <message>
         <source>Invalid number</source>
-        <translation type="unfinished"></translation>
+        <translation>无效数字</translation>
     </message>
     <message>
         <source>The schema is empty</source>
-        <translation type="unfinished"></translation>
+        <translation>模式(Schema)为空</translation>
     </message>
     <message>
         <source>The schema has no definition at %1</source>
-        <translation type="unfinished"></translation>
+        <translation>在 %1 处没有定义模式</translation>
     </message>
     <message>
         <source>Expected %1, got %2</source>
-        <translation type="unfinished"></translation>
+        <translation>预期 %1，实际 %2</translation>
     </message>
     <message>
         <source> or </source>
-        <translation type="unfinished"></translation>
+        <translation> 或 </translation>
     </message>
     <message>
         <source>Expected %1 here</source>
-        <translation type="unfinished"></translation>
+        <translation>这里预期为 %1</translation>
     </message>
     <message>
         <source>%1 is not valid here (expected: %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 在这里无效 (预期: %2)</translation>
     </message>
     <message>
         <source>This option is deprecated</source>
-        <translation type="unfinished"></translation>
+        <translation>这个选项已弃用</translation>
     </message>
     <message>
         <source>&quot;%1&quot; is not in the expected format</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; 不是采用预期的格式</translation>
     </message>
     <message>
         <source>Value must be at least %1</source>
-        <translation type="unfinished"></translation>
+        <translation>值必须至少为 %1</translation>
     </message>
     <message>
         <source>Value must be at most %1</source>
-        <translation type="unfinished"></translation>
+        <translation>值必须至多为 %1</translation>
     </message>
     <message>
         <source>Unknown field &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>未知字段 &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Missing required field &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>缺少必需字段 &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Unknown %1 %2 (expected: %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>未知 %1 %2 (预期: %3)</translation>
     </message>
     <message>
         <source>Value does not match any accepted form</source>
-        <translation type="unfinished"></translation>
+        <translation>值不符合任何接受的形式</translation>
     </message>
     <message>
         <source>Empty OpenVPN configuration.</source>
-        <translation type="unfinished"></translation>
+        <translation>空 OpenVPN 配置。</translation>
     </message>
     <message>
         <source>&lt;connection&gt; block without a remote, skipped.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;connection&gt; 块未带 remote，已跳过。</translation>
     </message>
     <message>
         <source>Ignored an unreadable peer fingerprint: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>已忽略不可读取的对端指纹: %1</translation>
     </message>
     <message>
         <source>PKCS#12 bundles are not supported; export the CA, certificate and key as PEM.</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持 PKCS#12 捆绑包；请将 CA 证书、客户端证书和钥匙导出为 PEM 格式。</translation>
     </message>
     <message>
         <source>Ignored inline block: &lt;%1&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>已忽略内联块： &lt;%1&gt;</translation>
     </message>
     <message>
         <source>This is an OpenVPN server configuration (%1), not a client profile.</source>
-        <translation type="unfinished"></translation>
+        <translation>这是 OpenVPN 服务器配置 (%1)，不是客户端配置档。</translation>
     </message>
     <message>
         <source>TAP (layer 2) tunnels are not supported; only `dev tun` profiles can be imported.</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持 TAP (第2层) 隧道，仅可以导入 `dev tun` 配置档。</translation>
     </message>
     <message>
         <source>This is an OpenVPN server configuration (mode server), not a client profile.</source>
-        <translation type="unfinished"></translation>
+        <translation>这是 OpenVPN 服务器配置(模式服务器)，不是客户端配置档。</translation>
     </message>
     <message>
         <source>`proto %1` is a server transport.</source>
-        <translation type="unfinished"></translation>
+        <translation>`proto %1` 是服务器传输（协议）。</translation>
     </message>
     <message>
         <source>Unknown transport: proto %1</source>
-        <translation type="unfinished"></translation>
+        <translation>未知传输： 协议 %1</translation>
     </message>
     <message>
         <source>Ignored an unreadable IPv6 interface address: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>已忽略无法读取的 IPv6 接口地址: %1</translation>
     </message>
     <message>
         <source>Credentials live in %1; enter them in the profile editor.</source>
-        <translation type="unfinished"></translation>
+        <translation>凭据存在 %1 中；请在配置档编辑器中输入。</translation>
     </message>
     <message>
         <source>A hash-directory CRL is not supported; point `crl-verify` at a PEM or DER file.</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持哈希目录形式的 CRL；请在 PEM 或 DER 文件处指向 `crl-verify`。</translation>
     </message>
     <message>
         <source>Ignored a symbolic route target: route %1</source>
-        <translation type="unfinished"></translation>
+        <translation>已忽略符号路由目标: 路由 %1</translation>
     </message>
     <message>
         <source>Ignored an unreadable route: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>已忽略不可达的路由: %1</translation>
     </message>
     <message>
         <source>redirect-gateway flag has no sing-box equivalent: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>redirect-gateway (重定向网关)标志没有对应的 sing-box 设置： %1</translation>
     </message>
     <message>
         <source>Not supported by the OpenVPN endpoint, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>不被 OpenVPN 端点支持，已忽略： %1</translation>
     </message>
     <message>
         <source>Unknown OpenVPN directive, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>未知的 OpenVPN 指令，已忽略： %1</translation>
     </message>
     <message>
         <source>`%1` turns the client certificate off; it was dropped and the server has to accept password login.</source>
-        <translation type="unfinished"></translation>
+        <translation>`%1` 关闭客户端证书；证书已被取消，服务器必须接受密码登录。</translation>
     </message>
     <message>
         <source>`cert` without a `key`: add the private key, or `client-cert-not-required` for password-only login.</source>
-        <translation type="unfinished"></translation>
+        <translation>`cert` 没有 `key`: 添加私钥，或使用 `client-cert-not-required` 进行仅密码登录。</translation>
     </message>
     <message>
         <source>`key` without a `cert`: add the client certificate.</source>
-        <translation type="unfinished"></translation>
+        <translation>`key` 没有 `cert`: 添加客户端证书。</translation>
     </message>
     <message>
         <source>No `remote` server in the OpenVPN configuration.</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenVPN 配置中没有 `remote` 服务器。</translation>
     </message>
     <message>
         <source>Ignored an unreadable interface address: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>忽略了无法读取的接口地址： %1</translation>
     </message>
     <message>
         <source>`remote-cert-eku` replaces `remote-cert-tls`; the latter was dropped.</source>
-        <translation type="unfinished"></translation>
+        <translation>`remote-cert-eku` 替代了 `remote-cert-tls`；后者已被弃用。</translation>
     </message>
     <message>
         <source>Unsupported OpenConnect protocol, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持的 OpenConnect 协议，已忽略： %1</translation>
     </message>
     <message>
         <source>Unknown compression mode, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>未知的压缩模式，已忽略： %1</translation>
     </message>
     <message>
         <source>Unknown reported OS, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>未知的报告操作系统，已忽略： %1</translation>
     </message>
     <message>
         <source>Unsupported token mode, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持的令牌模式，已忽略： %1</translation>
     </message>
     <message>
         <source>Expected --form-entry=FORM:OPTION=VALUE, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>预期 --form-entry=FORM:OPTION=VALUE，已忽略： %1</translation>
     </message>
     <message>
         <source>Configure a proxy through Throne&apos;s chain instead, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>改为通过 Throned 的链来配置代理，已忽略： %1</translation>
     </message>
     <message>
         <source>Unknown OpenConnect option, ignored: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>未知的 OpenConnect 选项，已忽略： %1</translation>
     </message>
     <message>
         <source>Unknown OpenConnect option, ignored: -%1</source>
-        <translation type="unfinished"></translation>
+        <translation>未知的 OpenConnect 选项，已忽略： -%1</translation>
     </message>
     <message>
         <source>An AnyConnect profile carrying a DTD is not accepted.</source>
-        <translation type="unfinished"></translation>
+        <translation>承载 DTD 的 AnyConnect 配置档不被接受。</translation>
     </message>
     <message>
         <source>Malformed AnyConnect profile: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>格式错误的 AnyConnect 配置档： %1</translation>
     </message>
     <message>
         <source>The AnyConnect profile lists no host entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>AnyConnect 配置档未列出主机条目。</translation>
     </message>
     <message>
         <source>Skipped a host entry without an address.</source>
-        <translation type="unfinished"></translation>
+        <translation>跳过了无地址的主机条目。</translation>
     </message>
     <message>
         <source>Skipped &quot;%1&quot;: IKEv2/IPsec is not spoken by the OpenConnect endpoint.</source>
-        <translation type="unfinished"></translation>
+        <translation>跳过了 &quot;%1&quot;： OpenConnect 端点不使用 IKEv2/IPsec。</translation>
     </message>
     <message>
         <source>Skipped an unreadable host address: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>跳过了无法读取的主机地址: %1</translation>
     </message>
     <message>
         <source>Empty OpenConnect profile.</source>
-        <translation type="unfinished"></translation>
+        <translation>空的 OpenConnect 配置档。</translation>
     </message>
     <message>
         <source>The AnyConnect profile has no host entry this endpoint can use.</source>
-        <translation type="unfinished"></translation>
+        <translation>AnyConnect 配置档没有这个终端可以使用的主机条目。</translation>
     </message>
     <message>
         <source>No OpenConnect options found.</source>
-        <translation type="unfinished"></translation>
+        <translation>未找到 OpenConnect 选项。</translation>
     </message>
     <message>
         <source>No OpenConnect server address found.</source>
-        <translation type="unfinished"></translation>
+        <translation>未找到 OpenConnect 服务器地址。</translation>
     </message>
     <message>
         <source>Secret is empty</source>
-        <translation type="unfinished"></translation>
+        <translation>密钥是空的</translation>
     </message>
     <message>
         <source>Secret is not valid base32</source>
-        <translation type="unfinished"></translation>
+        <translation>密钥不是有效的 base32</translation>
     </message>
     <message>
         <source>Secret is too short</source>
-        <translation type="unfinished"></translation>
+        <translation>密钥太短</translation>
     </message>
     <message>
         <source>Digits must be between %1 and %2</source>
-        <translation type="unfinished"></translation>
+        <translation>数字必须在 %1 和 %2 之间</translation>
     </message>
     <message>
         <source>Period must be between %1 and %2 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>周期必须介于 %1 和 %2 秒之间</translation>
     </message>
     <message>
         <source>Not a readable OTP export</source>
-        <translation type="unfinished"></translation>
+        <translation>不是可读的 OTP 导出</translation>
     </message>
     <message>
         <source>Unreadable migration link</source>
-        <translation type="unfinished"></translation>
+        <translation>无法读取的迁移链接</translation>
     </message>
     <message>
         <source>Not an otpauth link or secret: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>不是 otpauth 链接或密钥: %1</translation>
     </message>
     <message>
         <source>Database error</source>
-        <translation type="unfinished"></translation>
+        <translation>数据库错误</translation>
     </message>
     <message>
         <source>%1 failed: %2. Details are in the log file.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 失败： %2。详情在日志文件中。</translation>
     </message>
     <message>
         <source>Traffic statistics paused</source>
-        <translation type="unfinished"></translation>
+        <translation>流量统计已暂停</translation>
     </message>
     <message>
         <source>The statistics database is unusable (%1). Statistics are paused for this session and the file will be rebuilt when Throne restarts.</source>
-        <translation type="unfinished"></translation>
+        <translation>统计数据库不可用 (%1)。 本次会话将暂停统计功能，将在 Throned 重启时重建该文件。</translation>
     </message>
     <message>
         <source>Writing statistics keeps failing (%1). Statistics are paused until Throne restarts.</source>
-        <translation type="unfinished"></translation>
+        <translation>写入统计信息持续失败（%1）。统计功能将暂停，直至 Throned 重启。</translation>
     </message>
     <message>
         <source>Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>空</translation>
     </message>
     <message numerus="yes">
         <source>%n problem(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>
+            <numerusform>%n 个问题</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n warning(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>
+            <numerusform>%n 个警告</numerusform>
+        </translation>
     </message>
     <message>
         <source>Line %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>第 %1 行: %2</translation>
     </message>
     <message>
         <source>Invalid JSON</source>
-        <translation type="unfinished"></translation>
+        <translation>无效 JSON</translation>
     </message>
     <message>
         <source>Fix the errors before formatting the document.</source>
-        <translation type="unfinished"></translation>
+        <translation>在格式化文档前修复错误。</translation>
     </message>
     <message>
         <source>The document must be a JSON object.</source>
-        <translation type="unfinished"></translation>
+        <translation>文档必须是 JSON 对象。</translation>
     </message>
     <message>
         <source>%1: no address is set</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: 未设定地址</translation>
     </message>
     <message>
         <source>%1: the private key is empty</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: 私钥是空的</translation>
     </message>
     <message>
         <source>Cloudflare WARP</source>
-        <translation type="unfinished"></translation>
+        <translation>Cloudflare WARP</translation>
     </message>
     <message>
         <source>Failed to reach the core.</source>
-        <translation type="unfinished"></translation>
+        <translation>连接到核心失败。</translation>
     </message>
     <message>
         <source>Generating a WARP identity registers a new device with Cloudflare.&lt;br&gt;&lt;br&gt;Do you accept the &lt;a href="%1"&gt;Cloudflare WARP terms of service&lt;/a&gt;?</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Direct</source>
+        <translation>直连</translation>
+    </message>
+    <message>
+        <source>Endpoint</source>
+        <translation>端点</translation>
+    </message>
+    <message>
+        <source>Xray full config cannot be combined with the group&apos;s proxies</source>
+        <translation>Xray 完整配置无法与该组的代理一起使用</translation>
+    </message>
+    <message>
+        <source>Added %1 profiles:
+%2
+Updated %3 profiles:
+%4
+Deleted %5 Profiles:
+%6</source>
+        <translation>增加了 %1 个配置档：
+%2
+更新了 %3 个配置档：
+%4
+删除了 %5 个配置档：
+%6</translation>
+    </message>
+    <message>
+        <source>Still in use, so kept instead of deleted:
+%1</source>
+        <translation>仍在使用中，因此保留而不是删除:
+%1</translation>
+    </message>
+    <message>
+        <source>Failed to parse the Clash configuration.</source>
+        <translation>解析 Clash 配置失败。</translation>
+    </message>
+    <message>
+        <source>Generating a WARP identity registers a new device with Cloudflare.&lt;br&gt;&lt;br&gt;Do you accept the &lt;a href=&quot;%1&quot;&gt;Cloudflare WARP terms of service&lt;/a&gt;?</source>
+        <translation>生成 WARP 身份识别会用 Cloudflare 注册新设备。&lt;br&gt;&lt;br&gt;你接受&lt;a href=&quot;%1&quot;&gt;Cloudflare WARP 服务条款&lt;/a&gt;吗?</translation>
+    </message>
+    <message>
+        <source>Connect OK</source>
+        <translation>连接成功</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation>不可用</translation>
+    </message>
+    <message>
+        <source>Auto selector — no working profile out of %1, still checking</source>
+        <translation>自动选择器 — 在 %1 个配置档中无可用的配置档，仍在检查中</translation>
+    </message>
+    <message>
+        <source>%1
+How to update?</source>
+        <translation>%1
+如何更新？</translation>
+    </message>
+    <message>
+        <source>Failed to download %1:
+%2</source>
+        <translation>下载 %1 失败:
+%2</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <source>Connecting…</source>
+        <translation>连接中…</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>未知</translation>
+    </message>
+    <message>
+        <source>Local</source>
+        <translation>本地</translation>
+    </message>
+    <message>
+        <source>Valid JSON</source>
+        <translation>有效 JSON</translation>
+    </message>
+    <message>
+        <source>JSON Editor</source>
+        <translation>JSON 编辑器</translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation>格式化</translation>
     </message>
 </context>
 <context>
@@ -7968,7 +8738,7 @@ Your local edits are overwritten on each update.</source>
     </message>
     <message>
         <source>Endpoints</source>
-        <translation type="unfinished"></translation>
+        <translation>端点</translation>
     </message>
     <message>
         <source>OpenVPN / OpenConnect profiles started alongside this routing profile. Traffic for the networks they advertise goes through them; everything else follows this profile&apos;s rules. Each endpoint gets a rule in the Advanced tab that you can move among your own rules.</source>
@@ -7976,27 +8746,69 @@ Your local edits are overwritten on each update.</source>
     </message>
     <message>
         <source>This rule is managed by the Endpoints tab. You can only move it.</source>
-        <translation type="unfinished"></translation>
+        <translation>这个规则由“端点”选项卡管理。只能调整其位置。</translation>
     </message>
     <message>
         <source>Profile #%1 — deleted, dropped when you save</source>
-        <translation type="unfinished"></translation>
+        <translation>配置档 #%1 — 已删除，保存时丢弃</translation>
     </message>
     <message>
         <source>%1 endpoint profile(s) no longer exist and were removed from this routing profile.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 个端点配置档已不存在，已从这个路由配置档中移除。</translation>
     </message>
     <message>
         <source>Endpoint rule: move it to choose where the endpoint claims traffic. Managed by the Endpoints tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>端点规则： 调整规则位置以选择该端点声明接管的流量的位置。由“端点”选项卡管理。</translation>
     </message>
     <message>
         <source>This rule installs a &apos;preferred by&apos; rule so that the networks advertised by the endpoint %1 get routed into the endpoint tunnel.</source>
-        <translation type="unfinished"></translation>
+        <translation>这个规则安装一个“优先使用”规则，以便由端点 %1 通告（播发）的网络被路由到该端点隧道。</translation>
     </message>
     <message>
         <source>Endpoint rule</source>
-        <translation type="unfinished"></translation>
+        <translation>端点规则</translation>
+    </message>
+    <message>
+        <source>Re-fetch this profile from the URL when subscriptions auto-update.
+Your local edits are overwritten on each update.</source>
+        <translation>订阅自动更新时从该 URL 重新获取这个配置档。
+每次更新时都会覆盖您的本地编辑。</translation>
+    </message>
+    <message>
+        <source>OpenVPN / OpenConnect profiles started alongside this routing profile. Traffic for the networks they advertise goes through them; everything else follows this profile&apos;s rules. Each endpoint gets a rule in the Advanced tab that you can move among your own rules. A chain endpoint can hand out one rule per inner OpenVPN / OpenConnect hop too, so traffic can be routed to a hop before the exit.</source>
+        <translation>随这个路由配置档同步启动的 OpenVPN / OpenConnect 配置档。它们宣告的网络的流量将通过它们处理；其余的则遵循这个配置档的规则。每个端点都会在「高级」选项卡中得到一条规则，你可以在它们自有的规则中随意移动。链式端点也可以为每个内部 OpenVPN / OpenConnect 跳点分配一条规则，从而使流量可以在到达 Exit (最终出口)前被路由到某个（中间）跳点。</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>添加</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Some rules could not be added:
+</source>
+        <translation>无法添加某些规则：
+</translation>
+    </message>
+    <message>
+        <source>Allow routing to inner hops</source>
+        <translation>允许路由到内部跳点</translation>
+    </message>
+    <message>
+        <source>Give each OpenVPN/OpenConnect hop behind the exit its own rule, so traffic can be routed to it as well.</source>
+        <translation>赋予出口节点(exit)后每个 OpenVPN/OpenConnect 跳点自己的规则，以便流量也可路由到这些跳点。</translation>
+    </message>
+    <message>
+        <source>%1 route prefer</source>
+        <translation>%1 路由首选</translation>
+    </message>
+    <message>
+        <source>Some rules could not be added, fix them before saving:
+</source>
+        <translation>某些规则无法添加，请在保存前修复它们：
+</translation>
     </message>
 </context>
 <context>
@@ -8406,6 +9218,10 @@ Deleted %3 Profiles:
         <source>Disable Path MTU Discovery</source>
         <translation>禁用路径 MTU 发现</translation>
     </message>
+    <message>
+        <source>TLS Fragment</source>
+        <translation>TLS 分片</translation>
+    </message>
 </context>
 <context>
     <name>DialogOtpManager</name>
@@ -8423,95 +9239,133 @@ Deleted %3 Profiles:
     </message>
     <message>
         <source>OTP</source>
-        <translation type="unfinished"></translation>
+        <translation>OTP</translation>
     </message>
     <message>
         <source>No usable code; check the secret.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有可用的代码；检查一下密钥。</translation>
     </message>
     <message>
         <source>Delete &quot;%1&quot;? Its secret cannot be recovered.</source>
-        <translation type="unfinished"></translation>
+        <translation>删除 &quot;%1&quot; 吗? 它的密钥不能被恢复。</translation>
     </message>
     <message>
         <source>Failed to store the OTP profile.</source>
-        <translation type="unfinished"></translation>
+        <translation>存储 OTP 配置档失败。</translation>
     </message>
     <message>
         <source>This one as otpauth:// link and QR</source>
-        <translation type="unfinished"></translation>
+        <translation>这一个为 otpauth:// 链接和 QR 形式</translation>
     </message>
     <message>
         <source>All as otpauth-migration:// link and QR</source>
-        <translation type="unfinished"></translation>
+        <translation>全部为 otpauth-migration:// 链接和 QR 形式</translation>
     </message>
     <message>
         <source>All as JSON file...</source>
-        <translation type="unfinished"></translation>
+        <translation>全部为 JSON 文件...</translation>
     </message>
     <message>
         <source>Add manually...</source>
-        <translation type="unfinished"></translation>
+        <translation>手动添加...</translation>
     </message>
     <message>
         <source>From link or text...</source>
-        <translation type="unfinished"></translation>
+        <translation>来自链接或文本...</translation>
     </message>
     <message>
         <source>Import OTP</source>
-        <translation type="unfinished"></translation>
+        <translation>导入 OTP</translation>
     </message>
     <message>
         <source>Paste otpauth:// links, an otpauth-migration:// link, a JSON export, or just a base32 secret.</source>
-        <translation type="unfinished"></translation>
+        <translation>粘贴（多个） otpauth:// 链接，一个 otpauth-migration:// 链接、一个 JSON 导出或就一个 base32 密钥。</translation>
     </message>
     <message>
         <source>From clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>来自剪贴板</translation>
     </message>
     <message>
         <source>From QR image file...</source>
-        <translation type="unfinished"></translation>
+        <translation>来自 QR 图像文件...</translation>
     </message>
     <message>
         <source>No QR code found in the clipboard image.</source>
-        <translation type="unfinished"></translation>
+        <translation>在剪贴板图像中找不到 QR 码。</translation>
     </message>
     <message>
         <source>Clipboard is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>剪贴板是空的。</translation>
     </message>
     <message>
         <source>QR images and exports (*.png *.jpg *.jpeg *.bmp *.gif *.json *.txt);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>QR 图像和导出内容 (*.png *.jpg *.jpeg *.bmp *.gif *.json *.txt);;所有文件 (*)</translation>
     </message>
     <message>
         <source>Nothing to import.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有导入的内容。</translation>
     </message>
     <message>
         <source>OTP %1</source>
-        <translation type="unfinished"></translation>
+        <translation>OTP %1</translation>
     </message>
     <message>
         <source>Imported %1 OTP profile(s).</source>
-        <translation type="unfinished"></translation>
+        <translation>已导入 %1 个 OTP 配置档。</translation>
     </message>
     <message>
         <source>Skipped %1 duplicate or unusable entries.</source>
-        <translation type="unfinished"></translation>
+        <translation>已跳过 %1 个重复或不可用条目。</translation>
     </message>
     <message>
         <source>Export OTP</source>
-        <translation type="unfinished"></translation>
+        <translation>导出 OTP</translation>
     </message>
     <message>
         <source>None of the selected profiles could be exported.</source>
-        <translation type="unfinished"></translation>
+        <translation>选定的配置档没有一个可被导出。</translation>
     </message>
     <message>
         <source>JSON (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON (*.json)</translation>
+    </message>
+    <message>
+        <source>Copied</source>
+        <translation>已复制</translation>
+    </message>
+    <message>
+        <source>Confirmation</source>
+        <translation>确认</translation>
+    </message>
+    <message>
+        <source>Unable to capture screen</source>
+        <translation>无法捕获屏幕</translation>
+    </message>
+    <message>
+        <source>QR Code not found</source>
+        <translation>未找到二维码</translation>
+    </message>
+    <message>
+        <source>%1: cannot be opened</source>
+        <translation>%1: 无法打开</translation>
+    </message>
+    <message>
+        <source>%1: larger than 50 MB, skipped</source>
+        <translation>%1: 大于 50 MB，已跳过</translation>
+    </message>
+    <message>
+        <source>%1: no QR code found</source>
+        <translation>%1: 找不到二维码</translation>
+    </message>
+    <message>
+        <source>Cannot write to: %1</source>
+        <translation>无法写到: %1</translation>
+    </message>
+    <message>
+        <source>Exported %1 OTP profile(s) to:
+%2</source>
+        <translation>导出了 %1 个 OTP 配置档到:
+%2</translation>
     </message>
 </context>
 <context>
@@ -8652,1399 +9506,1619 @@ Deleted %3 Profiles:
     </message>
     <message>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>详情</translation>
     </message>
     <message>
         <source>VPN Endpoints</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Endpoint</source>
+        <translation>端点</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>状态</translation>
     </message>
 </context>
 <context>
     <name>EditWireguardAmnezia</name>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.1. Appends a random trailer to every packet, so message types are no longer identifiable by size.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.1。附加一个随机的尾部到每个数据包，这样消息类型就不再能够通过大小识别。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Random Trailers</source>
-        <translation type="unfinished"></translation>
+        <translation>随机尾部</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.1. Never send cookie replies, so an under-load peer stays silent instead of answering with a fixed-size message.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.1。永不发送 cookie 回复，所以负载过低的对端节点会保持静默而不是用固定大小的消息回答。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable Cookies</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用 Cookies</translation>
+    </message>
+    <message>
+        <source>Amnezia Options</source>
+        <translation>Amnezia 选项</translation>
+    </message>
+    <message>
+        <source>Junk Packet Count (Jc)</source>
+        <translation>垃圾数据包数量 (Jc)</translation>
+    </message>
+    <message>
+        <source>Junk Packet Min Size (Jmin)</source>
+        <translation>垃圾数据包最小大小 (Jmin)</translation>
+    </message>
+    <message>
+        <source>Junk Packet Max Size (Jmax)</source>
+        <translation>垃圾数据包最大大小 (Jmax)</translation>
+    </message>
+    <message>
+        <source>Init Packet Junk Size (S1)</source>
+        <translation>初始数据包垃圾大小 (S1)</translation>
+    </message>
+    <message>
+        <source>Response Packet Junk Size (S2)</source>
+        <translation>响应数据包垃圾大小 (S2)</translation>
+    </message>
+    <message>
+        <source>Cookie Reply Packet Junk Size (S3)</source>
+        <translation>Cookie 回复数据包垃圾大小 (S3)</translation>
+    </message>
+    <message>
+        <source>Transport Packet Junk Size (S4)</source>
+        <translation>传送数据包垃圾大小 (S4)</translation>
+    </message>
+    <message>
+        <source>Init Packet Magic Header (H1)</source>
+        <translation>初始数据包魔法标头 (H1)</translation>
+    </message>
+    <message>
+        <source>Response Packet Magic Header (H2)</source>
+        <translation>响应数据包魔术标头 (H2)</translation>
+    </message>
+    <message>
+        <source>Cookie Reply Packet Magic Header (H3)</source>
+        <translation>Cookie 回复数据包魔术标头 (H3)</translation>
+    </message>
+    <message>
+        <source>Transport Packet Magic Header (H4)</source>
+        <translation>传输数据包魔法标头 (H4)</translation>
+    </message>
+    <message>
+        <source>Signature Packet (I1)</source>
+        <translation>签名数据包 (I1)</translation>
+    </message>
+    <message>
+        <source>Signature Packet (I2)</source>
+        <translation>签名数据包 (I2)</translation>
+    </message>
+    <message>
+        <source>Signature Packet (I3)</source>
+        <translation>签名数据包 (I3)</translation>
+    </message>
+    <message>
+        <source>Signature Packet (I4)</source>
+        <translation>签名数据包 (I4)</translation>
+    </message>
+    <message>
+        <source>Signature Packet (I5)</source>
+        <translation>签名数据包 (I5)</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0. Base64 key. Requires S1-S4 to be at least 12.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0。 Base64 钥匙。要求 S1-S4 至少 12。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Header Protection Key</source>
+        <translation>标头保护钥匙</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0. Bytes of random trailing padding, as a value or range (e.g. 0-64).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0。 随机尾部填充的字节数，可以为一个值或范围 (如 0-64)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Content Padding Addition</source>
+        <translation>内容填充附加量</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0. Seconds before a rekey is attempted, as a value or range.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0. 尝试 rekey (重新密钥协商)前的秒数，可以是一个具体值或范围。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Rekey After Time</source>
+        <translation>指定时间后 Rekey</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0. Seconds before a handshake is retried, as a value or range.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0。 重试握手前的秒数，可以是一个具体值或范围。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Rekey Timeout</source>
+        <translation>Rekey 超时</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0. Seconds before keys are rejected, as a value or range.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0。 拒绝钥匙前的秒数，可以是一个具体值或范围。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Reject After Time</source>
+        <translation>指定时间后拒绝</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0. Seconds of idle time before a keepalive is sent, as a value or range.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0。 发送 keepalive (保活)前的空闲时间（秒数），可以是一个具体值或范围。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Keepalive Timeout</source>
+        <translation>保活超时</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0. Handshake retries before giving up, as a value or range.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AmneziaWG 3.0。 放弃前的握手重试次数，可以是一个具体值或范围。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Max Handshake Attempts</source>
+        <translation>最多握手尝试次数</translation>
     </message>
 </context>
 <context>
     <name>DialogEditOtp</name>
     <message>
         <source>OTP Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>OTP 配置档</translation>
     </message>
     <message>
         <source>How you will refer to this OTP</source>
-        <translation type="unfinished"></translation>
+        <translation>你如何称呼这个 OTP</translation>
     </message>
     <message>
         <source>Base32 secret</source>
-        <translation type="unfinished"></translation>
+        <translation>Base32 密钥</translation>
     </message>
     <message>
         <source>Show secret</source>
-        <translation type="unfinished"></translation>
+        <translation>显示密钥</translation>
     </message>
     <message>
         <source>Issuer</source>
-        <translation type="unfinished"></translation>
+        <translation>颁发者</translation>
     </message>
     <message>
         <source>Optional, kept for import and export</source>
-        <translation type="unfinished"></translation>
+        <translation>可选，保留用于导入和导出</translation>
     </message>
     <message>
         <source>TOTP (time based)</source>
-        <translation type="unfinished"></translation>
+        <translation>TOTP (基于时间)</translation>
     </message>
     <message>
         <source>HOTP (counter based)</source>
-        <translation type="unfinished"></translation>
+        <translation>HOTP (基于计数器)</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>算法</translation>
     </message>
     <message>
         <source>SHA1</source>
-        <translation type="unfinished"></translation>
+        <translation>SHA1</translation>
     </message>
     <message>
         <source>SHA256</source>
-        <translation type="unfinished"></translation>
+        <translation>SHA256</translation>
     </message>
     <message>
         <source>SHA512</source>
-        <translation type="unfinished"></translation>
+        <translation>SHA512</translation>
     </message>
     <message>
         <source>Digits</source>
-        <translation type="unfinished"></translation>
+        <translation>位数</translation>
     </message>
     <message>
         <source>Period (seconds)</source>
-        <translation type="unfinished"></translation>
+        <translation>周期 (秒)</translation>
     </message>
     <message>
         <source>Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>计数器</translation>
     </message>
     <message>
         <source>Hide secret</source>
-        <translation type="unfinished"></translation>
+        <translation>隐藏密钥</translation>
     </message>
     <message>
         <source>Name cannot be empty</source>
-        <translation type="unfinished"></translation>
+        <translation>名称不能为空</translation>
     </message>
     <message>
         <source>No code yet</source>
-        <translation type="unfinished"></translation>
+        <translation>尚无代码</translation>
     </message>
     <message>
         <source>Current code: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>当前代码: %1</translation>
     </message>
     <message>
         <source>Current code: %1 (%2s)</source>
-        <translation type="unfinished"></translation>
+        <translation>当前代码: %1 (%2s)</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <source>Secret</source>
+        <translation>密钥</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>类型</translation>
+    </message>
+    <message>
+        <source>Secret is empty</source>
+        <translation>密钥是空的</translation>
+    </message>
+    <message>
+        <source>Secret is not valid base32</source>
+        <translation>密钥不是有效的 base32</translation>
     </message>
 </context>
 <context>
     <name>DialogEndpointDetails</name>
     <message>
         <source>Endpoint Details</source>
-        <translation type="unfinished"></translation>
+        <translation>端点细节</translation>
     </message>
     <message>
         <source>Endpoint — %1</source>
-        <translation type="unfinished"></translation>
+        <translation>端点 — %1</translation>
     </message>
     <message>
         <source>State</source>
-        <translation type="unfinished"></translation>
+        <translation>状态</translation>
     </message>
     <message>
         <source>Cipher</source>
-        <translation type="unfinished"></translation>
+        <translation>密码算法</translation>
     </message>
     <message>
         <source>Connected for</source>
-        <translation type="unfinished"></translation>
+        <translation>连接时长</translation>
     </message>
     <message>
         <source>IPv4 address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv4 地址</translation>
     </message>
     <message>
         <source>IPv6 address</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv6 地址</translation>
     </message>
     <message>
         <source>All domains — every DNS query goes through this tunnel</source>
-        <translation type="unfinished"></translation>
+        <translation>所有域名 — 所有 DNS 查询均通过这个隧道</translation>
     </message>
     <message>
         <source>Routes through this tunnel</source>
-        <translation type="unfinished"></translation>
+        <translation>通过这个隧道路由</translation>
     </message>
     <message>
         <source>Kept outside this tunnel</source>
-        <translation type="unfinished"></translation>
+        <translation>保持在这个隧道外</translation>
     </message>
     <message>
         <source>DNS servers pushed by the server</source>
-        <translation type="unfinished"></translation>
+        <translation>由服务器推送的 DNS 服务器</translation>
     </message>
     <message>
         <source>Domains routed to this tunnel</source>
-        <translation type="unfinished"></translation>
+        <translation>路由转发到这个隧道的域名</translation>
     </message>
     <message>
         <source>No longer running</source>
-        <translation type="unfinished"></translation>
+        <translation>不再运行</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>服务器</translation>
+    </message>
+    <message>
+        <source>Transport</source>
+        <translation>传输</translation>
+    </message>
+    <message>
+        <source>MTU</source>
+        <translation>MTU</translation>
     </message>
 </context>
 <context>
     <name>DialogVpnAuth</name>
     <message>
         <source>VPN Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>VPN 认证</translation>
     </message>
     <message>
         <source>Endpoint: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>端点: %1</translation>
     </message>
     <message>
         <source>Reconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>重连</translation>
     </message>
     <message>
         <source>Submit</source>
-        <translation type="unfinished"></translation>
+        <translation>提交</translation>
     </message>
     <message>
         <source>The VPN server sent a message.</source>
-        <translation type="unfinished"></translation>
+        <translation>VPN 服务器发送了一条消息。</translation>
     </message>
     <message>
         <source>Finish signing in at the address shown below, then close this window. The connection continues on its own once the server accepts it.</source>
-        <translation type="unfinished"></translation>
+        <translation>在下方显示的地址处完成登录，然后关闭这个窗口。一旦服务器接受连接则连接自动继续。</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>在浏览器中打开</translation>
     </message>
     <message>
         <source>This server requires single sign-on in a browser, which Throne does not support yet. Cancel here and use a profile with direct credentials, or supply an authentication cookie in the profile&apos;s advanced settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>这个服务器想要在浏览器中进行单点登录，而 Throned 还未支持。可以在这里取消，然后使用带直接凭证的配置档，或者在配置档的高级设置中提高认证的 cookie。</translation>
     </message>
     <message>
         <source>Unsupported authentication request: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持的验证请求: %1</translation>
     </message>
     <message>
         <source>Expires in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 后过期</translation>
     </message>
     <message>
         <source>Answer</source>
-        <translation type="unfinished"></translation>
+        <translation>应答</translation>
     </message>
     <message>
         <source>This request expired.</source>
-        <translation type="unfinished"></translation>
+        <translation>这个请求已过期。</translation>
     </message>
     <message>
         <source>Submitting...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在提交...</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密码</translation>
     </message>
 </context>
 <context>
     <name>EditHysteriaRealm</name>
     <message>
         <source>The realm is a rendezvous service: it hands out the server&apos;s current public addresses so the connection can be hole-punched directly.</source>
-        <translation type="unfinished"></translation>
+        <translation>Realm (领域) 是一个 Rendezvous (会面)服务：它交出服务器的当前公共地址，这样连接就可以直接洞穿而过。</translation>
     </message>
     <message>
         <source>Realm URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Realm 网址</translation>
     </message>
     <message>
         <source>Realm ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Realm ID</translation>
     </message>
     <message>
         <source>The slot the target Hysteria2 server registered on the realm.</source>
-        <translation type="unfinished"></translation>
+        <translation>目标 Hysteria2 服务器在该 realm 上注册的槽位。</translation>
     </message>
     <message>
         <source>Realm Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Realm 令牌</translation>
     </message>
     <message>
         <source>STUN Servers</source>
-        <translation type="unfinished"></translation>
+        <translation>STUN 服务器</translation>
     </message>
     <message>
         <source>Comma separated host or host:port entries used to discover this client&apos;s public addresses.</source>
-        <translation type="unfinished"></translation>
+        <translation>用于发现这个客户端的公网地址的逗号间隔的“主机”或“主机:端口”条目。</translation>
     </message>
     <message>
         <source>IP Version</source>
-        <translation type="unfinished"></translation>
+        <translation>IP 版本</translation>
     </message>
     <message>
         <source>Port Mapping</source>
-        <translation type="unfinished"></translation>
+        <translation>端口映射</translation>
     </message>
     <message>
         <source>Mapping Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>映射超时</translation>
     </message>
     <message>
         <source>Mapping Lifetime</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>EditOpenConnect</name>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenConnect protocol flavor. Leave empty to use the core default (anyconnect).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>映射生命周期</translation>
     </message>
     <message>
-        <source>Flavor</source>
-        <translation type="unfinished"></translation>
+        <source>Realm (NAT Traversal)</source>
+        <translation>Realm (NAT 遍历)</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Username used to fill matching authentication form fields.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Password used to fill matching authentication form fields.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Preselects a matching group, realm, domain or gateway choice when the flavor supports it.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auth Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Path part of the server URL, appended to the address above. Load-bearing on gp, f5 and fortinet portals.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Preferred tunnel MTU. Values below 576 are treated as 576; the maximum is 65535.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Traffic that falls through to this profile reaches the tunnel only when the destination is inside a subnet the VPN server advertises; anything else is blocked. Routing rules that name this profile explicitly are not affected and always win.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Only route advertised network</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Resolve the names the VPN server claims - its split-DNS suffixes and search domains - through the resolvers it pushes. Turn this off if the server claims every domain and breaks public DNS. Kept on regardless while this profile carries all traffic with &quot;Only route advertised network&quot; enabled, since the pushed resolvers are then the only reachable ones.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Resolve through this tunnel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fail a lookup the tunnel cannot answer instead of retrying it directly. Leave this off for a management VPN: names it does not claim then still resolve through the direct resolver.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Block outside DNS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disables verification of the server certificate and hostname. This lets an active attacker impersonate the VPN server; prefer a CA certificate or a peer fingerprint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Server name used for TLS SNI and certificate hostname verification. The hostname from the address is used when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Additional trusted CA certificate content in PEM format, added to the system certificate pool.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CA Certificate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Password for the encrypted client private key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Client Key Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Binds an authenticator entry to this profile. %1 in the username, password, software token or form entry fields is replaced with a generated code at connect time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 is replaced at connect time</source>
-        <translation type="unfinished"></translation>
+        <source>Maintain a UDP port mapping on the local gateway via UPnP or NAT-PMP.
+Improves hole-punching reliability. Requires IPv4.</source>
+        <translation>通过 UPnP 或 NAT-PMP 在本地网关上保持 UDP 端口映射。
+提高洞穿的可靠性。需要使用 IPv4。</translation>
     </message>
 </context>
 <context>
     <name>EditOpenConnectAdvanced</name>
     <message>
         <source>OpenConnect Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenConnect 高级</translation>
     </message>
     <message>
         <source>Session</source>
-        <translation type="unfinished"></translation>
+        <translation>会话</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Existing authentication session used to connect without first prompting for credentials. The accepted format depends on the flavor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用现有认证会话连接，而无需先提示输入凭据。可接受的格式取决于协议类型。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Cookie</source>
-        <translation type="unfinished"></translation>
+        <translation>Cookie</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Operating system identity reported to the server. anyconnect, gp and pulse accept linux, linux-64, win, mac-intel, android and apple-ios. The system platform is used by default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;向服务器报告的操作系统标识。anyconnect, gp 和 pulse 接受 linux, linux-64, win, mac-intel, android 和 apple-ios。默认使用系统平台。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Reported OS</source>
-        <translation type="unfinished"></translation>
+        <translation>报告的OS</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User agent reported to the server. The default is flavor specific.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;报告给服务器的“用户代理”(User agent)。默认值因协议类型而定。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Client version reported separately from the user agent. Currently used by AnyConnect XML authentication.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;客户端版本与用户代理分开报告。目前由 AnyConnect XML 身份验证使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>v9.21 (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>v9.21 (默认)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Local hostname reported to the server. The system hostname is used by default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;报告给服务器的本地主机名。默认使用系统主机名。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Local Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>本地主机名</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the token the core generates itself. To use a Throne OTP profile, bind it on the main editor instead.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;这是核心自己生成的令牌。要使用 Throned OTP 配置档，请改为在主编辑器上绑定它。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Software Token</source>
-        <translation type="unfinished"></translation>
+        <translation>软件令牌</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;totp and hotp are one-time password modes, stoken is an RSA SecurID software token and oidc is an access token used for HTTP Bearer authentication.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;totp 和 hotp 是一次性密码模式，stoken 是一个 RSA SecurID 软件令牌，oidc 是用于 HTTP Bearer 认证的访问令牌。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Base32 secret, a base32: prefixed secret or an otpauth:// URI for totp and hotp; the encoded CTF content for stoken; the access token for oidc. Conflicts with the secret path.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;一个 Base32 密钥，一个前缀 base32: 的密钥或用于 TOTP 和 HOTP 的 otpauth://URI；用于 stoken 的编码 CTF 内容；用于 OIDC 的访问令牌。与密码路径不能同时使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Path to the token secret or access token. Conflicts with the inline secret.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;令牌密钥或访问令牌的路径。与内联密钥冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Secret Path</source>
-        <translation type="unfinished"></translation>
+        <translation>密钥路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSA SecurID PIN for stoken mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于 stoken 模式的 RSA SecurID PIN。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Password for decrypting a password-protected RSA SecurID token.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于解密受密码保护的 RSA SecurID 令牌的密码。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Device ID for decrypting a device-bound RSA SecurID token.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于解密设备绑定 RSA SecurID 令牌的设备 ID。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Device ID</source>
-        <translation type="unfinished"></translation>
+        <translation>设备 ID</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Initial counter for hotp mode. Empty uses the counter from an otpauth:// URI, otherwise zero.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;HOTP 模式的初始计数器。为空时使用来自 otpauth:// URI 中的计数器，否则为零。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Allowed server certificate fingerprints, one per line. Accepts a bare SHA-1 fingerprint or sha1:, sha256: and pin-sha256: values, abbreviated to at least four characters.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;允许的服务器证书指纹，每行一个。可接受裸 SHA-1 指纹或 sha1:、sha256: 及 pin-sha256: 值，缩写为至少四个字符。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Peer Fingerprint</source>
-        <translation type="unfinished"></translation>
+        <translation>对端指纹</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use a CA certificate or a peer fingerprint to establish trust when this is enabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;启用这个功能时，使用 CA 证书或对等方指纹来建立信任。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable the system CA certificate pool</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用系统的 CA 证书池</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline CA certificate on the main editor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与主编辑器上的内联 CA 证书冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>CA Certificate Path</source>
-        <translation type="unfinished"></translation>
+        <translation>CA 证书路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline client certificate on the main editor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与主编辑器上的内联客户端证书冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Client Certificate Path</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端证书路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline client key on the main editor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与主编辑器上的内联客户端密钥冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Client Key Path</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端钥匙路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AnyConnect multiple-certificate authentication chain in PEM format. Conflicts with the MCA certificate path.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AnyConnect 多证书认证链，采用 PEM 格式。与 MCA 证书路径不能同时使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>MCA Certificate</source>
-        <translation type="unfinished"></translation>
+        <translation>MCA 证书</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline MCA certificate.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与内联 MCA 证书冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>MCA Certificate Path</source>
-        <translation type="unfinished"></translation>
+        <translation>MCA 证书路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AnyConnect multiple-certificate authentication private key in PEM format. Conflicts with the MCA key path.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AnyConnect 多证书认证私钥使用 PEM 格式。与 MCA 密钥路径冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>MCA Key</source>
-        <translation type="unfinished"></translation>
+        <translation>MCA 钥匙</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline MCA key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与内联 MCA 键冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>MCA Key Path</source>
-        <translation type="unfinished"></translation>
+        <translation>MCA 钥匙路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Password for the encrypted MCA private key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;加密的 MCA 私钥的密码。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>MCA Key Password</source>
-        <translation type="unfinished"></translation>
+        <translation>MCA 钥匙密码</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All three fields are required when a mobile identity is configured.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;当配置移动身份时，所有三个字段都是必需的。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Mobile Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>移动身份</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mobile operating system version reported to the AnyConnect server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;向 AnyConnect 服务器报告的移动操作系统版本。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Platform Version</source>
-        <translation type="unfinished"></translation>
+        <translation>平台版本</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mobile device model or type reported to the AnyConnect server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;向 AnyConnect 服务器报告的移动设备型号或类型。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Device Type</source>
-        <translation type="unfinished"></translation>
+        <translation>设备类型</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mobile device identifier reported to the AnyConnect server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;向 AnyConnect 服务器报告的移动设备标识符。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Device Unique ID</source>
-        <translation type="unfinished"></translation>
+        <translation>设备唯一 ID</translation>
     </message>
     <message>
         <source>Compliance</source>
-        <translation type="unfinished"></translation>
+        <translation>合规检查</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;External AnyConnect CSD / host scan wrapper executable. Built-in handling is used when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;外部 AnyConnect CSD / 主机扫描封装可执行文件。为空时使用内置处理。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>CSD Wrapper Path</source>
-        <translation type="unfinished"></translation>
+        <translation>CSD 封装器路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;External GlobalProtect HIP report wrapper executable. Built-in reporting is used when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;外部 GlobalProtect HIP 报告封装可执行文件。当为空时使用内置报告。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>HIP Wrapper Path</source>
-        <translation type="unfinished"></translation>
+        <translation>HIP 封装器路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fortinet hostcheck result string, conventionally security-status,os-version such as 0100,10.0.19042. An empty value disables hostcheck.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fortinet 主机检查结果字符串，通常为 security-status,os-version，例如 0100,10.0.19042。空值将禁用主机检查。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Fortinet Hostcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Fortinet 主机检查</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fortinet virtual desktop check result, conventionally colon separated MAC addresses joined by a vertical bar.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fortinet 虚拟桌面检查结果，通常是冒号间隔的用竖线串连的 MAC 地址。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Fortinet Virtual Desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Fortinet 虚拟桌面</translation>
     </message>
     <message>
         <source>TNCC</source>
-        <translation type="unfinished"></translation>
+        <translation>TNCC</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;External Network Connect TNCC wrapper executable. Conflicts with every other field in this group.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;外部网络连接 TNCC 封装器可执行文件。与这个组中的每个其他字段冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Wrapper Path</source>
-        <translation type="unfinished"></translation>
+        <translation>封装器路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Device ID reported by the built-in TNCC handler.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;由内置 TNCC 处理程序报告的设备 ID。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;User agent used by the built-in TNCC handler. Neoteris HC Http is used by default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内置 TNCC 处理程序使用的用户代理。默认使用 Neoteris HC Http。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reports the platform, hostname and observed MAC addresses. Required before machine certificates are used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;报告平台、主机名和观察到的 MAC 地址。在使用机器证书前所需。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Enable machine identification</source>
-        <translation type="unfinished"></translation>
+        <translation>启用机器识别</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Machine certificates used by the built-in TNCC handler to answer certificate requests. Requires machine identification.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;内置 TNCC 处理程序用来响应证书请求的机器证书。需要机器身份识别。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Certificate Path</source>
-        <translation type="unfinished"></translation>
+        <translation>证书路径</translation>
     </message>
     <message>
         <source>Edit Certificate</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑证书</translation>
     </message>
     <message>
         <source>Authentication Forms</source>
-        <translation type="unfinished"></translation>
+        <translation>认证表单</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;An entry matches by submission key when set, or by the combination of form ID and name. Later matching entries take precedence. Ask interactively conflicts with a value.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;当设置了提交键时，条目会按提交键匹配，或者按表单 ID 和名称的组合匹配。靠后的匹配条目优先。交互式询问会与某个值冲突。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Form ID</source>
-        <translation type="unfinished"></translation>
+        <translation>表单 ID</translation>
     </message>
     <message>
         <source>Submission Key</source>
-        <translation type="unfinished"></translation>
+        <translation>提交键</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>值</translation>
     </message>
     <message>
         <source>Ask interactively</source>
-        <translation type="unfinished"></translation>
+        <translation>交互式提问</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses the TLS data channel only.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;仅使用 TLS 数据通道。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable the DTLS or ESP data channel</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用 DTLS 或 ESP 数据通道</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Local UDP port used by the secondary data channel. An ephemeral port is selected by default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;次要数据通道使用的本地 UDP 端口。默认情况下会选择一个临时(ephemeral)端口。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>DTLS Local Port</source>
-        <translation type="unfinished"></translation>
+        <translation>DTLS 本地端口</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Compression can weaken traffic confidentiality. Conflicts with the compression mode all.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;压缩可能削弱流量的保密性。与压缩模式 all (全部)冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable compression negotiation</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用压缩协商</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;stateless is used by default. all additionally advertises stateful deflate for CSTP and carries extra confidentiality risk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;默认使用 stateless (无状态)。all 额外为 CSTP 宣传有状态 deflate (压缩)，并带来额外的机密性风险。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Compression Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>压缩模式</translation>
     </message>
     <message>
         <source>Disable IPv6 tunnel configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用 IPv6 隧道配置</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Applies to authentication and configuration requests.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;适用于身份验证和配置请求。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable HTTP connection reuse</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用 HTTP 连接重用</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Starts AnyConnect authentication with the legacy GET flow.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用旧版的 GET 流程启动 AnyConnect 认证。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable XML POST authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用 XML POST 认证</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;External authentication is not advertised and any unexpected SSO or SAML request is rejected.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;不宣告外部认证，并拒绝任何预期外的 SSO (单点登录)或 SAML (安全断言标记语言)请求。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable external browser authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用外部浏览器认证</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Matches OpenConnect --no-passwd. Does not affect other flavors or a session supplied by a cookie.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;匹配 OpenConnect --no-passwd 选项。对其他协议类型或通过 cookie 提供的会话不影响。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Abort on a non-success authentication form</source>
-        <translation type="unfinished"></translation>
+        <translation>认证表单不成功时中止</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disabled by default to match OpenConnect.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;默认禁用以匹配 OpenConnect。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Enable TCP keep alive</source>
-        <translation type="unfinished"></translation>
+        <translation>启用 TCP 保活</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For TLS 1.2 and earlier. Disabled by default for servers that require RSA key exchange.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;适用于 TLS 1.2 及更早版本。对于需要 RSA 密钥交换的服务器，默认禁用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Require forward-secret cipher suites</source>
-        <translation type="unfinished"></translation>
+        <translation>要求“前向保密”密码套件</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables weak cipher suites and TLS 1.0 compatibility. It does not disable server certificate verification.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;启用弱密码套件并兼容 TLS 1.0 。它不会禁用服务器证书验证。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Allow legacy TLS and DTLS crypto</source>
-        <translation type="unfinished"></translation>
+        <translation>允许旧版 TLS 和 DTLS 加密算法</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Base path MTU used to calculate the tunnel MTU after outer IP, transport and protocol overhead. Values below 1280 are treated as 1280.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于在外部 IP、传输和协议开销之后计算隧道 MTU 的基础路径 MTU。低于 1280 的值将被视为 1280。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Base MTU</source>
-        <translation type="unfinished"></translation>
+        <translation>基本 MTU</translation>
     </message>
     <message>
         <source>1406 (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>1406 (默认)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides the dead peer detection interval. Positive values below 2s are treated as 2s.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;覆盖失效对端(dead peer)检测间隔。小于 2 秒的正值将被视为 2 秒。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>DPD Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>DPD 间隔</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum accumulated backoff time after failed reconnect attempts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;重新尝试连接失败后的最大累计退避时间。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Reconnect Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>重新连接超时</translation>
     </message>
     <message>
         <source>300s (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>300s (300秒，默认)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides the interval between GlobalProtect HIP reports or Network Connect TNCC checks.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;覆盖 GlobalProtect HIP 报告或 Network Connect TNCC 检查之间的间隔。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Trojan Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Trojan 间隔</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Inbound and outbound packet queue length between the VPN transport and the tunnel interface.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;VPN 传输与隧道接口之间的入站和出站(收发)数据包队列长度。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Queue Length</source>
-        <translation type="unfinished"></translation>
+        <translation>队列长度</translation>
     </message>
     <message>
         <source>32 (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>32 (默认)</translation>
     </message>
     <message>
         <source>TNCC Machine Certificate</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>EditOpenVPN</name>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Default transport network. Leave empty to use the core default (udp).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>TNCC 机器证书</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static challenge text shown by the server when it asks for a second authentication response. When a challenge is set and an OTP profile is bound, Throne sends the answer itself and no interactive prompt appears.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>User Agent</source>
+        <translation>用户代理</translation>
     </message>
     <message>
-        <source>Static Challenge</source>
-        <translation type="unfinished"></translation>
+        <source>Version</source>
+        <translation>版本</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show the static challenge response as plain text.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Mode</source>
+        <translation>模式</translation>
     </message>
     <message>
-        <source>Echo challenge response</source>
-        <translation type="unfinished"></translation>
+        <source>Secret</source>
+        <translation>密钥</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tunnel MTU. Empty uses 1500 until the server pushes a value.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Password</source>
+        <translation>密码</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Trusted CA certificate content (PEM).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Counter</source>
+        <translation>计数器</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN tls-auth / tls-crypt / tls-crypt-v2 control channel wrapping. Disabled when the type is empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>TLS</source>
+        <translation>TLS</translation>
     </message>
     <message>
-        <source>Control Channel Wrap</source>
-        <translation type="unfinished"></translation>
+        <source>Not set</source>
+        <translation>未设置</translation>
     </message>
     <message>
-        <source>Key</source>
-        <translation type="unfinished"></translation>
+        <source>Certificate</source>
+        <translation>证书</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;tls-auth key direction. Only used when the type is tls_auth; the key is bidirectional when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Add</source>
+        <translation>添加</translation>
     </message>
     <message>
-        <source>Direction</source>
-        <translation type="unfinished"></translation>
+        <source>Remove</source>
+        <translation>删除</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Binds an authenticator entry to this profile. %1 in the username or password is replaced with a generated code at connect time, and a static challenge is answered with the same code.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Name</source>
+        <translation>名称</translation>
     </message>
     <message>
-        <source>Control Channel Wrap Key</source>
-        <translation type="unfinished"></translation>
+        <source>Transport</source>
+        <translation>传输</translation>
+    </message>
+    <message>
+        <source>Already set</source>
+        <translation>已设置</translation>
     </message>
 </context>
 <context>
     <name>EditOpenVPNAdvanced</name>
     <message>
         <source>OpenVPN Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenVPN 高级</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN session mode. tls is used by default; static_key is a deprecated mode without a TLS control channel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN 会话模式，默认使用 TLS；static_key 是一种弃用的模式，没有 TLS 控制通道。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tunnel topology. The topology pulled from the server is used when empty in TLS mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;隧道拓扑。TLS 模式下为空时，会使用从服务器获取的拓扑信息。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Topology</source>
-        <translation type="unfinished"></translation>
+        <translation>拓扑</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Behavior after username/password authentication fails. none is used by default and treats a permanent failure as terminal.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用户名/密码认证失败后的处理行为。默认不采取任何操作；把永久性失败视为终止状态。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Auth Retry</source>
-        <translation type="unfinished"></translation>
+        <translation>认证重试</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Randomize the server list before connecting.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;连接前随机化服务器列表。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Randomize server order</source>
-        <translation type="unfinished"></translation>
+        <translation>随机化服务器顺序</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Comma separated local tunnel prefixes. At least one is required in static_key mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;逗号间隔的本地隧道前缀。在 static_key 模式下，至少需要填写一个。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>10.8.0.2/24, fd00::2/64</source>
-        <translation type="unfinished"></translation>
+        <translation>10.8.0.2/24, fd00::2/64</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;IPv4 tunnel peer address and VPN gateway. Required with an IPv4 local address in static_key mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;IPv4 隧道对端(peer)地址和 VPN 网关。在 static_key 模式下需要与 IPv4 本地地址一起使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Peer Address</source>
-        <translation type="unfinished"></translation>
+        <translation>对端地址</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;IPv6 tunnel peer address and VPN gateway. Required with an IPv6 local address in static_key mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;IPv6 隧道对端(peer)地址和 VPN 网关。在 static_key 模式下需要与 IPv6 本地地址一起使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Peer Address (IPv6)</source>
-        <translation type="unfinished"></translation>
+        <translation>对端地址 (IPv6)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Servers are tried in order and the client moves to the next one when a connection fails. Leave empty to use the address and port from the profile.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务器会按序尝试，客户端会在失败时换到下一个。留空表示使用来自配置档的地址和端口。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Static Key Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>静态钥匙模式</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static key content. Required in static_key mode. Conflicts with the static key path.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;静态钥匙(Static key)内容。在 static_key 模式下必需。与静态钥匙路径不能同时使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline static key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与内联静态钥匙不能同时使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Static Key Path</source>
-        <translation type="unfinished"></translation>
+        <translation>静态钥匙路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Static key direction. The key is used bidirectionally when empty. Only available in static_key mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;静态钥匙方向。留空时则双向使用该钥匙。仅在 static_key 模式下可用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Key Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>钥匙方向</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data channel cipher used in static_key mode. The upstream default BF-CBC is used when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;在 static_key 模式下使用的数据通道密码算法。留空时使用上游默认的 BF-CBC。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Data Cipher</source>
-        <translation type="unfinished"></translation>
+        <translation>数据密码算法</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Expected server certificate name. Name verification is disabled when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;预期的服务器证书名称。留空时禁用名称验证。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Certificate field matched by the server name. name is used by default and matches the common name exactly.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;被服务器名称匹配的证书字段。默认使用“name”（名称）并精确匹配“common name”（通用名称）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Server Name Type</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器名称类型</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline control channel wrap key on the main editor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与主要编辑器上控制通道 wrap 钥匙不能同时使用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Control Wrap Key Path</source>
-        <translation type="unfinished"></translation>
+        <translation>控制 Wrap 钥匙路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Allowed SHA-256 fingerprints of the server leaf certificate, one per line, 64 lowercase hexadecimal characters without separators.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;允许的服务器叶证书的 SHA-256 指纹，每行一个，必须是 64 个小写十六进制字符，且不含分隔符。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;PEM or DER certificate revocation list used to reject revoked server certificates.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于拒绝已撤销服务器证书的 PEM 或 DER 格式的 CRL (Certificate Revocation List 证书吊销列表)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>CRL Path</source>
-        <translation type="unfinished"></translation>
+        <translation>CRL 路径</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Comma separated hexadecimal key usage masks in OpenVPN remote-cert-ku format.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;逗号间隔的十六进制钥匙用法掩码，格式为 OpenVPN `remote-cert-ku` 格式。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Remote Certificate KU</source>
-        <translation type="unfinished"></translation>
+        <translation>远程证书钥匙用法</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Required extended key usage. Conflicts with an explicit remote certificate TLS check.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;需要 EKU (Extended Key Usage 扩展钥匙用法)。与显式远程证书 TLS 检查冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Remote Certificate EKU</source>
-        <translation type="unfinished"></translation>
+        <translation>远程证书扩展钥匙用法</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Peer certificate purpose check. server is used by default; none disables the check.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;对端证书用途检查。默认使用 server (服务器)；选择 none (无)将禁用该检查。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Remote Certificate TLS</source>
-        <translation type="unfinished"></translation>
+        <translation>远程证书 TLS</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;legacy is used by default. insecure accepts MD5 and SHA-1 signed chains; preferred requires stronger signatures and keys.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;默认使用 &quot;legacy&quot;。insecure 接受 MD5 和 SHA-1 签名的（证书）链；preferred 需要更强的签名和钥匙。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Certificate Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>证书配置方案</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Deprecated Netscape certificate type check. Prefer Remote Certificate TLS.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;已弃用的 Netscape 证书类型检查。建议使用“远程证书 TLS”。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>NS Certificate Type</source>
-        <translation type="unfinished"></translation>
+        <translation>NS 证书类型</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1.2 is used by default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;默认使用 1.2。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Min TLS Version</source>
-        <translation type="unfinished"></translation>
+        <translation>最小 TLS 版本</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The maximum supported version is used by default. It cannot be lower than the minimum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;默认使用支持的最高版本。它不能低于最低版本。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Max TLS Version</source>
-        <translation type="unfinished"></translation>
+        <translation>最大 TLS 版本</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Colon separated OpenSSL cipher suite names allowed for TLS 1.2 and earlier.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;允许用于 TLS 1.2 及更早版本的以冒号间隔的 OpenSSL 密码（算法）套件名称。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>TLS Cipher</source>
-        <translation type="unfinished"></translation>
+        <translation>TLS 密码套件</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Colon separated key exchange groups in preference order: X25519, SECP256R1, SECP384R1, SECP521R1.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;按偏好顺序以冒号间隔的密钥交换组：X25519、SECP256R1、SECP384R1、SECP521R1。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>TLS Groups</source>
-        <translation type="unfinished"></translation>
+        <translation>TLS 组</translation>
     </message>
     <message>
         <source>Data Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>数据通道</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Comma separated allowed data channel ciphers. Only available in TLS mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;逗号间隔的允许的数据通道密码算法。仅在 TLS 模式下可用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Data Ciphers</source>
-        <translation type="unfinished"></translation>
+        <translation>数据密码算法</translation>
     </message>
     <message>
         <source>AES-256-GCM,AES-128-GCM,CHACHA20-POLY1305</source>
-        <translation type="unfinished"></translation>
+        <translation>AES-256-GCM,AES-128-GCM,CHACHA20-POLY1305</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data channel cipher for peers that do not support cipher negotiation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于不支持密码算法协商的对端的数据通道密码算法。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Data Ciphers Fallback</source>
-        <translation type="unfinished"></translation>
+        <translation>数据密码算法回退</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data channel authentication digest. SHA1 is used by default and only applies to non-AEAD ciphers and tls_auth.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据通道认证摘要算法(digest)。默认使用 SHA1，仅适用于非 AEAD 密码算法和 tls_auth。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Auth Digest</source>
-        <translation type="unfinished"></translation>
+        <translation>认证摘要算法</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum UDP packet size used to clamp the MSS of TCP connections sent through the tunnel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于限制通过隧道发送的 TCP 连接的 MSS 的最大 UDP 数据包大小。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>MSS Fix</source>
-        <translation type="unfinished"></translation>
+        <translation>MSS 修正</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disables MSS clamping including the default clamp. Conflicts with MSS Fix and MSS Fix Mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;禁用 MSS 限制，包括默认限制。与 MSS Fix (修正)和 MSS Fix Mode (修正模式)冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable MSS clamping</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用 MSS 限制</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;mtu also accounts for the outer IP and transport headers; fixed treats MSS Fix as an inner IPv4 packet size. Requires MSS Fix.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;MTU 同样计入外部 IP 和传输层标头；`fixed` 将 MSS 修正视为内层 IPv4 数据包大小。需要（启用） MSS 修正。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>MSS Fix Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>MSS 修正模式</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum UDP packet size used for data channel fragmentation. A non-zero value must be at least 68. Conflicts with TCP transport.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于数据通道分片的最大 UDP 数据包大小。非零值必须至少为 68。与 TCP 传输冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP replay window size. 64 is used by default and the maximum is 65536.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP 重放窗口大小。默认使用 64，最大值为 65536。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Replay Window</source>
-        <translation type="unfinished"></translation>
+        <translation>重放窗口</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP replay window duration in whole seconds. The maximum is 10m.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UDP 重放窗口持续时间(以整秒为单位)。最大值为 10 分钟。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Replay Window Time</source>
-        <translation type="unfinished"></translation>
+        <translation>重放窗口时间</translation>
     </message>
     <message>
         <source>15s (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>15s (15秒，默认)</translation>
     </message>
     <message>
         <source>Compression</source>
-        <translation type="unfinished"></translation>
+        <translation>压缩</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN compress framing mode. Disabled by default. Compression can weaken traffic confidentiality.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN 压缩帧模式。默认禁用。压缩可能削弱流量的机密性。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN comp-lzo mode. Disabled by default. Enable it only when required by the server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenVPN comp-lzo 模式。默认禁用。仅在服务器要求时启用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Compression LZO</source>
-        <translation type="unfinished"></translation>
+        <translation>压缩 LZO</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Policy for compression pushed by the server. no is used by default and permits only stub framing.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务器推送的压缩处理策略。默认使用 no，仅允许 stub (存根)帧格式。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Allow Compression</source>
-        <translation type="unfinished"></translation>
+        <translation>允许压缩</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignores routes, DNS, route metrics, redirect-gateway, redirect-private and block-ipv6 pushed by the server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;忽略服务器推送的路由、DNS、路由度量、redirect-gateway (重定向网关)、redirect-private (重定向私有)以及 block-ipv6 (阻止 IPv6) 设置。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Ignore pushed routes, DNS and gateway options</source>
-        <translation type="unfinished"></translation>
+        <translation>忽略推送的路由、DNS 和网关选项</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Comma separated prefixes preferred for this endpoint, in addition to routes accepted from the server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;这个端点首选的前缀（逗号间隔），此外还使用接收自服务器的路由。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;IPv4 gateway for routes through the endpoint. The gateway received from the server is used when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;通过该端点的路由的 IPv4 网关。为空时使用从服务器接收的网关。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Route Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>路由网关</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Default metric for routes through the endpoint. The platform default is used when empty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;通过该端点的路由的默认度量值。为空时使用平台默认值。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Route Metric</source>
-        <translation type="unfinished"></translation>
+        <translation>路由度量</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Does not install an operating system default route.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;不安装操作系统默认路由。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Prefer this endpoint for all IPv4 destinations</source>
-        <translation type="unfinished"></translation>
+        <translation>所有 IPv4 目标首选这个端点</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Comma separated OpenVPN redirect-gateway flags, for example !ipv4, def1 or ipv6.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;逗号间隔的 OpenVPN redirect-gateway (重定向网关)标志，例如 !ipv4、def1 或 ipv6。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Redirect Gateway Flags</source>
-        <translation type="unfinished"></translation>
+        <translation>“重定向网关”标志</translation>
     </message>
     <message>
         <source>Accept redirect gateway flags without a default route preference</source>
-        <translation type="unfinished"></translation>
+        <translation>接受 redirect gateway (重定向网关)标志而不使用默认路由偏好</translation>
     </message>
     <message>
         <source>Reject IPv6 traffic locally instead of sending it through the VPN</source>
-        <translation type="unfinished"></translation>
+        <translation>本地拒绝 IPv6 流量，而不是通过 VPN 发送它</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ordered filters for options pushed by the server. The first filter whose text is a case-sensitive prefix of the complete pushed option is applied.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用于服务器推送选项的有序过滤器。（过滤器）文本是完整推送选项的区分大小写的前缀的第一个过滤器将被应用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文本</translation>
     </message>
     <message>
         <source>Timers</source>
-        <translation type="unfinished"></translation>
+        <translation>计时器</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Whole seconds of silence before a data channel ping is sent. A server-pushed value overrides it.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;在发送数据通道 ping 前的静默整秒数。服务器推送值优先于它。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Ping Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Ping 间隔</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Whole seconds without a received packet before reconnecting. 120s is used for UDP with pull enabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;重新连接前允许没有收到数据包的整秒数。启用 pull (拉取)的 UDP 使用 120 秒。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Ping Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Ping 重启</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disables the initial 120s UDP pull timeout and any configured ping restart. Conflicts with Ping Restart.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;禁用初始 120 秒 UDP pull (拉取)超时以及任何已配置的 ping 重启。与 Ping 重启冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable ping restart</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用 ping 重启</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TLS renegotiation interval.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TLS 重新协商间隔。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Renegotiate Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>重新协商间隔</translation>
     </message>
     <message>
         <source>1h (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>1h (1小时，默认)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with Renegotiate Interval.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与“重新协商间隔”冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable time based renegotiation</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用基于时间的重新协商</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renegotiate data channel keys after this many bytes. Empty uses the cipher-dependent default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;在传输指定字节数后重新协商数据通道密钥。为空时使用取决于密码算法的默认值。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Renegotiate Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>重新协商字节数</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renegotiate data channel keys after this many packets. Empty uses the cipher-dependent default.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;在传输指定数量数据包后重新协商数据通道密钥。为空则使用取决于密码算法的默认值。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Renegotiate Packets</source>
-        <translation type="unfinished"></translation>
+        <translation>重新协商数据包数</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Initial retransmission timeout for TLS control packets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TLS 控制数据包的初始重传超时。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>TLS Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>TLS 超时</translation>
     </message>
     <message>
         <source>2s (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>2s (2秒，默认)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Maximum time allowed for the initial handshake and each renegotiation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;初始握手和每次重新协商允许的最长时间。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Handshake Window</source>
-        <translation type="unfinished"></translation>
+        <translation>握手窗口</translation>
     </message>
     <message>
         <source>1m (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>1m (1分钟，默认)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of exit notifications sent one second apart when closing a UDP connection.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;关闭 UDP 连接时发送的退出通知数量(每条通知间隔一秒)。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Explicit Exit Notify</source>
-        <translation type="unfinished"></translation>
+        <translation>显式退出通知</translation>
+    </message>
+    <message>
+        <source>Session</source>
+        <translation>会话</translation>
+    </message>
+    <message>
+        <source>Mode</source>
+        <translation>模式</translation>
+    </message>
+    <message>
+        <source>Local Address</source>
+        <translation>本地地址</translation>
+    </message>
+    <message>
+        <source>Servers</source>
+        <translation>服务器</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>服务器</translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation>端口</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation>传输(网络)</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>添加</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Static Key</source>
+        <translation>静态钥匙</translation>
+    </message>
+    <message>
+        <source>Not set</source>
+        <translation>未设置</translation>
+    </message>
+    <message>
+        <source>TLS</source>
+        <translation>TLS</translation>
+    </message>
+    <message>
+        <source>Server Name</source>
+        <translation>服务器名称</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline CA certificate on the main editor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与主编辑器上的内联 CA 证书冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>CA Certificate Path</source>
+        <translation>CA 证书路径</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline client certificate on the main editor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与主编辑器上的内联客户端证书冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Client Certificate Path</source>
+        <translation>客户端证书路径</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Conflicts with the inline client key on the main editor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;与主编辑器上的内联客户端密钥冲突（不能同时使用）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Client Key Path</source>
+        <translation>客户端钥匙路径</translation>
+    </message>
+    <message>
+        <source>Peer Fingerprint</source>
+        <translation>对端指纹</translation>
+    </message>
+    <message>
+        <source>Fragment</source>
+        <translation>分片</translation>
+    </message>
+    <message>
+        <source>Routing</source>
+        <translation>路由</translation>
+    </message>
+    <message>
+        <source>Routes</source>
+        <translation>路由</translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation>动作</translation>
+    </message>
+    <message>
+        <source>Already set</source>
+        <translation>已设置</translation>
     </message>
 </context>
 <context>
     <name>EditSnell</name>
     <message>
         <source>PSK</source>
-        <translation type="unfinished"></translation>
+        <translation>PSK</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Per-user key on a multi-user server. Leave empty when the server only has a PSK.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;多用户服务器的每用户专属钥匙。当服务器仅有 PSK (Pre-Shared Key 预共享密钥)时留空。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>User Key</source>
-        <translation type="unfinished"></translation>
+        <translation>用户钥匙</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Restrict this outbound to one network. Leave empty to carry both TCP and UDP.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;限制这个出站到某个网络（协议）。留空表示同时承载 TCP 和 UDP。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Obfuscation Host</source>
-        <translation type="unfinished"></translation>
+        <translation>混淆主机</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Traffic shaping used by Snell v6. &quot;unsafe-raw&quot; disables padding and is faster but easier to fingerprint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Snell v6 使用了流量塑形。&quot;unsafe-raw&quot; (不安全原始数据)禁止填充且更快，但是更容易被指纹识别。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Keep idle connections to the server open and reuse them for later requests.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;保持与服务器的空闲连接开启状态，并把它们重复用于之后的请求。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Reuse connections</source>
-        <translation type="unfinished"></translation>
+        <translation>重用连接</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>版本</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation>网络协议</translation>
+    </message>
+    <message>
+        <source>Obfuscation</source>
+        <translation>混淆</translation>
+    </message>
+    <message>
+        <source>Mode</source>
+        <translation>模式</translation>
     </message>
 </context>
 <context>
     <name>OtpItem</name>
     <message>
         <source>invalid</source>
-        <translation type="unfinished"></translation>
+        <translation>无效</translation>
     </message>
     <message>
         <source>%1s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1秒</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>编辑</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
     </message>
 </context>
 <context>
     <name>TrayOtpCodes</name>
     <message>
         <source>No OTP profiles yet</source>
-        <translation type="unfinished"></translation>
+        <translation>尚无 OTP 配置档</translation>
     </message>
     <message>
         <source>Invalid secret</source>
-        <translation type="unfinished"></translation>
+        <translation>无效密钥</translation>
+    </message>
+    <message>
+        <source>No matches</source>
+        <translation>无匹配</translation>
+    </message>
+    <message>
+        <source>Copied</source>
+        <translation>已复制</translation>
     </message>
 </context>
 <context>
@@ -10070,7 +11144,7 @@ Deleted %3 Profiles:
     <name>EditMasque</name>
     <message>
         <source>Base64 DER of the enrolled ECDSA P-256 key; it signs the TLS client certificate.</source>
-        <translation type="unfinished"></translation>
+        <translation>已注册的(enrolled) ECDSA P-256 钥匙的 Base64 DER 编码；它用于签署 TLS 客户端证书。</translation>
     </message>
     <message>
         <source>Base64 DER of the server's public key. When set, it pins the server certificate, even with Allow insecure.</source>
@@ -10082,31 +11156,31 @@ Deleted %3 Profiles:
     </message>
     <message>
         <source>Failed to generate WARP identity</source>
-        <translation type="unfinished"></translation>
+        <translation>生成 WARP 身份标识失败</translation>
     </message>
     <message>
         <source>Generate WARP identity</source>
-        <translation type="unfinished"></translation>
+        <translation>生成 WARP 身份标识</translation>
     </message>
     <message>
         <source>Generating identity...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在生成身份标识...</translation>
     </message>
     <message>
         <source>HTTP Version</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP 版本</translation>
     </message>
     <message>
         <source>HTTP/3 (fallback to HTTP/2)</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP/3 (回退到 HTTP/2)</translation>
     </message>
     <message>
         <source>HTTP/3 only</source>
-        <translation type="unfinished"></translation>
+        <translation>仅 HTTP/3</translation>
     </message>
     <message>
         <source>HTTP/3 runs over UDP; HTTP/2 runs over TLS on TCP and works where UDP is blocked.</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP/3 基于 UDP 运行；HTTP/2 基于 TCP 上的 TLS 运行并在 UDP 被阻断的情况下也可工作。</translation>
     </message>
     <message>
         <source>Local Address</source>
@@ -10114,11 +11188,11 @@ Deleted %3 Profiles:
     </message>
     <message>
         <source>MTU</source>
-        <translation type="unfinished"></translation>
+        <translation>MTU</translation>
     </message>
     <message>
         <source>Peer Public Key</source>
-        <translation type="unfinished"></translation>
+        <translation>对端公钥</translation>
     </message>
     <message>
         <source>Private Key</source>
@@ -10126,11 +11200,19 @@ Deleted %3 Profiles:
     </message>
     <message>
         <source>Register a new Cloudflare WARP device for MASQUE and fill the key, address and server fields.</source>
-        <translation type="unfinished"></translation>
+        <translation>为 MASQUE 注册新的 Cloudflare WARP 设备，并填写钥匙、地址和服务器字段。</translation>
     </message>
     <message>
         <source>Success!</source>
         <translation>成功!</translation>
+    </message>
+    <message>
+        <source>Base64 DER of the server&apos;s public key. When set, it pins the server certificate, even with Allow insecure.</source>
+        <translation>服务器公钥的 Base64 DER 编码。设置时，即使启用了“允许不安全(连接)”，也会固定服务器证书。</translation>
+    </message>
+    <message>
+        <source>Comma separated list of the tunnel&apos;s own addresses, e.g. 172.16.0.2/32,2606:4700::1/128</source>
+        <translation>隧道自身地址的逗号间隔列表，如 172.16.0.2/32,2606:4700::1/128</translation>
     </message>
 </context>
 </TS>
