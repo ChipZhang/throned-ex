@@ -502,7 +502,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     commandLayout->addStretch(1);
 
     auto *openDiagnosticsAction = new QAction(tr("Diagnostics"), this);
-    openDiagnosticsAction->setShortcut(QKeySequence(QStringLiteral("Ctrl+Shift+D")));
     ui->menu_program->insertAction(ui->menu_exit, openDiagnosticsAction);
     connect(openDiagnosticsAction, &QAction::triggered, this, [this] { openDiagnostics(); });
     auto *openStatsAction = new QAction(tr("Traffic statistics"), this);
@@ -521,7 +520,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     diagnosticsButton->setFixedSize(33, 38);
     diagnosticsButton->setCursor(Qt::PointingHandCursor);
     diagnosticsButton->setFocusPolicy(Qt::NoFocus);
-    diagnosticsButton->setToolTip(tr("Diagnostics and traffic statistics (Ctrl+Shift+D)"));
+    diagnosticsButton->setToolTip(tr("Diagnostics and traffic statistics"));
     const auto retintDiagnostics = [openDiagnosticsAction, openStatsAction, diagnosticsButton] {
         const auto tint = themeManager()->Colors().textMuted;
         openDiagnosticsAction->setIcon(MaterialIcon::icon(MaterialIcon::Glyph::Search, tint, 19));
@@ -1337,7 +1336,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
 
     parallelCoreCallPool->setMaxThreadCount(10);
     testRunner = std::make_unique<TestRunner>(this);
-    // The .ui carries Return; numpad Enter is the same gesture.
+    // use both carriage Return and numpad Enter
     ui->menu_start->setShortcuts({QKeySequence(Qt::Key_Return), QKeySequence(Qt::Key_Enter)});
     connect(ui->menu_start, &QAction::triggered, this, [=, this]() { profile_start(); });
     connect(ui->menu_stop, &QAction::triggered, this, [=, this]() { profile_stop(false, false, true); });

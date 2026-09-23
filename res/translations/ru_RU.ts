@@ -6328,8 +6328,8 @@ rendezvous service. Replaces the server address and port.</source>
         <translation>Все группы — найти по имени</translation>
     </message>
     <message>
-        <source>Diagnostics and traffic statistics (Ctrl+Shift+D)</source>
-        <translation>Диагностика и статистика трафика (Ctrl+Shift+D)</translation>
+        <source>Diagnostics and traffic statistics</source>
+        <translation>Диагностика и статистика трафика</translation>
     </message>
     <message>
         <source>Traffic statistics</source>

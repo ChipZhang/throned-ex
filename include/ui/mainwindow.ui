@@ -815,6 +815,9 @@ QToolButton::menu-indicator {
    <property name="text">
     <string>Exit</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Q</string>
+   </property>
   </action>
   <action name="actionShow_window">
    <property name="text">
@@ -824,6 +827,9 @@ QToolButton::menu-indicator {
   <action name="menu_basic_settings">
    <property name="text">
     <string>Basic Settings</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">F12</string>
    </property>
   </action>
   <action name="menu_add_from_input">
@@ -838,13 +844,13 @@ QToolButton::menu-indicator {
    <property name="text">
     <string>Manage Groups</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+F5</string>
+   </property>
   </action>
   <action name="menu_start">
    <property name="text">
     <string>Start</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Return</string>
    </property>
   </action>
   <action name="menu_stop">
@@ -852,12 +858,15 @@ QToolButton::menu-indicator {
     <string>Stop</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+S</string>
+    <string notr="true">Backspace</string>
    </property>
   </action>
   <action name="menu_routing_settings">
    <property name="text">
     <string>Routing Settings</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+F12</string>
    </property>
   </action>
   <action name="menu_add_from_clipboard">
@@ -934,9 +943,6 @@ QToolButton::menu-indicator {
   <action name="menu_scan_qr">
    <property name="text">
     <string>Scan QR Code</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+Shift+Q</string>
    </property>
   </action>
   <action name="menu_spmode_system_proxy">
@@ -1022,6 +1028,9 @@ QToolButton::menu-indicator {
   <action name="menu_hotkey_settings">
    <property name="text">
     <string>Hotkey Settings</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+F12</string>
    </property>
   </action>
   <action name="menu_select_all">
@@ -1122,6 +1131,9 @@ QToolButton::menu-indicator {
   <action name="actionRestart_Program">
    <property name="text">
     <string>Restart Program</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+Q</string>
    </property>
   </action>
   <action name="menu_open_config_folder">
@@ -1269,15 +1281,24 @@ QToolButton::menu-indicator {
    <property name="text">
     <string>Add new Group</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+N</string>
+   </property>
   </action>
   <action name="actionEdit_Group">
    <property name="text">
     <string>Edit current Group</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+F5</string>
+   </property>
   </action>
   <action name="actionDelete_Group">
    <property name="text">
     <string>Delete current Group</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+Del</string>
    </property>
   </action>
   <action name="actionUpdate_All_Subscriptions">

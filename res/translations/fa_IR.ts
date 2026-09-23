@@ -2401,8 +2401,8 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Diagnostics and traffic statistics (Ctrl+Shift+D)</source>
-        <translation>عیب‌یابی و آمار ترافیک (Ctrl+Shift+D)</translation>
+        <source>Diagnostics and traffic statistics</source>
+        <translation>عیب‌یابی و آمار ترافیک</translation>
     </message>
     <message>
         <source>Traffic statistics</source>

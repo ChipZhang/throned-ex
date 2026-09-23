@@ -5897,8 +5897,8 @@ rendezvous service. Replaces the server address and port.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Diagnostics and traffic statistics (Ctrl+Shift+D)</source>
-        <translation>诊断与流量统计 (Ctrl+Shift+D)</translation>
+        <source>Diagnostics and traffic statistics</source>
+        <translation>诊断与流量统计</translation>
     </message>
     <message>
         <source>Traffic statistics</source>

@@ -1001,8 +1001,8 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <source>Diagnostics and traffic statistics (Ctrl+Shift+D)</source>
-        <translation>Diagnostics and traffic statistics (Ctrl+Shift+D)</translation>
+        <source>Diagnostics and traffic statistics</source>
+        <translation>Diagnostics and traffic statistics</translation>
     </message>
     <message>
         <source>Traffic statistics</source>

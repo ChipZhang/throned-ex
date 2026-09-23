@@ -122,6 +122,17 @@ void MainWindow::setActionsData() {
     ui->actionClear_Test_Result->setData(QString("m29"));
     ui->menu_remove_insecure->setData(QString("m30"));
     ui->actionUpdate_All_Subscriptions->setData(QString("m31"));
+
+    ui->menu_exit->setData(QString("menu_exit"));
+    ui->actionRestart_Program->setData(QString("actionRestart_Program"));
+    ui->menu_basic_settings->setData(QString("menu_basic_settings"));
+    ui->menu_hotkey_settings->setData(QString("menu_hotkey_settings"));
+    ui->menu_routing_settings->setData(QString("menu_routing_settings"));
+    ui->actionAdd_New_Group->setData(QString("actionAdd_New_Group"));
+    ui->actionDelete_Group->setData(QString("actionDelete_Group"));
+    ui->actionEdit_Group->setData(QString("actionEdit_Group"));
+    ui->menu_manage_groups->setData(QString("menu_manage_groups"));
+    ui->menu_delete->setData(QString("menu_delete"));
 }
 
 QList<QAction *> MainWindow::getActionsForShortcut() {
