@@ -60,7 +60,7 @@ fpm -s dir -t rpm \
     -v "$VERSION" \
     -a "$RPM_ARCH" \
     --license "GPL-3.0-or-later" \
-    --url "https://github.com/troshkindm/throned" \
+    --url "https://github.com/ChipZhang/throned-ex" \
     --description "Qt based cross-platform GUI proxy configuration manager (backend: sing-box)" \
     --no-rpm-autoreqprov \
     --rpm-rpmbuild-define "_build_id_links none" \

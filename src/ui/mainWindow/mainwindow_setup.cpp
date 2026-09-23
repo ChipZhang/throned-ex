@@ -1547,7 +1547,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
         }
     }
 
-    software_name = "Throned";
+    software_name = "Throned (Ex)";
     software_core_name = "sing-box";
     if (auto dashDir = QDir("dashboard"); !dashDir.exists() && QDir().mkdir("dashboard")) {
         if (auto dashFile = QFile(":/Throned/dashboard-notice.html"); dashFile.exists() && dashFile.open(QIODevice::ReadOnly)) {

@@ -11,7 +11,7 @@ from urllib.request import urlopen, urlretrieve
 from pathlib import Path
 from typing import Union
 
-REPO = "troshkindm/throned"
+REPO = "ChipZhang/throned-ex"
 
 APPDIR = Path("/opt/Throned")
 DESKTOPDIR = Path("/usr/share/applications")

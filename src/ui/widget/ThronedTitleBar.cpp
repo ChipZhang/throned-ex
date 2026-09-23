@@ -109,7 +109,7 @@ ThronedTitleBar::ThronedTitleBar(const QString &context, QWidget *parent) : QFra
     layout->setContentsMargins(14, 0, 0, 0);
     layout->setSpacing(10);
     layout->addWidget(new ThronedLogoMark(this));
-    auto *brand = new QLabel(QStringLiteral("Throned"), this);
+    auto *brand = new QLabel(QStringLiteral("Throned (Ex)"), this);
     brand->setObjectName(QStringLiteral("titleBrand"));
     layout->addWidget(brand);
     // A source build with no -DINPUT_VERSION would otherwise show a bare "v".
