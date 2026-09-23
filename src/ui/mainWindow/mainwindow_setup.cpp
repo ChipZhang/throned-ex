@@ -2433,6 +2433,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
                 Configs::dataManager->settingsRepo->current_route_id = routeID;
                 Configs::dataManager->settingsRepo->Save();
                 if (Configs::dataManager->settingsRepo->started_id >= 0) profile_start(Configs::dataManager->settingsRepo->started_id);
+                refreshRoutingStatus();
             });
             ui->menuRouting_Menu->addAction(action);
         }
