@@ -22,10 +22,7 @@ QString configureProxy(QNetworkAccessManager &accessManager, bool forceProxy) {
     // Once a profile is running, keep every application-owned request on its
     // dedicated loopback inbound.  This avoids bootstrap failures when the
     // direct route cannot reach GitHub, geo assets or subscription endpoints.
-    const bool requested = settings->internal_proxy_port > 0 ||
-                           settings->net_use_proxy ||
-                           settings->spmode_system_proxy ||
-                           forceProxy;
+    const bool requested = forceProxy || (settings->net_use_proxy && (settings->internal_proxy_port > 0 || settings->spmode_system_proxy));
     if (!requested) return {};
     if (settings->started_id < 0 && settings->internal_proxy_port <= 0) {
         return QObject::tr("Request with proxy but no profile started.");

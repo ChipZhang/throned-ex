@@ -2077,6 +2077,9 @@ void buildRouteSection(BuildContext &ctx) {
             {"inbound", tags::serviceIn},
             {"action", "route"},
             {"outbound", tags::proxy},
+            // for inbound from this software itself, force proxy only the sites used to resolve exit IP and location,
+            // and let other traffic (various resource update) go through user defined routing settings
+            {"domain", QJsonArray{"ip-api.com", "api.ip2location.io"}},
         };
     }
 

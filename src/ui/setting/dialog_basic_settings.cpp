@@ -1325,8 +1325,7 @@ void DialogBasicSettings::downloadXrayGeoAsset(const QString &url, const QString
     MW_show_log(tr("Downloading Xray geo asset: %1").arg(fileName));
     // DownloadAsset drives a blocking event loop; don't capture the dialog, it may close first.
     runOnNewThread([effectiveUrl, fileName] {
-        const bool proxyAvailable = Configs::dataManager->settingsRepo->started_id >= 0;
-        const auto err = NetworkRequestHelper::DownloadAsset(effectiveUrl, fileName, proxyAvailable);
+        const auto err = NetworkRequestHelper::DownloadAsset(effectiveUrl, fileName, false);
         runOnUiThread([err, fileName] {
             if (err.isEmpty()) {
                 MW_show_log(QObject::tr("Downloaded Xray geo asset: %1").arg(fileName));

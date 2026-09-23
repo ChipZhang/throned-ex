@@ -146,13 +146,12 @@ bool MainWindow::handleXrayGeoAssetError(const QString &error, const QString &co
 
             runOnNewThread([=, this] {
                 QString dlErr;
-                const bool proxyAvailable = Configs::dataManager->settingsRepo->started_id >= 0;
                 if (!haveGeoip) {
-                    auto e = NetworkRequestHelper::DownloadAsset(Configs::dataManager->settingsRepo->xray_geoip_url, "geoip.dat", proxyAvailable);
+                    auto e = NetworkRequestHelper::DownloadAsset(Configs::dataManager->settingsRepo->xray_geoip_url, "geoip.dat", false);
                     if (!e.isEmpty()) dlErr += "geoip.dat: " + e + "\n";
                 }
                 if (!haveGeosite) {
-                    auto e = NetworkRequestHelper::DownloadAsset(Configs::dataManager->settingsRepo->xray_geosite_url, "geosite.dat", proxyAvailable);
+                    auto e = NetworkRequestHelper::DownloadAsset(Configs::dataManager->settingsRepo->xray_geosite_url, "geosite.dat", false);
                     if (!e.isEmpty()) dlErr += "geosite.dat: " + e + "\n";
                 }
                 runOnUiThread([=, this] {

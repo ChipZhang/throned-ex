@@ -547,7 +547,7 @@ void MainWindow::OpenDashboard() {
             return;
         }
         const auto archive = QString("throne-dashboard.zip");
-        auto error = NetworkRequestHelper::DownloadAsset(dashboardDownloadURL, archive, true);
+        auto error = NetworkRequestHelper::DownloadAsset(dashboardDownloadURL, archive, false);
         if (error.isEmpty()) {
             bool ok = false;
             error = API::defaultClient->InstallDashboard(&ok, Configs::GetBasePath() + "/" + archive,
@@ -620,7 +620,7 @@ void MainWindow::CheckUpdate(bool silent) {
     };
 
     auto resp = NetworkRequestHelper::HttpGet(
-        "https://api.github.com/repos/ChipZhang/throned-ex/releases", false, requestUsedProfile);
+        "https://api.github.com/repos/ChipZhang/throned-ex/releases", false, false);
     if (!resp.error.isEmpty()) {
         rememberDirectFailure();
         if (!silent) runOnUiThread([=, this] {
@@ -725,9 +725,8 @@ void MainWindow::startUpdateDownload(const QString &url, const QString &assetNam
             });
         };
 
-        const bool proxyAvailable = Configs::dataManager->settingsRepo->started_id >= 0;
         const QString error = NetworkRequestHelper::DownloadAsset(
-            url, QStringLiteral("Throned.zip"), proxyAvailable, progress);
+            url, QStringLiteral("Throned.zip"), false, progress);
         runOnUiThread([this, assetName, error] {
             if (updateStatusWidget == nullptr) return;
             if (error.isEmpty()) {
