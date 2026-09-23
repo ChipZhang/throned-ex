@@ -580,7 +580,7 @@ void MainWindow::on_profilesTableView_customContextMenuRequested(const QPoint &p
     // carries the same button only appears for more than one row.
     if (clearSelectionAction == nullptr) {
         clearSelectionAction = new QAction(tr("Clear selection"), this);
-        clearSelectionAction->setShortcut(QKeySequence(Qt::Key_Escape));
+        clearSelectionAction->setShortcut(QKeySequence(Qt::ShiftModifier | Qt::Key_Escape));
         clearSelectionAction->setShortcutVisibleInContextMenu(true);
         connect(clearSelectionAction, &QAction::triggered, this, [this] { clearProfileSelection(); });
         ui->menu_server->addSeparator();

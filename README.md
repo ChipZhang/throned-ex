@@ -23,7 +23,9 @@ Check [this file](README.upstream.md).
 - Keep filename and path of program files the same as original, for compatibility.
 - Changed upgrade checking URL accordingly.
 
-## Fix upstream bugs
+## Fixed upstream bugs
+
+- To clear profiles selections in main window, use shortcut key `Shift+ESC` instead of `ESC` since the latter does not work in all systems.
 
 ### Proxy issues
 
