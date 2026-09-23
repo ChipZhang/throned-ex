@@ -27,6 +27,7 @@ Check [this file](README.upstream.md).
 
 - To clear profiles selections in main window, use shortcut key `Shift+ESC` instead of `ESC` since the latter does not work in all systems.
 - If the user changes to a different routing profile via the *Routing* drop down menu, the bottom right stats/info widget in main window will display the new routing profile name correctly.
+- For context menu of profile table, disable items Share/Delete/Clone if there is no selection.
 
 ### Proxy issues
 

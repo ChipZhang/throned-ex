@@ -2301,6 +2301,11 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
         ui->menu_test_item->setEnabled(hasSelection);
         ui->menu_resolve_selected->setEnabled(hasSelection);
         ui->actionResolve_Selected_Out_IP->setEnabled(hasSelection);
+
+        ui->menu_share_item->setEnabled(hasSelection);
+        ui->menu_delete->setEnabled(hasSelection);
+        ui->menu_clone->setEnabled(hasSelection);
+
         if (testRunner->isRunning()) {
             ui->menu_server->addAction(ui->menu_stop_testing);
         } else {
