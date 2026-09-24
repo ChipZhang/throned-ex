@@ -726,6 +726,7 @@ QToolButton::menu-indicator {
     <addaction name="separator"/>
     <addaction name="menu_start"/>
     <addaction name="menu_stop"/>
+    <addaction name="menu_edit"/>
     <addaction name="menu_share_item"/>
     <addaction name="menu_delete"/>
     <addaction name="separator"/>
@@ -859,6 +860,14 @@ QToolButton::menu-indicator {
    </property>
    <property name="shortcut">
     <string notr="true">Backspace</string>
+   </property>
+  </action>
+  <action name="menu_edit">
+   <property name="text">
+    <string>Edit</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Return</string>
    </property>
   </action>
   <action name="menu_routing_settings">

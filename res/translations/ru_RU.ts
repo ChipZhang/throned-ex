@@ -6488,6 +6488,10 @@ rendezvous service. Replaces the server address and port.</source>
         <translation>Остановить</translation>
     </message>
     <message>
+        <source>Edit</source>
+        <translation>Изменить</translation>
+    </message>
+    <message>
         <source>Routing Settings</source>
         <translation>Настройки маршрутизации</translation>
     </message>

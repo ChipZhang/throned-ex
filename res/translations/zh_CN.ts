@@ -5969,6 +5969,10 @@ rendezvous service. Replaces the server address and port.</source>
         <translation>停止</translation>
     </message>
     <message>
+        <source>Edit</source>
+        <translation>编辑</translation>
+    </message>
+    <message>
         <source>Routing Settings</source>
         <translation>路由设置</translation>
     </message>

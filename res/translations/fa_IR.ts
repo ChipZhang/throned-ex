@@ -2477,6 +2477,10 @@ For more information, see the document &quot;Configuration/DNS&quot;.</source>
         <translation>متوقف کردن</translation>
     </message>
     <message>
+        <source>Edit</source>
+        <translation>ویرایش</translation>
+    </message>
+    <message>
         <source>Routing Settings</source>
         <translation>تنظیمات مسیریابی</translation>
     </message>

@@ -2293,6 +2293,8 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: trans
         ui->system_dns->hide();
 
     connect(ui->menu_server, &QMenu::aboutToShow, this, [=, this]() {
+        ui->menu_edit->setEnabled(get_now_selected_list().size() == 1);
+
         // Everything in the Test submenu acts on the selection, so it follows it as a
         // whole -- entries added later do not have to be remembered here.
         const bool hasSelection = !get_now_selected_list().empty();

@@ -76,3 +76,9 @@ Added/changed *non-customizable* keyboard shortcuts:
 
 - Start core/kernel: `Return` / `Enter` (Not changed).
 - Stop core/kernel: `Backspace` (Changed from `Ctrl+S`).
+
+### Context menu to edit profile
+
+Added an *Edit* menu item to the context menu of profile table, as well as a *customizable* keyboard shortcuts (`Ctrl+Return` by default), to edit current selected profile.
+
+Meanwhile, changed the double-click behavior to starting the profile instead of editing it.

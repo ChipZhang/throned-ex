@@ -133,6 +133,7 @@ void MainWindow::setActionsData() {
     ui->actionEdit_Group->setData(QString("actionEdit_Group"));
     ui->menu_manage_groups->setData(QString("menu_manage_groups"));
     ui->menu_delete->setData(QString("menu_delete"));
+    ui->menu_edit->setData(QString("menu_edit"));
 }
 
 QList<QAction *> MainWindow::getActionsForShortcut() {

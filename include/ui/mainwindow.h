@@ -309,6 +309,8 @@ private slots:
 
     void on_profilesTableView_doubleClicked(const QModelIndex &index);
 
+    void on_menu_edit_triggered();
+
     void on_profilesTableView_customContextMenuRequested(const QPoint &pos);
 
     void on_tabWidget_currentChanged(int index);

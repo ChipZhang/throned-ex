@@ -48,12 +48,15 @@ constexpr int removeListPreviewLimit = 20;
 void MainWindow::on_profilesTableView_doubleClicked(const QModelIndex &index) {
     if (!index.isValid() || !profilesTableModel) return;
     int id = index.data(ProfilesTableModel::ProfileIdRole).toInt();
-    if (select_mode) {
-        emit profile_selected(id);
-        select_mode = false;
-        refresh_status();
-        return;
-    }
+    profile_start(id);
+}
+
+void MainWindow::on_menu_edit_triggered() {
+    const QModelIndexList selected = ui->profilesTableView->selectionModel()->selectedRows();
+    if (selected.size() != 1 || !profilesTableModel) return;
+    const QModelIndex index = selected.first();
+
+    int id = index.data(ProfilesTableModel::ProfileIdRole).toInt();
     auto dialog = new DialogEditProfile("", id, this);
     connect(dialog, &QDialog::finished, dialog, &QDialog::deleteLater);
 }
