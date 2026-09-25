@@ -46,6 +46,7 @@ You can add your local IP/domain to the routing settings, so the software can di
 ### TODO Unfixed upstream bugs
 
 - Restart core/kernel does not work.
+- No executable permissions for binaries in generated Linux portable zip file.
 
 ## New features
 
